@@ -95,14 +95,20 @@ Known issue: on macOS, sharp's bundled text renderer ignores the requested font,
 - Wherever de-identification is described, show the burned-in pixel caveat. In pages use `<PixelCaveat />`; in docs use a `:::caution` aside.
 - British spelling: organisation, finalise, licence.
 
-## Deploying to Cloudflare Pages
+## Deploying to Cloudflare
 
-1. Push this repository to GitHub or GitLab.
-2. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git**, then pick the repository.
-3. Build settings:
-   - Framework preset: **Astro**
+The site is fully static. `wrangler.jsonc` tells Cloudflare to serve `dist/` as static assets. Keep that file: without it, `wrangler deploy` auto-adds the `@astrojs/cloudflare` server adapter, and the build fails.
+
+### Workers (current Cloudflare default)
+
+1. In the Cloudflare dashboard: **Workers & Pages → Create → Import a repository**, then pick this repository.
+2. Build settings:
    - Build command: `npm run build`
-   - Build output directory: `dist`
+   - Deploy command: `npx wrangler deploy`
    - Environment variable: `NODE_VERSION` = `22`
-4. Save and deploy. Every push to the production branch redeploys; other branches get preview URLs.
-5. Add your domain under **Custom domains**, and make sure `url` in `src/config/site.yaml` matches it.
+3. The Worker name in the dashboard must match `name` in `wrangler.jsonc` (`pacsinfra-website`). Change one of them so they match.
+4. Add your domain under the Worker's **Settings → Domains & Routes**, and make sure `url` in `src/config/site.yaml` matches it.
+
+### Pages (alternative)
+
+**Workers & Pages → Create → Pages → Connect to Git**. Framework preset **Astro**, build command `npm run build`, output directory `dist`, `NODE_VERSION` = `22`.
