@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import CtaBand from '../components/CtaBand.astro';
+import PixelCaveat from '../components/PixelCaveat.astro';
+import { stack, storage, stackIntro, deployment, quality } from '../data/tech-stack';
+---
+
+<BaseLayout title="Technology" description="PACSinfra's tech stack: a Go API, a Python DICOM worker, a React frontend, Orthanc, PostgreSQL 17 and Garage, deployed with Docker Compose behind nginx.">
+  <PageHeader eyebrow="Technology" title="A stack you can read and own" intro={stackIntro} />
+
+  <Section id="application" title="Application">
+    <div class="grid gap-6 lg:grid-cols-3">
+      {stack.map((s) => (
+        <article id={s.id} class="card flex flex-col">
+          <p class="eyebrow">{s.language}</p>
+          <h3 class="mt-1 text-xl font-semibold">{s.name}</h3>
+          <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">{s.summary}</p>
+          {s.details.length > 0 && (
+            <ul class="mt-5 space-y-2 border-t border-line pt-5 text-sm text-slate-600 dark:border-line-dark dark:text-slate-400">
+              {s.details.map((d) => <li class="flex gap-2"><span aria-hidden="true" class="text-accent dark:text-accent-dark">&ndash;</span><span>{d}</span></li>)}
+            </ul>
+          )}
+          {s.id === 'worker' && <div class="mt-5"><PixelCaveat /></div>}
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="storage" tone="muted" title="Imaging and storage">
+    <div class="grid gap-6 md:grid-cols-3">
+      {storage.map((s) => (
+        <article class="card">
+          <h3 class="text-lg font-semibold">{s.name}</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{s.summary}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="deployment" title="Deployment">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <p class="text-lg leading-8 text-slate-600 dark:text-slate-300">{deployment}</p>
+      <figure class="rounded-xl border border-line bg-mist p-5 font-mono text-sm dark:border-line-dark dark:bg-night-raised" aria-label="Request flow">
+        <p class="text-xs font-semibold tracking-wide text-slate-500 uppercase">Single server, Docker Compose</p>
+        <ul class="mt-4 space-y-2">
+          <li><span class="text-accent dark:text-accent-dark">internet</span> &rarr; nginx <span class="text-slate-500">(only public entry point)</span></li>
+          <li class="pl-4">&rarr; Go API <span class="text-slate-500">(permissions, audit, reports, image feed)</span></li>
+          <li class="pl-8">&rarr; Orthanc <span class="text-slate-500">(private)</span></li>
+          <li class="pl-8">&rarr; PostgreSQL 17 <span class="text-slate-500">(private)</span></li>
+          <li class="pl-4">Python DICOM worker <span class="text-slate-500">(jobs from a PostgreSQL table)</span></li>
+          <li class="pl-8">&rarr; Garage <span class="text-slate-500">(upload staging, private)</span></li>
+        </ul>
+      </figure>
+    </div>
+  </Section>
+
+  <Section id="quality" tone="muted" title="Quality">
+    <ul class="grid max-w-4xl gap-4">
+      {quality.map((q) => <li class="card leading-7">{q}</li>)}
+    </ul>
+  </Section>
+
+  <CtaBand title="Want to read the code?" text="The Self-Hosted plan includes the full source code. Book a call if you'd like a walkthrough first." />
+</BaseLayout>

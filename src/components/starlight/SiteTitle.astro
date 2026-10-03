@@ -1,0 +1,29 @@
+---
+// Replaces Starlight's site title so the docs header uses the same <Logo> as the marketing site.
+import Logo from '../Logo.astro';
+---
+
+<a href="/" class="site-title" aria-label="PACSinfra home">
+  <Logo />
+</a>
+<a href="/docs/" class="docs-label">Docs</a>
+
+<style>
+  .site-title {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    min-width: 0;
+  }
+  .docs-label {
+    margin-inline-start: 0.75rem;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-gray-2);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .docs-label:hover {
+    color: var(--sl-color-text-accent);
+  }
+</style>

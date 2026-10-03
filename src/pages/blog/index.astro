@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Section from '../../components/Section.astro';
+import { getPosts, formatDate } from '../../lib/blog';
+
+const posts = await getPosts();
+---
+
+<BaseLayout title="Blog" description="Notes on self-hosted medical imaging, DICOM de-identification and building PACSinfra.">
+  <PageHeader eyebrow="Blog" title="Notes from building PACSinfra" />
+  <Section>
+    <ul class="max-w-3xl divide-y divide-line dark:divide-line-dark">
+      {posts.map((post) => (
+        <li class="py-8 first:pt-0">
+          <time datetime={post.data.pubDate.toISOString()} class="text-sm text-slate-500 dark:text-slate-400">{formatDate(post.data.pubDate)}</time>
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight"><a href={`/blog/${post.id}`} class="hover:text-accent dark:hover:text-accent-dark">{post.data.title}</a></h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-8 text-sm"><a href="/rss.xml" class="link">RSS feed</a></p>
+  </Section>
+</BaseLayout>

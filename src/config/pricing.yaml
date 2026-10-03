@@ -1,0 +1,55 @@
+# Single source of truth for every price, tier, CTA, banner and pricing FAQ on the site.
+# Validated by src/config/schema.ts at build time: a typo or unknown key fails the build.
+# Prices are numbers; they are formatted from `currency` + `price` (e.g. 2500 -> $2,500).
+# The layout supports 1 to 3 tiers, rendered in the order listed here.
+
+currency: USD
+
+foundingOffer:
+  enabled: true
+  text: "Founding customers: the first 3 organisations get 50% off in exchange for a case study."
+
+tiers:
+  - id: self-hosted
+    name: Self-Hosted
+    price: 2500
+    billing: one-time        # one-time | yearly | monthly
+    highlight: false
+    description: Source code you run yourself.
+    features:
+      - Full source code, lifetime licence for one organisation
+      - Lifetime updates
+      - Installation docs (Docker Compose)
+      - 12 months email support (business-day response)
+    note: "After year 1: optional support renewal $900/year"
+    primaryCta:   { label: Buy now, url: "TODO" }
+    secondaryCta: { label: Pay by invoice, url: "mailto:TODO" }
+
+  - id: deployed
+    name: Deployed
+    price: 6000
+    billing: one-time
+    highlight: true
+    badge: Most popular
+    description: We deploy it on your server, end to end.
+    features:
+      - Everything in Self-Hosted
+      - End-to-end deployment on your server
+      - 30 days post-launch support
+    primaryCta:   { label: Book a call, url: "TODO" }
+    secondaryCta: { label: Request a quote, url: "mailto:TODO" }
+
+licenceSummary: >
+  One organisation per licence. You may modify the code. You may not resell or redistribute it.
+
+faq:
+  - q: What does "lifetime updates" mean?
+    a: TODO
+  - q: What does support cover?
+    a: TODO
+  - q: What is your refund policy?
+    a: TODO
+  - q: Can we pay by invoice or bank transfer?
+    a: TODO
+  - q: What happens after 12 months?
+    a: TODO

@@ -1,0 +1,36 @@
+/* Brand colours and font for the Starlight docs at /docs. */
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+
+:root {
+  --sl-font: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Dark theme (Starlight's default block) */
+  --sl-color-accent-low: #123A3F;
+  --sl-color-accent: #5CC6C0;
+  --sl-color-accent-high: #B9E9E6;
+  --sl-color-white: #FFFFFF;
+  --sl-color-gray-1: #E6EBEE;
+  --sl-color-gray-2: #C3CDD3;
+  --sl-color-gray-3: #8D9CA6;
+  --sl-color-gray-4: #5A6B77;
+  --sl-color-gray-5: #263944;
+  --sl-color-gray-6: #142530;
+  --sl-color-black: #0E1A22;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #D4ECEB;
+  --sl-color-accent: #0F6E75;
+  --sl-color-accent-high: #0A4A4F;
+  --sl-color-white: #16202A;
+  --sl-color-gray-1: #233140;
+  --sl-color-gray-2: #3A4855;
+  --sl-color-gray-3: #5A6B77;
+  --sl-color-gray-4: #8D9CA6;
+  --sl-color-gray-5: #DCE2E5;
+  --sl-color-gray-6: #F4F6F7;
+  --sl-color-gray-7: #F9FAFB;
+  --sl-color-black: #FFFFFF;
+}

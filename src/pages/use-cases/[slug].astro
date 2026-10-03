@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Section from '../../components/Section.astro';
+import PixelCaveat from '../../components/PixelCaveat.astro';
+import StackOverview from '../../components/StackOverview.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { useCases, type UseCase } from '../../data/use-cases';
+
+export function getStaticPaths() {
+  return useCases.map((useCase) => ({ params: { slug: useCase.slug }, props: { useCase } }));
+}
+
+const { useCase } = Astro.props as { useCase: UseCase };
+---
+
+<BaseLayout title={`For ${useCase.navLabel.toLowerCase()}`} description={useCase.metaDescription}>
+  <PageHeader eyebrow={`Use case: ${useCase.navLabel}`} title={useCase.title} intro={useCase.intro}>
+    {useCase.mentionsDeidentification && <div class="mt-6 max-w-2xl"><PixelCaveat /></div>}
+  </PageHeader>
+
+  <Section>
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {useCase.points.map((p) => (
+        <li class="card">
+          <h2 class="text-lg font-semibold">{p.title}</h2>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  {useCase.showStack && (
+    <Section tone="muted" title="The stack">
+      <StackOverview />
+    </Section>
+  )}
+
+  <Section tone={useCase.showStack ? 'plain' : 'muted'} title="Read more in the docs">
+    <ul class="flex flex-wrap gap-3">
+      {useCase.docs.map((d) => <li><a href={d.href} class="btn-secondary">{d.label}</a></li>)}
+      <li><a href="/security" class="btn-secondary">Security overview</a></li>
+    </ul>
+  </Section>
+
+  <CtaBand />
+</BaseLayout>

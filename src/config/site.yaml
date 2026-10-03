@@ -1,0 +1,21 @@
+# Site-wide settings. Validated by src/config/schema.ts at build time.
+
+name: PACSinfra
+# Canonical URLs, sitemap, robots.txt and Open Graph tags are built from this.
+url: https://pacsinfra.com
+# Short line used on the default Open Graph image and in the footer.
+tagline: Self-hosted medical imaging platform built on Orthanc and OHIF.
+# Default meta description for pages that don't set their own.
+description: >
+  PACSinfra is a self-hosted medical imaging platform built on Orthanc and OHIF.
+  Upload DICOM studies, review them, and write reports, all on your own server,
+  with patient data that never leaves your control.
+
+contactEmail: hello@pacsinfra.com   # placeholder: replace with your real address
+demoUrl: "TODO"
+bookingUrl: "TODO"
+
+# icon: one of github | linkedin | x.com | mastodon | youtube (also used by the docs header)
+social:
+  - { label: GitHub, icon: github, href: "https://github.com/TODO" }
+  - { label: LinkedIn, icon: linkedin, href: "https://www.linkedin.com/company/TODO" }

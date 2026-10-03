@@ -1,0 +1,22 @@
+---
+import { site } from '../config';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const { title = 'See it on your own data.', text = 'Try the demo, compare plans, or talk to us about deploying PACSinfra on your server.' } = Astro.props;
+---
+
+<section class="py-16 sm:py-20">
+  <div class="container-page">
+    <div class="rounded-2xl bg-ink px-6 py-12 text-center sm:px-12 dark:bg-night-raised dark:ring-1 dark:ring-line-dark">
+      <h2 class="text-3xl font-semibold tracking-tight text-white">{title}</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-slate-300">{text}</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href={site.demoUrl} class="btn bg-accent-dark text-night hover:bg-[#7fd5d0]">Try the demo</a>
+        <a href="/pricing" class="btn border border-slate-500 text-white hover:border-accent-dark hover:text-accent-dark">See pricing</a>
+        <a href={site.bookingUrl} class="btn border border-slate-500 text-white hover:border-accent-dark hover:text-accent-dark">Book a call</a>
+      </div>
+    </div>
+  </div>
+</section>

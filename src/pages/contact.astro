@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import { site } from '../config';
+---
+
+<BaseLayout title="Contact" description={`Get in touch with the ${site.name} team.`}>
+  <PageHeader eyebrow="Contact" title="Talk to us" intro="Questions about PACSinfra, pricing or deployment? Email us or book a call." />
+  <Section>
+    <div class="grid max-w-4xl gap-6 md:grid-cols-3">
+      <div class="card">
+        <h2 class="font-semibold">Email</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">We reply on business days.</p>
+        <a href={`mailto:${site.contactEmail}`} class="link mt-4 inline-block break-all">{site.contactEmail}</a>
+      </div>
+      <div class="card">
+        <h2 class="font-semibold">Book a call</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">A short call to talk through your setup.</p>
+        <a href={site.bookingUrl} class="link mt-4 inline-block">Choose a time &rarr;</a>
+      </div>
+      <div class="card">
+        <h2 class="font-semibold">Try the demo</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">See PACSinfra before you talk to anyone.</p>
+        <a href={site.demoUrl} class="link mt-4 inline-block">Open the demo &rarr;</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

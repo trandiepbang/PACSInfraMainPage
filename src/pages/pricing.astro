@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import FoundingBanner from '../components/FoundingBanner.astro';
+import PricingCards from '../components/PricingCards.astro';
+import Faq from '../components/Faq.astro';
+import { pricing, site } from '../config';
+import { pricingSummary } from '../lib/format';
+---
+
+<BaseLayout title="Pricing" description={`${site.name} pricing: ${pricingSummary()}. ${pricing.licenceSummary.trim()}`}>
+  <PageHeader eyebrow="Pricing" title="Simple, one-organisation licences" intro="Pay once, run it on your own server." />
+
+  <Section>
+    <div class="space-y-12">
+      <FoundingBanner />
+      <PricingCards />
+    </div>
+  </Section>
+
+  <Section id="licence" tone="muted" title="Licence summary">
+    <p class="max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">{pricing.licenceSummary}</p>
+    <p class="mt-4 text-sm"><a href="/licence" class="link">Read the full licence &rarr;</a></p>
+  </Section>
+
+  {pricing.faq.length > 0 && (
+    <Section id="faq" title="Pricing FAQ">
+      <Faq items={pricing.faq} />
+    </Section>
+  )}
+</BaseLayout>

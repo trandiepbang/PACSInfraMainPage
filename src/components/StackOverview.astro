@@ -1,0 +1,21 @@
+---
+// Compact tech-stack summary for the homepage and Developers page. Full detail on /technology.
+import { stack, storage, stackIntro } from '../data/tech-stack';
+const parts = [
+  ...stack.map((s) => ({ name: s.name, sub: s.language })),
+  ...storage.map((s) => ({ name: s.name, sub: s.summary.split('.')[0] })),
+];
+---
+
+<div>
+  <p class="max-w-3xl text-lg text-slate-600 dark:text-slate-300">{stackIntro}</p>
+  <ul class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
+    {parts.map((p) => (
+      <li class="card p-5">
+        <p class="font-semibold">{p.name}</p>
+        {p.sub && <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{p.sub}</p>}
+      </li>
+    ))}
+  </ul>
+  <a href="/technology" class="link mt-6 inline-block text-sm">See the full tech stack &rarr;</a>
+</div>

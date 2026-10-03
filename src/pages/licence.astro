@@ -1,0 +1,11 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { pricing } from '../config';
+---
+
+<LegalLayout title="Licence" description={`PACSinfra licence. ${pricing.licenceSummary.trim()}`}>
+  <h2>Summary</h2>
+  <p>{pricing.licenceSummary}</p>
+  <h2>Full licence</h2>
+  <p>TODO: replace with the full licence text.</p>
+</LegalLayout>

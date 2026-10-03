@@ -1,0 +1,10 @@
+---
+import { pricing } from '../config';
+const { foundingOffer } = pricing;
+---
+
+{foundingOffer.enabled && (
+  <div class="rounded-lg border border-accent/40 bg-accent/5 px-5 py-4 text-center text-sm font-medium text-accent dark:border-accent-dark/40 dark:bg-accent-dark/10 dark:text-accent-dark">
+    {foundingOffer.text}
+  </div>
+)}
