@@ -103,7 +103,7 @@ The site is fully static. `wrangler.jsonc` tells Cloudflare to serve `dist/` as 
 
 1. In the Cloudflare dashboard: **Workers & Pages → Create → Import a repository**, then pick this repository.
 2. Build settings:
-   - Build command: `npm run build`
+   - Build command: leave empty. `wrangler.jsonc` runs `npm run build` before each deploy; filling it in as well just builds twice.
    - Deploy command: `npx wrangler deploy`
    - Environment variable: `NODE_VERSION` = `22`
 3. The Worker name in the dashboard must match `name` in `wrangler.jsonc` (`pacsinfra-website`). Change one of them so they match.
