@@ -24,7 +24,7 @@ Every price, tier, CTA, banner and pricing FAQ on the site comes from this file:
 - **`billing`** must be `one-time`, `yearly` or `monthly`.
 - **`highlight: true`** gives a tier the accent border; `badge` adds a label such as "Most popular".
 - **Founding offer:** set `foundingOffer.enabled: false` to hide the banner everywhere.
-- **CTAs** are plain links (`url`) and can point to any payment page, booking page or `mailto:`. There is no payment SDK.
+- **CTAs** are plain links (`url`) and can point to any payment page, booking page or `mailto:`. There is no payment SDK. Write `{supportEmail}` to use the address from `site.yaml`, e.g. `mailto:{supportEmail}?subject=Quote`.
 
 The file is validated with Zod (`src/config/schema.ts`). Unknown keys, missing fields and wrong types fail the build with the exact path, for example:
 
@@ -36,7 +36,7 @@ src/config/pricing.yaml failed validation:
 
 ## Editing site settings: `src/config/site.yaml`
 
-Site name, canonical URL (used for canonical tags, the sitemap, robots.txt and Open Graph), tagline, default description, contact email, demo URL, booking URL and social links. Social `icon` must be one of `github`, `linkedin`, `x.com`, `mastodon` or `youtube`. The docs header uses the same links.
+Site name, canonical URL (used for canonical tags, the sitemap, robots.txt and Open Graph), tagline, default description, support email, demo URL, booking URL and social links. Social `icon` must be one of `github`, `linkedin`, `x.com`, `mastodon` or `youtube`. The docs header uses the same links.
 
 Other copy lives in:
 

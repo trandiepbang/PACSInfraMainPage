@@ -53,7 +53,7 @@ export const siteSchema = z.strictObject({
   url: z.url().refine((u) => !u.endsWith('/'), 'leave off the trailing slash'),
   tagline: z.string().min(1),
   description: z.string().min(1),
-  contactEmail: z.email(),
+  supportEmail: z.email(),
   demoUrl: z.string().min(1),
   bookingUrl: z.string().min(1),
   social: z.array(

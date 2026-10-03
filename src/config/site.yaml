@@ -11,11 +11,11 @@ description: >
   Upload DICOM studies, review them, and write reports, all on your own server,
   with patient data that never leaves your control.
 
-contactEmail: hello@pacsinfra.com   # placeholder: replace with your real address
+# Every email link on the site uses this, including pricing CTAs written as {supportEmail}.
+supportEmail: support@pacsinfra.com
 demoUrl: "TODO"
-bookingUrl: "TODO"
+bookingUrl: "https://cal.com/pacs-infra-jh996c/30min"
 
 # icon: one of github | linkedin | x.com | mastodon | youtube (also used by the docs header)
 social:
-  - { label: GitHub, icon: github, href: "https://github.com/TODO" }
-  - { label: LinkedIn, icon: linkedin, href: "https://www.linkedin.com/company/TODO" }
+  - { label: LinkedIn, icon: linkedin, href: "https://www.linkedin.com/in/bang-diep-tran/" }

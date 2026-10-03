@@ -1,5 +1,6 @@
 # Single source of truth for every price, tier, CTA, banner and pricing FAQ on the site.
 # Validated by src/config/schema.ts at build time: a typo or unknown key fails the build.
+# CTA urls may use {supportEmail}, which is replaced with supportEmail from site.yaml.
 # Prices are numbers; they are formatted from `currency` + `price` (e.g. 2500 -> $2,500).
 # The layout supports 1 to 3 tiers, rendered in the order listed here.
 
@@ -23,7 +24,7 @@ tiers:
       - 12 months email support (business-day response)
     note: "After year 1: optional support renewal $900/year"
     primaryCta:   { label: Buy now, url: "TODO" }
-    secondaryCta: { label: Pay by invoice, url: "mailto:TODO" }
+    secondaryCta: { label: Pay by invoice, url: "mailto:{supportEmail}?subject=Self-Hosted%20licence%20-%20invoice" }
 
   - id: deployed
     name: Deployed
@@ -36,8 +37,8 @@ tiers:
       - Everything in Self-Hosted
       - End-to-end deployment on your server
       - 30 days post-launch support
-    primaryCta:   { label: Book a call, url: "TODO" }
-    secondaryCta: { label: Request a quote, url: "mailto:TODO" }
+    primaryCta:   { label: Book a call, url: "https://cal.com/pacs-infra-jh996c/30min" }
+    secondaryCta: { label: Request a quote, url: "mailto:{supportEmail}?subject=Deployed%20-%20quote%20request" }
 
 licenceSummary: >
   One organisation per licence. You may modify the code. You may not resell or redistribute it.
