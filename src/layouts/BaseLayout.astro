@@ -3,17 +3,22 @@ import '../styles/global.css';
 import Seo from '../components/Seo.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLocale, htmlLang } from '../i18n';
+import { alternatePath, getLocale, htmlLang, isTranslated } from '../i18n';
 import { ui } from '../i18n/ui';
 
 interface Props {
   title?: string;
+  fullTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
 const locale = getLocale(Astro.url);
+// English pages that have a Chinese twin send first-time visitors whose browser prefers Chinese
+// there. A choice made with the language button is stored and always wins.
+const zhPath = locale === 'en' && isTranslated(Astro.url.pathname) ? alternatePath(Astro.url.pathname, 'zh-tw') : null;
 ---
 
 <!doctype html>
@@ -26,6 +31,18 @@ const locale = getLocale(Astro.url);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <Seo {...Astro.props} />
+    {zhPath && (
+      <script is:inline define:vars={{ zhPath }}>
+        (() => {
+          let chosen = null;
+          try { chosen = localStorage.getItem('pacsinfra-lang'); } catch {}
+          if (chosen === 'en') return;
+          const prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+          const wantsZh = chosen === 'zh-tw' || /^zh\b/i.test(prefs[0] || '');
+          if (wantsZh) location.replace(zhPath + location.search + location.hash);
+        })();
+      </script>
+    )}
     <!-- Same logic and storage key as Starlight, so the theme matches across the site and /docs. -->
     <script is:inline>
       (() => {

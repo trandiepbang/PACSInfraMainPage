@@ -35,13 +35,24 @@ export function stripLocale(pathname: string): string {
 
 export const isTranslated = (pathname: string) => translated.has(stripLocale(pathname));
 
+/** Page paths end in a slash, matching the built `dir/index.html` files and the canonical URLs, so
+ * a link never costs a redirect. Files (`/rss.xml`) and external links are left alone. */
+export function withSlash(href: string): string {
+  if (!href.startsWith('/')) return href;
+  const [path, hash] = href.split('#');
+  const last = path.split('/').pop() ?? '';
+  const slashed = path.endsWith('/') || last.includes('.') ? path : `${path}/`;
+  return hash ? `${slashed}#${hash}` : slashed;
+}
+
 /** Point an English href at the right language. English-only pages keep their English path. */
 export function localizePath(href: string, locale: Locale): string {
-  if (locale === 'en' || !href.startsWith('/')) return href;
+  if (!href.startsWith('/')) return href;
   const [path, hash] = href.split('#');
-  if (!translated.has(trim(path))) return href;
-  const localized = trim(path) === '/' ? `${PREFIX}/` : `${PREFIX}${trim(path)}`;
-  return hash ? `${localized}#${hash}` : localized;
+  const english = trim(path);
+  const localized =
+    locale === 'en' || !translated.has(english) ? english : english === '/' ? PREFIX : `${PREFIX}${english}`;
+  return withSlash(hash ? `${localized}#${hash}` : localized);
 }
 
 /** Where the language switcher goes: the same page in the other language, or its home page. */

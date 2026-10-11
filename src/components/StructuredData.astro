@@ -1,0 +1,71 @@
+---
+// schema.org JSON-LD for the homepage: the organisation, the website, the product with its plans,
+// and the FAQ. Search engines read it to build richer results; it is not shown on the page.
+import { getPricing, site } from '../config';
+import { getLocale, htmlLang, localizePath } from '../i18n';
+import { ui } from '../i18n/ui';
+import { lowestPrice } from '../lib/format';
+
+interface Props {
+  faq: { q: string; a: string }[];
+}
+
+const locale = getLocale(Astro.url);
+const lang = htmlLang[locale];
+const pricing = getPricing(locale);
+const home = new URL(localizePath('/', locale), site.url).href;
+const orgId = `${site.url}/#organization`;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: site.name,
+      url: site.url,
+      logo: new URL('/logo.svg', site.url).href,
+      email: site.supportEmail,
+      sameAs: site.social.map((s) => s.href),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${home}#website`,
+      name: site.name,
+      url: home,
+      inLanguage: lang,
+      publisher: { '@id': orgId },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: site.name,
+      url: home,
+      description: ui[locale].home.metaDescription.replace('{price}', lowestPrice()),
+      applicationCategory: 'HealthApplication',
+      applicationSubCategory: 'PACS',
+      operatingSystem: 'Linux (Docker)',
+      inLanguage: lang,
+      publisher: { '@id': orgId },
+      offers: pricing.tiers.map((t) => ({
+        '@type': 'Offer',
+        name: t.name,
+        description: t.description,
+        price: t.price,
+        priceCurrency: pricing.currency,
+        url: new URL(localizePath('/pricing', locale), site.url).href,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      inLanguage: lang,
+      mainEntity: Astro.props.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

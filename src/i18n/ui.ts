@@ -42,13 +42,15 @@ const en = {
   common: {
     limitation: 'Limitation:',
     howItWorks: 'How it works',
-    screenshot: 'Screenshot placeholder',
     fullStack: 'See the full tech stack',
     /** Empty: English uses the tagline from site.yaml. */
     tagline: '',
   },
   billing: { 'one-time': 'one-time', yearly: 'per year', monthly: 'per month' },
   home: {
+    metaTitle: 'PACSinfra: Self-Hosted Cloud PACS and DICOM Viewer for Clinics',
+    metaDescription:
+      'Self-hosted cloud PACS for clinics and imaging centres. Upload DICOM, view studies in the browser and write radiology reports, with de-identification, tenant isolation and a full audit trail. From {price}.',
     eyebrow: 'Self-hosted medical imaging',
     title: 'Your imaging platform, on your own server.',
     lead: 'PACSinfra is a self-hosted medical imaging platform built on Orthanc and OHIF.',
@@ -62,7 +64,31 @@ const en = {
       'Studies travel from the hospital to PACSinfra over an encrypted connection, through a DICOM node inside the hospital network or by web upload. Inside PACSinfra, the API checks permissions and records an audit entry before any image reaches a browser or the mobile app.',
     screenshotsEyebrow: 'Product',
     screenshotsTitle: 'A look inside',
-    shots: ['Study list with search and filters', 'Series and instance browsing', 'Report editor with PDF export'],
+    demoLimitedTitle: 'The demo is a limited preview.',
+    demoLimitedText: 'To keep it safe for public sign-ups, some main features, such as the worklist, are turned off. Book a call and we will walk you through the full product.',
+    demoLimitedShort: 'The demo is a limited preview: some features, such as the worklist, are turned off.',
+    shots: [
+      {
+        title: 'Built-in medical image viewer',
+        text: 'Scroll through every series, adjust window and level, measure and compare, right in the browser.',
+        alt: 'The PACSinfra viewer showing a sagittal MR spine series, with series thumbnails on the left and viewing tools along the top',
+      },
+      {
+        title: 'Everything in one place',
+        text: 'Your studies, uploads and folders, a click away from the dashboard.',
+        alt: 'The PACSinfra dashboard with Cloud PACS, Upload Studies and Upload History, and a list of folders',
+      },
+      {
+        title: 'Every action on record',
+        text: 'See who opened which study, when, and under which permission. Entries can never be changed or deleted.',
+        alt: 'The PACSinfra audit log listing each action with its time, person, result and the permission that allowed it',
+      },
+      {
+        title: 'Find any study fast',
+        text: 'Search and filter every study by patient, date and modality, then open it in one click.',
+        alt: 'The PACSinfra Cloud PACS study list with de-identified patients, study descriptions, dates and View buttons',
+      },
+    ],
     stackEyebrow: 'Technology',
     stackTitle: 'Built on a fast, modern stack',
     pricingEyebrow: 'Pricing',
@@ -107,7 +133,7 @@ const en = {
     ],
   },
   security: {
-    metaTitle: 'Security',
+    metaTitle: 'Security: Tenant Isolation and DICOM De-identification',
     metaDescription:
       'How PACSinfra isolates organisations, gates every image request behind permission checks and audit, de-identifies DICOM metadata before storage, and records break-the-glass access.',
     eyebrow: 'Security',
@@ -207,7 +233,7 @@ const en = {
     ctaText: "The Self-Hosted plan includes the full source code. Book a call if you'd like a walkthrough first.",
   },
   pricing: {
-    metaTitle: 'Pricing',
+    metaTitle: 'Pricing: One-Time PACS Licence',
     eyebrow: 'Pricing',
     title: 'Simple, one-organisation licences',
     intro: 'Pay once, run it on your own server.',
@@ -229,7 +255,7 @@ const en = {
     callNote: 'A short call to talk through your setup.',
     callLink: 'Choose a time',
     demo: 'Try the demo',
-    demoNote: 'See PACSinfra before you talk to anyone.',
+    demoNote: 'See PACSinfra before you talk to anyone. It is a limited preview: some features, such as the worklist, are turned off.',
     demoLink: 'Open the demo',
   },
   useCase: {
@@ -281,12 +307,14 @@ const zhTw: UI = {
   common: {
     limitation: '限制：',
     howItWorks: '運作方式',
-    screenshot: '截圖預留位置',
     fullStack: '查看完整技術架構',
     tagline: '以 Orthanc 與 OHIF 為基礎、可自行架設的醫療影像平台。',
   },
   billing: { 'one-time': '一次付清', yearly: '每年', monthly: '每月' },
   home: {
+    metaTitle: 'PACSinfra｜雲端 PACS 醫療影像儲傳系統與 DICOM 檢視器',
+    metaDescription:
+      '可自行架設的雲端 PACS 醫療影像儲傳系統，適合診所與影像中心：上傳 DICOM、在瀏覽器中檢視影像並撰寫放射科報告，具備去識別化、租戶隔離與完整稽核軌跡。方案 {price} 起。',
     eyebrow: '自行架設的醫療影像平台',
     title: '您的影像平台，架在您自己的伺服器上。',
     lead: 'PACSinfra 是以 Orthanc 與 OHIF 為基礎、可自行架設的醫療影像平台。',
@@ -300,7 +328,31 @@ const zhTw: UI = {
       '影像可透過醫院網路內的 DICOM 節點，或經由網頁上傳，透過加密連線從醫院傳送至 PACSinfra。在 PACSinfra 內部，API 會先檢查權限並寫入稽核紀錄，影像才會送到瀏覽器或行動 App。',
     screenshotsEyebrow: '產品畫面',
     screenshotsTitle: '一窺產品樣貌',
-    shots: ['檢查清單，支援搜尋與篩選', '序列與影像瀏覽', '報告編輯器，可匯出 PDF'],
+    demoLimitedTitle: '展示版僅為有限預覽。',
+    demoLimitedText: '為了讓公開註冊保持安全，部分主要功能（例如工作清單）已關閉。歡迎預約通話，我們將為您完整展示產品。',
+    demoLimitedShort: '展示版為有限預覽：部分功能（例如工作清單）已關閉。',
+    shots: [
+      {
+        title: '內建醫療影像檢視器',
+        text: '直接在瀏覽器中瀏覽每個序列、調整窗寬窗位、測量與比較。',
+        alt: 'PACSinfra 檢視器顯示矢狀面 MR 脊椎序列，左側為序列縮圖，上方為檢視工具',
+      },
+      {
+        title: '一切都在同一處',
+        text: '檢查、上傳與資料夾，從儀表板一鍵即達。',
+        alt: 'PACSinfra 儀表板，包含 Cloud PACS、上傳檢查、上傳紀錄與資料夾清單',
+      },
+      {
+        title: '每個動作都有紀錄',
+        text: '誰在何時、以何種權限開啟了哪一筆檢查，一目了然。紀錄永遠無法修改或刪除。',
+        alt: 'PACSinfra 稽核紀錄，列出每個動作的時間、人員、結果與允許該動作的權限',
+      },
+      {
+        title: '快速找到任何檢查',
+        text: '依病患、日期與檢查類型搜尋並篩選所有檢查，一鍵即可開啟。',
+        alt: 'PACSinfra Cloud PACS 檢查清單，顯示去識別化的病患、檢查描述、日期與檢視按鈕',
+      },
+    ],
     stackEyebrow: '技術架構',
     stackTitle: '以快速、現代的技術打造',
     pricingEyebrow: '價格方案',
@@ -345,7 +397,7 @@ const zhTw: UI = {
     ],
   },
   security: {
-    metaTitle: '資訊安全',
+    metaTitle: '資訊安全：租戶隔離與 DICOM 去識別化',
     metaDescription:
       'PACSinfra 如何隔離各機構、讓每筆影像請求都經過權限檢查與稽核、在儲存前將 DICOM 中繼資料去識別化，並記錄緊急存取。',
     eyebrow: '資訊安全',
@@ -428,7 +480,7 @@ const zhTw: UI = {
     ctaText: '自行架設方案包含完整原始碼。如果想先看看實際操作，歡迎預約通話。',
   },
   pricing: {
-    metaTitle: '價格方案',
+    metaTitle: '價格方案：一次買斷的 PACS 授權',
     eyebrow: '價格方案',
     title: '簡單明瞭的單一機構授權',
     intro: '一次付費，在您自己的伺服器上運作。',
@@ -450,7 +502,7 @@ const zhTw: UI = {
     callNote: '簡短通話，聊聊您的環境與需求。',
     callLink: '選擇時間',
     demo: '試用展示版',
-    demoNote: '在與任何人聯繫前，先親自看看 PACSinfra。',
+    demoNote: '在與任何人聯繫前，先親自看看 PACSinfra。展示版為有限預覽，部分功能（例如工作清單）已關閉。',
     demoLink: '開啟展示版',
   },
   useCase: {

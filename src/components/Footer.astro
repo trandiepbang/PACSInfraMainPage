@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import { site } from '../config';
 import { mainNav, useCaseLinks } from '../data/nav';
-import { getLocale, localizePath } from '../i18n';
+import { getLocale, localizePath, withSlash } from '../i18n';
 import { ui } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
@@ -14,10 +14,10 @@ const columns = [
     title: t.footer.company,
     links: [
       { href: localizePath('/contact', locale), label: t.footer.contact },
-      { href: '/terms', label: t.footer.terms },
-      { href: '/privacy', label: t.footer.privacy },
-      { href: '/refund', label: t.footer.refunds },
-      { href: '/licence', label: t.footer.licence },
+      { href: withSlash('/terms'), label: t.footer.terms },
+      { href: withSlash('/privacy'), label: t.footer.privacy },
+      { href: withSlash('/refund'), label: t.footer.refunds },
+      { href: withSlash('/licence'), label: t.footer.licence },
     ],
   },
 ];

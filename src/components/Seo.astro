@@ -5,15 +5,19 @@ import { ui } from '../i18n/ui';
 
 interface Props {
   title?: string;
+  /** The whole <title>, used as given (the homepage, which leads with search terms). */
+  fullTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  /** Keep the page out of search results (placeholder pages). */
+  noindex?: boolean;
 }
 
-const { title, description = site.description.trim(), image = '/og-default.png', type = 'website' } = Astro.props;
+const { title, description = site.description.trim(), image = '/og-default.png', type = 'website', noindex = false } = Astro.props;
 const locale = getLocale(Astro.url);
 const tagline = ui[locale].common.tagline || site.tagline;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name}: ${tagline}`;
+const fullTitle = Astro.props.fullTitle ?? (title ? `${title} | ${site.name}` : `${site.name}: ${tagline}`);
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const imageUrl = new URL(image, site.url).href;
 // hreflang alternates only for pages that exist in every language.
@@ -24,6 +28,7 @@ const alternates = isTranslated(Astro.url.pathname)
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, follow" />}
 <link rel="canonical" href={canonical} />
 {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
 {alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={alternates[0].href} />}
@@ -31,6 +36,7 @@ const alternates = isTranslated(Astro.url.pathname)
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={site.name} />
 <meta property="og:locale" content={ogLocale[locale]} />
+{alternates.length > 0 && locales.filter((l) => l !== locale).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />

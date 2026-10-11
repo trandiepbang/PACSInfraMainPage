@@ -7,7 +7,7 @@ import PricingCards from '../components/PricingCards.astro';
 import Faq from '../components/Faq.astro';
 import { getPricing, site } from '../config';
 import { pricingSummary } from '../lib/format';
-import { getLocale, localizePath } from '../i18n';
+import { getLocale, localizePath, withSlash } from '../i18n';
 import { ui } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
@@ -35,7 +35,7 @@ const description =
 
   <Section id="licence" tone="muted" title={t.licenceTitle}>
     <p class="max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">{pricing.licenceSummary}</p>
-    <p class="mt-4 text-sm"><a href="/licence" class="link">{t.licenceLink} &rarr;</a></p>
+    <p class="mt-4 text-sm"><a href={withSlash('/licence')} class="link">{t.licenceLink} &rarr;</a></p>
   </Section>
 
   {pricing.faq.length > 0 && (

@@ -13,7 +13,7 @@ description: >
 
 # Every email link on the site uses this, including pricing CTAs written as {supportEmail}.
 supportEmail: support@pacsinfra.com
-demoUrl: "TODO"
+demoUrl: "https://demo.pacsinfra.com/"
 bookingUrl: "https://cal.com/pacs-infra-jh996c/30min"
 
 # icon: one of github | linkedin | x.com | mastodon | youtube (also used by the docs header)

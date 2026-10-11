@@ -12,6 +12,7 @@ const t = ui[locale].nav;
 <a
   href={alternatePath(Astro.url.pathname, target)}
   hreflang={htmlLang[target]}
+  data-lang={target}
   lang={htmlLang[target]}
   aria-label={t.switchToLabel}
   title={t.switchToLabel}
@@ -20,3 +21,12 @@ const t = ui[locale].nav;
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
   <span>{t.switchTo}</span>
 </a>
+
+<script is:inline>
+  // Remember an explicit choice, so a Chinese browser can still stay on English (see BaseLayout).
+  document.querySelectorAll('a[data-lang]').forEach((a) =>
+    a.addEventListener('click', () => {
+      try { localStorage.setItem('pacsinfra-lang', a.dataset.lang); } catch {}
+    }),
+  );
+</script>

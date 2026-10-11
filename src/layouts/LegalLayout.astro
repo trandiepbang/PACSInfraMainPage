@@ -9,7 +9,7 @@ interface Props {
 const { title, description, updated = 'TODO' } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex>
   <article class="container-page max-w-3xl py-16 sm:py-20">
     <h1 class="text-4xl font-semibold tracking-tight">{title}</h1>
     <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">Last updated: {updated}</p>
