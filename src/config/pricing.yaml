@@ -30,14 +30,17 @@ tiers:
     billing: one-time
     highlight: true
     badge: Most popular
-    callout: 2-year warranty, included free
-    description: We deploy it, customise it and stand behind it for two years.
+    description: We deploy it, hand it over to your team and support it for a year.
     features:
       - Everything in Self-Hosted
       - Deployed end to end on your server, cloud or Kubernetes cluster
-      - Customised to your workflow, roles and branding
-      - 30 days of hands-on launch support
-    note: "Warranty: we fix any defect in PACSinfra or in the deployment we set up, at no extra cost, for 2 years."
+      - Handover to your team, with a walkthrough
+      - 12 months of support and updates
+    note: "After year 1: optional support renewal $1,500/year"
+
+# Integration work (connecting PACSinfra to other systems), sold as an add-on per day.
+# Leave it out to show [PLACEHOLDER] on /pricing until the rate is decided.
+# integrationDayRate: 800
 
 licenceSummary: >
   One organisation per licence. You may modify the code. You may not resell or redistribute it.

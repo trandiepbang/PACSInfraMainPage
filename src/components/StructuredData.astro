@@ -26,6 +26,12 @@ const data = {
       url: site.url,
       logo: new URL('/logo.svg', site.url).href,
       email: site.supportEmail,
+      founder: {
+        '@type': 'Person',
+        name: 'Bang Tran',
+        alternateName: '陳業邦',
+        sameAs: site.social.filter((s) => s.icon === 'linkedin').map((s) => s.href),
+      },
       sameAs: site.social.map((s) => s.href),
     },
     {

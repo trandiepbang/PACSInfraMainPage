@@ -12,6 +12,8 @@ import StackOverview from '../components/StackOverview.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import StructuredData from '../components/StructuredData.astro';
+import Founder from '../components/Founder.astro';
+import { founder } from '../data/founder';
 import { getPricing, site } from '../config';
 import { billingLabel, formatPrice, lowestPrice } from '../lib/format';
 import { product } from '../data/product';
@@ -104,7 +106,11 @@ const description = h.metaDescription.replace('{price}', lowestPrice());
     </div>
   </Section>
 
-  <Section id="faq" tone="muted" eyebrow={h.faqEyebrow} title={h.faqTitle}>
+  <Section id="founder" tone="muted" eyebrow={founder[locale].eyebrow} title={founder[locale].title}>
+    <Founder />
+  </Section>
+
+  <Section id="faq" eyebrow={h.faqEyebrow} title={h.faqTitle}>
     <Faq items={faq} />
     <p class="mt-6 text-sm text-slate-600 dark:text-slate-400">
       {h.faqFooterBefore} <a href={localizePath('/pricing#faq', locale)} class="link">{h.faqFooterLink}</a>{h.faqFooterAfter}

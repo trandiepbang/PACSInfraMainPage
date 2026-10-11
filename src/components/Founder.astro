@@ -1,0 +1,46 @@
+---
+// Homepage founder section: a profile card beside a short first-person story.
+import { site } from '../config';
+import { getLocale } from '../i18n';
+import { FOUNDER_PHOTO, founder } from '../data/founder';
+
+const f = founder[getLocale(Astro.url)];
+const linkedin = site.social.find((s) => s.icon === 'linkedin')?.href;
+const initials = f.name
+  .split(' ')
+  .map((w) => w[0])
+  .join('');
+---
+
+<div class="grid gap-10 lg:grid-cols-[18rem_1fr] lg:gap-14">
+  <div class="card flex flex-col items-center p-8 text-center lg:self-start">
+    {FOUNDER_PHOTO ? (
+      <img src={FOUNDER_PHOTO} alt={f.name} width="128" height="128" loading="lazy" class="h-32 w-32 rounded-full object-cover ring-4 ring-accent/20 dark:ring-accent-dark/25" />
+    ) : (
+      <span class="flex h-32 w-32 items-center justify-center rounded-full bg-accent text-4xl font-semibold text-white ring-4 ring-accent/20 dark:bg-accent-dark dark:text-night dark:ring-accent-dark/25" aria-hidden="true">{initials}</span>
+    )}
+    <p class="mt-5 text-xl font-semibold">{f.name}</p>
+    <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{f.altName}</p>
+    <ul class="mt-5 space-y-1.5 text-sm text-slate-600 dark:text-slate-400">
+      {f.facts.map((fact) => <li>{fact}</li>)}
+    </ul>
+    <div class="mt-6 flex w-full flex-col gap-2">
+      <a href={site.bookingUrl} class="btn-primary w-full">{f.call}</a>
+      {linkedin && <a href={linkedin} class="btn-secondary w-full" rel="me noopener">{f.linkedin}</a>}
+    </div>
+  </div>
+
+  <div>
+    <div class="max-w-3xl space-y-5 text-lg leading-8 text-slate-700 dark:text-slate-300">
+      {f.story.map((p) => <p>{p}</p>)}
+    </div>
+    <ul class="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+      {f.highlights.map((h) => (
+        <li class="card p-5">
+          <p class="text-2xl font-semibold tracking-tight text-accent dark:text-accent-dark">{h.value}</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{h.label}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
