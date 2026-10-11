@@ -1,0 +1,110 @@
+---
+// Home page, rendered at / and /zh-tw/. The language comes from the URL.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Guarantees from '../components/Guarantees.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import SystemOverview from '../components/SystemOverview.astro';
+import CapacitySummary from '../components/CapacitySummary.astro';
+import ScreenshotPlaceholder from '../components/ScreenshotPlaceholder.astro';
+import FoundingBanner from '../components/FoundingBanner.astro';
+import StackOverview from '../components/StackOverview.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getPricing, site } from '../config';
+import { billingLabel, formatPrice, lowestPrice } from '../lib/format';
+import { product } from '../data/product';
+import { capacity } from '../data/capacity';
+import { getLocale, localizePath } from '../i18n';
+import { ui } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const t = ui[locale];
+const h = t.home;
+const { summary, pixelCaveat } = product[locale];
+const pricing = getPricing(locale);
+const cap = capacity[locale];
+
+// The de-identification answer must carry the pixel caveat wherever it appears.
+const faq = h.faq.map((f, i) => (i === 1 ? { ...f, a: `${f.a} ${pixelCaveat}` } : f));
+const description =
+  locale === 'en'
+    ? `${site.description.trim()} Plans from ${lowestPrice()}.`
+    : `${h.lead}${summary}${h.plansFrom} ${lowestPrice()} 起。`;
+---
+
+<BaseLayout description={description}>
+  <!-- Hero -->
+  <section class="border-b border-line dark:border-line-dark">
+    <div class="container-page py-20 sm:py-28">
+      <p class="eyebrow">{h.eyebrow}</p>
+      <h1 class="mt-3 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">{h.title}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl dark:text-slate-300">
+        {h.lead} {summary}
+      </p>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+        <a href={site.demoUrl} class="btn-primary">{t.cta.demo}</a>
+        <a href={localizePath('/pricing', locale)} class="btn-secondary">{t.cta.pricing}</a>
+        <a href={site.bookingUrl} class="btn-secondary">{t.cta.call}</a>
+      </div>
+    </div>
+  </section>
+
+  <Section id="guarantees" eyebrow={h.guaranteesEyebrow} title={h.guaranteesTitle}>
+    <Guarantees />
+  </Section>
+
+  <Section id="features" tone="muted" eyebrow={h.featuresEyebrow} title={h.featuresTitle}>
+    <FeatureGrid />
+  </Section>
+
+  <Section id="architecture" eyebrow={h.overviewEyebrow} title={h.overviewTitle} intro={h.overviewIntro}>
+    <SystemOverview />
+  </Section>
+
+  <Section id="capacity" tone="muted" eyebrow={cap.eyebrow} title={cap.title} intro={cap.intro}>
+    <CapacitySummary />
+  </Section>
+
+  <Section id="screenshots" eyebrow={h.screenshotsEyebrow} title={h.screenshotsTitle}>
+    <div class="grid gap-8 md:grid-cols-3">
+      {h.shots.map((label) => <ScreenshotPlaceholder label={label} />)}
+    </div>
+  </Section>
+
+  <Section id="stack" tone="muted" eyebrow={h.stackEyebrow} title={h.stackTitle}>
+    <StackOverview />
+  </Section>
+
+  <Section id="pricing" eyebrow={h.pricingEyebrow} title={h.pricingTitle} intro={pricing.licenceSummary}>
+    <div class="space-y-6">
+      <FoundingBanner />
+      <ul class="grid gap-4 md:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
+        {pricing.tiers.map((tier) => (
+          <li class:list={['card', tier.highlight && 'border-2 border-accent dark:border-accent-dark']}>
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="font-semibold">{tier.name}</h3>
+              {tier.badge && <span class="text-xs font-semibold text-accent dark:text-accent-dark">{tier.badge}</span>}
+            </div>
+            <p class="mt-3">
+              <span class="text-3xl font-semibold tracking-tight">{formatPrice(tier.price)}</span>
+              <span class="ml-1 text-sm text-slate-500 dark:text-slate-400">{billingLabel(tier.billing, locale)}</span>
+            </p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{tier.description}</p>
+            {tier.callout && <p class="mt-3 text-sm font-semibold text-accent dark:text-accent-dark">✓ {tier.callout}</p>}
+          </li>
+        ))}
+      </ul>
+      <a href={localizePath('/pricing', locale)} class="link inline-block text-sm">{h.comparePlans} &rarr;</a>
+    </div>
+  </Section>
+
+  <Section id="faq" tone="muted" eyebrow={h.faqEyebrow} title={h.faqTitle}>
+    <Faq items={faq} />
+    <p class="mt-6 text-sm text-slate-600 dark:text-slate-400">
+      {h.faqFooterBefore} <a href={localizePath('/pricing#faq', locale)} class="link">{h.faqFooterLink}</a>{h.faqFooterAfter}
+    </p>
+  </Section>
+
+  <CtaBand />
+</BaseLayout>

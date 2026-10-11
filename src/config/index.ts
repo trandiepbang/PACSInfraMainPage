@@ -2,18 +2,35 @@
 import pricingYaml from './pricing.yaml?raw';
 import siteYaml from './site.yaml?raw';
 import { parsePricing, parseSite } from './schema';
+import type { Locale } from '../i18n';
+import { pricingZhTw } from '../i18n/pricing';
 
 export const site = parseSite(siteYaml);
 
-// Fill {supportEmail} in pricing CTA links from site.yaml, so the address lives in one place.
-const withEmail = (url: string) => url.replaceAll('{supportEmail}', site.supportEmail);
-const parsed = parsePricing(pricingYaml);
-export const pricing = {
-  ...parsed,
-  tiers: parsed.tiers.map((t) => ({
-    ...t,
-    primaryCta: { ...t.primaryCta, url: withEmail(t.primaryCta.url) },
-    secondaryCta: t.secondaryCta && { ...t.secondaryCta, url: withEmail(t.secondaryCta.url) },
-  })),
-};
+export const pricing = parsePricing(pricingYaml);
+
+/** Pricing with its words in the given language. Numbers and links always come from pricing.yaml. */
+export function getPricing(locale: Locale): typeof pricing {
+  if (locale === 'en') return pricing;
+  const zh = pricingZhTw;
+  return {
+    ...pricing,
+    licenceSummary: zh.licenceSummary ?? pricing.licenceSummary,
+    foundingOffer: { ...pricing.foundingOffer, text: zh.foundingOffer ?? pricing.foundingOffer.text },
+    tiers: pricing.tiers.map((t) => {
+      const z = zh.tiers[t.id] ?? {};
+      return {
+        ...t,
+        name: z.name ?? t.name,
+        description: z.description ?? t.description,
+        features: z.features ?? t.features,
+        note: t.note && (z.note ?? t.note),
+        badge: t.badge && (z.badge ?? t.badge),
+        callout: t.callout && (z.callout ?? t.callout),
+      };
+    }),
+    faq: pricing.faq.map((f, i) => ({ ...f, q: zh.faqQuestions[i] ?? f.q })),
+  };
+}
+
 export type { Pricing, Site, Tier } from './schema';

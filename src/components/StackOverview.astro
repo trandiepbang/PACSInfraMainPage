@@ -1,9 +1,14 @@
 ---
 // Compact tech-stack summary for the homepage and Developers page. Full detail on /technology.
-import { stack, storage, stackIntro } from '../data/tech-stack';
+import { getLocale, localizePath } from '../i18n';
+import { ui } from '../i18n/ui';
+import { techStack } from '../data/tech-stack';
+
+const locale = getLocale(Astro.url);
+const { stack, storage, stackIntro } = techStack[locale];
 const parts = [
-  ...stack.map((s) => ({ name: s.name, sub: s.language })),
-  ...storage.map((s) => ({ name: s.name, sub: s.summary.split('.')[0] })),
+  ...stack.map((s) => ({ name: s.name, version: s.language, sub: s.tagline })),
+  ...storage.map((s) => ({ name: s.name, version: undefined, sub: s.summary.split(/[.。]/)[0] })),
 ];
 ---
 
@@ -13,9 +18,10 @@ const parts = [
     {parts.map((p) => (
       <li class="card p-5">
         <p class="font-semibold">{p.name}</p>
+        {p.version && <p class="mt-0.5 text-sm font-medium text-accent dark:text-accent-dark">{p.version}</p>}
         {p.sub && <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{p.sub}</p>}
       </li>
     ))}
   </ul>
-  <a href="/technology" class="link mt-6 inline-block text-sm">See the full tech stack &rarr;</a>
+  <a href={localizePath('/technology', locale)} class="link mt-6 inline-block text-sm">{ui[locale].common.fullStack} &rarr;</a>
 </div>

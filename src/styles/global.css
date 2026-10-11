@@ -8,7 +8,8 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  /* IBM Plex Sans has no CJK glyphs: Traditional Chinese falls through to the system's TC font. */
+  --font-sans: "IBM Plex Sans", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", ui-sans-serif, system-ui, sans-serif;
 
   /* Brand tokens */
   --color-accent: #0F6E75;        /* accent (light mode) */

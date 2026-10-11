@@ -1,7 +1,11 @@
 ---
 // Renders every tier from pricing.yaml in order. Layout adapts to 1-3 tiers.
-import { pricing } from '../config';
+import { getPricing } from '../config';
+import { getLocale } from '../i18n';
 import { billingLabel, formatPrice } from '../lib/format';
+
+const locale = getLocale(Astro.url);
+const pricing = getPricing(locale);
 
 const layout: Record<number, string> = {
   1: 'max-w-md mx-auto',
@@ -26,9 +30,15 @@ const layout: Record<number, string> = {
       )}
       <h3 class="text-xl font-semibold">{tier.name}</h3>
       <p class="mt-2 text-slate-600 dark:text-slate-400">{tier.description}</p>
+      {tier.callout && (
+        <p class="mt-5 flex items-center gap-2.5 rounded-lg border border-accent/40 bg-accent/10 px-4 py-3 font-semibold text-accent dark:border-accent-dark/40 dark:bg-accent-dark/15 dark:text-accent-dark">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3ZM9 12l2 2 4-4" /></svg>
+          {tier.callout}
+        </p>
+      )}
       <p class="mt-6 flex items-baseline gap-2">
         <span class="text-4xl font-semibold tracking-tight">{formatPrice(tier.price)}</span>
-        <span class="text-sm text-slate-500 dark:text-slate-400">{billingLabel(tier.billing)}</span>
+        <span class="text-sm text-slate-500 dark:text-slate-400">{billingLabel(tier.billing, locale)}</span>
       </p>
       <ul class="mt-6 flex-1 space-y-3 text-sm">
         {tier.features.map((f) => (
@@ -39,12 +49,6 @@ const layout: Record<number, string> = {
         ))}
       </ul>
       {tier.note && <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">{tier.note}</p>}
-      <div class="mt-8 flex flex-col gap-3">
-        <a href={tier.primaryCta.url} class:list={[tier.highlight ? 'btn-primary' : 'btn-secondary', 'w-full']}>{tier.primaryCta.label}</a>
-        {tier.secondaryCta && (
-          <a href={tier.secondaryCta.url} class="link text-center text-sm">{tier.secondaryCta.label}</a>
-        )}
-      </div>
     </article>
   ))}
 </div>

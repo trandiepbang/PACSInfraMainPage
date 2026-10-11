@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import PixelCaveat from '../components/PixelCaveat.astro';
+import StackOverview from '../components/StackOverview.astro';
+import CtaBand from '../components/CtaBand.astro';
+import type { UseCase } from '../data/use-cases';
+import { getLocale } from '../i18n';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  useCase: UseCase;
+}
+const { useCase } = Astro.props;
+const locale = getLocale(Astro.url);
+const t = ui[locale].useCase;
+---
+
+<BaseLayout title={t.metaTitle(useCase.navLabel)} description={useCase.metaDescription}>
+  <PageHeader eyebrow={t.eyebrow(useCase.navLabel)} title={useCase.title} intro={useCase.intro}>
+    {useCase.mentionsDeidentification && <div class="mt-6 max-w-2xl"><PixelCaveat /></div>}
+  </PageHeader>
+
+  <Section>
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {useCase.points.map((p) => (
+        <li class="card">
+          <h2 class="text-lg font-semibold">{p.title}</h2>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{p.body}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  {useCase.showStack && (
+    <Section tone="muted" title={t.stack}>
+      <StackOverview />
+    </Section>
+  )}
+
+  <CtaBand />
+</BaseLayout>

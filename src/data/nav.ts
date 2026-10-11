@@ -1,13 +1,20 @@
-export const useCaseLinks = [
-  { href: '/use-cases/clinics', label: 'Clinics' },
-  { href: '/use-cases/research', label: 'Research teams' },
-  { href: '/use-cases/developers', label: 'Developers' },
-];
+import { localizePath, type Locale } from '../i18n';
+import { ui } from '../i18n/ui';
 
-export const mainNav = [
-  { href: '/security', label: 'Security' },
-  { href: '/technology', label: 'Technology' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/docs/', label: 'Docs' },
-  { href: '/blog', label: 'Blog' },
-];
+export function useCaseLinks(locale: Locale) {
+  const t = ui[locale].nav;
+  return [
+    { href: '/use-cases/clinics', label: t.clinics },
+    { href: '/use-cases/research', label: t.research },
+    { href: '/use-cases/developers', label: t.developers },
+  ].map((l) => ({ ...l, href: localizePath(l.href, locale) }));
+}
+
+export function mainNav(locale: Locale) {
+  const t = ui[locale].nav;
+  return [
+    { href: '/security', label: t.security },
+    { href: '/technology', label: t.technology },
+    { href: '/pricing', label: t.pricing },
+  ].map((l) => ({ ...l, href: localizePath(l.href, locale) }));
+}

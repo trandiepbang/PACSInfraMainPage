@@ -1,13 +1,13 @@
-# Single source of truth for every price, tier, CTA, banner and pricing FAQ on the site.
+# Single source of truth for every price, tier, banner and pricing FAQ on the site.
 # Validated by src/config/schema.ts at build time: a typo or unknown key fails the build.
-# CTA urls may use {supportEmail}, which is replaced with supportEmail from site.yaml.
+# Cards have no buttons: one "Contact us" button sits under them on /pricing.
 # Prices are numbers; they are formatted from `currency` + `price` (e.g. 2500 -> $2,500).
 # The layout supports 1 to 3 tiers, rendered in the order listed here.
 
 currency: USD
 
 foundingOffer:
-  enabled: true
+  enabled: false
   text: "Founding customers: the first 3 organisations get 50% off in exchange for a case study."
 
 tiers:
@@ -23,8 +23,6 @@ tiers:
       - Installation docs (Docker Compose)
       - 12 months email support (business-day response)
     note: "After year 1: optional support renewal $900/year"
-    primaryCta:   { label: Buy now, url: "TODO" }
-    secondaryCta: { label: Pay by invoice, url: "mailto:{supportEmail}?subject=Self-Hosted%20licence%20-%20invoice" }
 
   - id: deployed
     name: Deployed
@@ -32,13 +30,14 @@ tiers:
     billing: one-time
     highlight: true
     badge: Most popular
-    description: We deploy it on your server, end to end.
+    callout: 2-year warranty, included free
+    description: We deploy it, customise it and stand behind it for two years.
     features:
       - Everything in Self-Hosted
-      - End-to-end deployment on your server
-      - 30 days post-launch support
-    primaryCta:   { label: Book a call, url: "https://cal.com/pacs-infra-jh996c/30min" }
-    secondaryCta: { label: Request a quote, url: "mailto:{supportEmail}?subject=Deployed%20-%20quote%20request" }
+      - Deployed end to end on your server, cloud or Kubernetes cluster
+      - Customised to your workflow, roles and branding
+      - 30 days of hands-on launch support
+    note: "Warranty: we fix any defect in PACSinfra or in the deployment we set up, at no extra cost, for 2 years."
 
 licenceSummary: >
   One organisation per licence. You may modify the code. You may not resell or redistribute it.

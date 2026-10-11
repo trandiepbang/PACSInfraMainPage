@@ -1,0 +1,37 @@
+---
+// Line icons for the system overview diagram. 24×24, stroke-based, inheriting currentColor.
+export type IconName =
+  | 'hospital' | 'scanner' | 'archive' | 'node' | 'upload'
+  | 'cloud' | 'globe' | 'shield' | 'cpu' | 'images' | 'database' | 'bucket' | 'lock'
+  | 'users' | 'monitor' | 'phone';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+}
+const { name, size = 20, class: className } = Astro.props;
+
+const paths: Record<IconName, string> = {
+  hospital: 'M4 21V7l8-4 8 4v14M2 21h20M12 8v6M9 11h6M9 21v-4h6v4',
+  scanner: 'M3 19h18M5 19v-3a7 7 0 0 1 14 0v3M12 12a3 3 0 1 0 0 .01M8 16h8',
+  archive: 'M4 5h16v4H4zM5 9v10h14V9M10 13h4',
+  node: 'M3 14h18v6H3zM7 17h.01M11 17h.01M12 14V9M8 6l4-3 4 3M8 9a6 6 0 0 1 8 0',
+  upload: 'M7 18a5 5 0 0 1-.6-9.96A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9M12 12v8M9 15l3-3 3 3',
+  cloud: 'M7 19a5 5 0 0 1-.6-9.96A6 6 0 0 1 18 9a5 5 0 0 1 0 10H7Z',
+  globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18',
+  shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3ZM9 12l2 2 4-4',
+  cpu: 'M7 7h10v10H7zM10 10h4v4h-4zM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4',
+  images: 'M7 3h12a2 2 0 0 1 2 2v12M3 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7ZM3 17l4-4 4 4 2-2 4 4',
+  database: 'M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3ZM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3',
+  bucket: 'M4 7h16l-2 13H6L4 7ZM4 7c0-1.7 3.6-3 8-3s8 1.3 8 3M9 12h6',
+  lock: 'M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3M12 15v2',
+  users: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7.5M18 14a7 7 0 0 1 4 7',
+  monitor: 'M3 4h18v13H3zM8 21h8M12 17v4',
+  phone: 'M7 2h10v20H7zM11 18h2',
+};
+---
+
+<svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class={className}>
+  <path d={paths[name]} />
+</svg>

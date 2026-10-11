@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import CtaBand from '../components/CtaBand.astro';
+import PixelCaveat from '../components/PixelCaveat.astro';
+import SystemOverview from '../components/SystemOverview.astro';
+import CapacitySummary from '../components/CapacitySummary.astro';
+import { techStack } from '../data/tech-stack';
+import { capacity } from '../data/capacity';
+import { getLocale } from '../i18n';
+import { ui } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const t = ui[locale].technology;
+const { stack, storage, stackIntro, deployment, quality, qualityNote } = techStack[locale];
+const cap = capacity[locale];
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription}>
+  <PageHeader eyebrow={t.eyebrow} title={t.title} intro={stackIntro} />
+
+  <Section id="overview" title={t.overviewTitle}>
+    <SystemOverview />
+  </Section>
+
+  <Section id="application" tone="muted" title={t.application}>
+    <div class="grid gap-6 lg:grid-cols-3">
+      {stack.map((s) => (
+        <article id={s.id} class="card flex flex-col">
+          <p class="eyebrow">{s.language}</p>
+          <h3 class="mt-1 text-xl font-semibold">{s.name}</h3>
+          <p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">{s.summary}</p>
+          {s.id === 'worker' && <div class="mt-5"><PixelCaveat /></div>}
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="storage" title={t.storage}>
+    <div class="grid gap-6 md:grid-cols-3">
+      {storage.map((s) => (
+        <article class="card">
+          <h3 class="text-lg font-semibold">{s.name}</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{s.summary}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="deployment" tone="muted" title={t.deployment}>
+    <div class="grid gap-10 lg:grid-cols-2">
+      <p class="text-lg leading-8 text-slate-600 dark:text-slate-300">{deployment}</p>
+      <figure class="rounded-xl border border-line bg-white p-5 font-mono text-sm dark:border-line-dark dark:bg-night-raised" aria-label={t.flowLabel}>
+        <p class="text-xs font-semibold tracking-wide text-slate-500 uppercase">{t.flowTitle}</p>
+        <ul class="mt-4 space-y-2">
+          <li><span class="text-accent dark:text-accent-dark">{t.flow.internet}</span> &rarr; nginx <span class="text-slate-500">{t.flow.nginx}</span></li>
+          <li class="pl-4">&rarr; Go API <span class="text-slate-500">{t.flow.api}</span></li>
+          <li class="pl-8">&rarr; Orthanc <span class="text-slate-500">{t.flow.private}</span></li>
+          <li class="pl-8">&rarr; PostgreSQL 17 <span class="text-slate-500">{t.flow.private}</span></li>
+          <li class="pl-4">{t.flow.worker} <span class="text-slate-500">{t.flow.workerNote}</span></li>
+          <li class="pl-8">&rarr; Garage <span class="text-slate-500">{t.flow.garage}</span></li>
+        </ul>
+      </figure>
+    </div>
+  </Section>
+
+  <Section id="capacity" eyebrow={cap.eyebrow} title={cap.title} intro={cap.intro}>
+    <CapacitySummary />
+  </Section>
+
+  <Section id="quality" tone="muted" title={t.quality}>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {quality.map((q) => (
+        <li class="card flex flex-col p-5">
+          <p class="text-3xl font-semibold tracking-tight text-accent dark:text-accent-dark">{q.value}</p>
+          <p class="mt-1 font-semibold">{q.label}</p>
+          <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{q.body}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-6 flex max-w-4xl gap-3 rounded-lg border border-accent/40 bg-accent/5 px-5 py-4 leading-7 dark:border-accent-dark/40 dark:bg-accent-dark/10">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-1 shrink-0 text-accent dark:text-accent-dark"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3ZM9 12l2 2 4-4" /></svg>
+      <span>{qualityNote}</span>
+    </p>
+  </Section>
+
+  <CtaBand title={t.ctaTitle} text={t.ctaText} />
+</BaseLayout>

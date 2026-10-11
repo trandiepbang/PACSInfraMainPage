@@ -1,5 +1,8 @@
 ---
-import { features } from '../data/product';
+import { getLocale } from '../i18n';
+import { product } from '../data/product';
+
+const { features } = product[getLocale(Astro.url)];
 ---
 
 <ul class="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3 dark:border-line-dark dark:bg-line-dark">

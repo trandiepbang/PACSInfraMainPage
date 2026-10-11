@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import { site } from '../config';
+import { getLocale } from '../i18n';
+import { ui } from '../i18n/ui';
+
+const c = ui[getLocale(Astro.url)].contact;
+---
+
+<BaseLayout title={c.metaTitle} description={c.metaDescription}>
+  <PageHeader eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+  <Section>
+    <div class="grid max-w-4xl gap-6 md:grid-cols-3">
+      <div class="card">
+        <h2 class="font-semibold">{c.email}</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{c.emailNote}</p>
+        <a href={`mailto:${site.supportEmail}`} class="link mt-4 inline-block break-all">{site.supportEmail}</a>
+      </div>
+      <div class="card">
+        <h2 class="font-semibold">{c.call}</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{c.callNote}</p>
+        <a href={site.bookingUrl} class="link mt-4 inline-block">{c.callLink} &rarr;</a>
+      </div>
+      <div class="card">
+        <h2 class="font-semibold">{c.demo}</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{c.demoNote}</p>
+        <a href={site.demoUrl} class="link mt-4 inline-block">{c.demoLink} &rarr;</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

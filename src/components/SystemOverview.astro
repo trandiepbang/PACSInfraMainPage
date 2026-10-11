@@ -1,0 +1,241 @@
+---
+// End-to-end overview: hospital network -> DICOM node -> PACSinfra cloud -> web app and mobile app.
+// Three columns on wide screens, stacked on phones.
+import { getLocale, type Locale } from '../i18n';
+import DiagramIcon from './DiagramIcon.astro';
+
+const locale = getLocale(Astro.url);
+
+const copy: Record<Locale, {
+  hospital: string; hospitalSub: string;
+  modalities: string; modalitiesSub: string;
+  pacs: string; pacsSub: string;
+  cstore: string;
+  node: string; nodePoints: string[];
+  webUpload: string; webUploadSub: string;
+  cloud: string; cloudSub: string;
+  nginx: string; nginxSub: string;
+  api: string; apiPoints: string[];
+  privateNet: string;
+  worker: string; workerSub: string;
+  postgres: string; postgresSub: string;
+  garage: string; garageSub: string;
+  users: string; usersSub: string;
+  web: string; webSub: string;
+  mobile: string; mobileSub: string;
+  caption: string;
+}> = {
+  en: {
+    hospital: 'Hospital or clinic',
+    hospitalSub: 'Your local network',
+    modalities: 'Modalities',
+    modalitiesSub: 'CT · MR · X-ray · ultrasound',
+    pacs: 'Existing PACS / RIS',
+    pacsSub: 'Optional',
+    cstore: 'DICOM C-STORE, local network',
+    node: 'DICOM Node',
+    nodePoints: ['Runs inside the hospital network', 'Receives studies from modalities and PACS', 'Sends them over an encrypted network'],
+    webUpload: 'Or: web upload',
+    webUploadSub: 'DICOM files or ZIP archives from a browser',
+    cloud: 'PACSinfra cloud',
+    cloudSub: 'Your cloud account or your own server',
+    nginx: 'Gateway',
+    nginxSub: 'The only public entry point',
+    api: 'PACSinfra',
+    apiPoints: ['Sign-in', 'Permissions', 'Audit', 'Reports', 'Image proxy'],
+    privateNet: 'Private network, no public ports',
+    worker: 'DICOM worker',
+    workerSub: 'Validate · de-identify · ingest',
+    postgres: 'PostgreSQL',
+    postgresSub: 'App data, audit, job queue',
+    garage: 'Garage',
+    garageSub: 'S3 upload staging',
+    users: 'Your team',
+    usersSub: 'Anywhere with a login',
+    web: 'Web app + Viewer',
+    webSub: 'Study list, viewer, reports, admin',
+    mobile: 'Mobile app',
+    mobileSub: 'Study list, image previews and reports on the go',
+    caption:
+      'Images leave the hospital only over an encrypted connection. Inside PACSinfra, de-identification happens before anything is stored, and every image a user sees is permission-checked and audited.',
+  },
+  'zh-tw': {
+    hospital: '醫院或診所',
+    hospitalSub: '您的院內網路',
+    modalities: '影像儀器',
+    modalitiesSub: 'CT · MR · X 光 · 超音波',
+    pacs: '既有 PACS / RIS',
+    pacsSub: '選用',
+    cstore: 'DICOM C-STORE，院內網路',
+    node: 'DICOM 節點',
+    nodePoints: ['安裝在醫院網路內', '接收來自儀器與 PACS 的檢查', '透過加密網路傳送至雲端'],
+    webUpload: '或：網頁上傳',
+    webUploadSub: '從瀏覽器上傳 DICOM 檔案或 ZIP 壓縮檔',
+    cloud: 'PACSinfra 雲端',
+    cloudSub: '您的雲端帳號或自有伺服器',
+    nginx: '閘道',
+    nginxSub: '唯一對外開放的入口',
+    api: 'PACSinfra',
+    apiPoints: ['登入', '權限', '稽核', '報告', '影像代理'],
+    privateNet: '私有網路，無對外連接埠',
+    worker: 'DICOM 處理程式',
+    workerSub: '驗證 · 去識別化 · 匯入',
+    postgres: 'PostgreSQL',
+    postgresSub: '應用資料、稽核、工作佇列',
+    garage: 'Garage',
+    garageSub: 'S3 上傳暫存',
+    users: '您的團隊',
+    usersSub: '登入後隨處可用',
+    web: '網頁應用程式 + 檢視器',
+    webSub: '檢查清單、檢視器、報告、管理',
+    mobile: '行動 App',
+    mobileSub: '隨時查看檢查清單、影像預覽與報告',
+    caption:
+      '影像只會透過加密連線離開醫院。在 PACSinfra 內部，去識別化在任何資料儲存之前完成；使用者看到的每一張影像，都經過權限檢查並留下稽核紀錄。',
+  },
+};
+
+const c = copy[locale];
+const zone = 'flex flex-col gap-3 rounded-xl border-2 border-dashed p-3 sm:p-4';
+const tag = 'text-xs font-semibold tracking-wide uppercase';
+const sub = 'mt-1 text-sm text-slate-600 dark:text-slate-400';
+const pill = 'rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent dark:bg-accent-dark/15 dark:text-accent-dark';
+const chip = 'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent dark:bg-accent-dark/15 dark:text-accent-dark';
+const chipSm = 'flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent dark:bg-accent-dark/15 dark:text-accent-dark';
+---
+
+<figure class="rounded-xl border border-line bg-mist p-3 sm:p-6 dark:border-line-dark dark:bg-night-raised/50">
+  <div class="grid items-stretch gap-2 lg:grid-cols-[1fr_auto_1.35fr_auto_1fr] lg:gap-3">
+    <!-- Hospital -->
+    <section class:list={[zone, 'border-slate-400 dark:border-slate-600']} aria-label={c.hospital}>
+      <div class="flex items-center gap-2 px-1 text-slate-500">
+        <DiagramIcon name="hospital" size={22} />
+        <div>
+          <p class={tag}>{c.hospital}</p>
+          <p class="text-xs">{c.hospitalSub}</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+        <div class="card flex items-start gap-3 p-4">
+          <span class={chip}><DiagramIcon name="scanner" /></span>
+          <div>
+            <p class="font-semibold">{c.modalities}</p>
+            <p class={sub}>{c.modalitiesSub}</p>
+          </div>
+        </div>
+        <div class="card flex items-start gap-3 p-4">
+          <span class={chip}><DiagramIcon name="archive" /></span>
+          <div>
+            <p class="font-semibold">{c.pacs}</p>
+            <p class={sub}>{c.pacsSub}</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-2 text-xs text-slate-500" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v15M6 14l6 6 6-6" /></svg>
+        <span>{c.cstore}</span>
+      </div>
+      <div class="card border-2 border-accent p-4 dark:border-accent-dark">
+        <div class="flex items-start gap-3">
+          <span class={chip}><DiagramIcon name="node" /></span>
+          <p class="font-semibold">{c.node}</p>
+        </div>
+        <ul class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-400">
+          {c.nodePoints.map((p) => <li class="flex gap-2"><span aria-hidden="true" class="text-accent dark:text-accent-dark">&ndash;</span><span>{p}</span></li>)}
+        </ul>
+      </div>
+      <div class="flex items-start gap-3 rounded-lg border border-line bg-white/60 p-3 text-sm dark:border-line-dark dark:bg-night/40">
+        <span class={chipSm}><DiagramIcon name="upload" size={16} /></span>
+        <div>
+          <p class="font-medium">{c.webUpload}</p>
+          <p class="mt-0.5 text-slate-600 dark:text-slate-400">{c.webUploadSub}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Arrow: hospital -> cloud -->
+    <div class="flex flex-row items-center justify-center gap-2 py-1 text-slate-500 lg:flex-col" aria-hidden="true">
+      <DiagramIcon name="lock" size={18} class="text-accent dark:text-accent-dark" />
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" class="rotate-90 lg:rotate-0"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+    </div>
+
+    <!-- Cloud -->
+    <section class:list={[zone, 'border-accent/60 bg-white/50 dark:border-accent-dark/50 dark:bg-night/30']} aria-label={c.cloud}>
+      <div class="flex items-center gap-2 px-1">
+        <DiagramIcon name="cloud" size={22} class="text-accent dark:text-accent-dark" />
+        <div>
+          <p class:list={[tag, 'text-accent dark:text-accent-dark']}>{c.cloud}</p>
+          <p class="text-xs text-slate-500">{c.cloudSub}</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-3 p-4">
+        <span class={chip}><DiagramIcon name="globe" /></span>
+        <div>
+          <p class="font-semibold">{c.nginx}</p>
+          <p class={sub}>{c.nginxSub}</p>
+        </div>
+      </div>
+      <div class="card border-2 border-accent p-4 dark:border-accent-dark">
+        <div class="flex items-center gap-3">
+          <span class={chip}><DiagramIcon name="shield" /></span>
+          <p class="font-semibold">{c.api}</p>
+        </div>
+        <ul class="mt-3 flex flex-wrap gap-1.5">
+          {c.apiPoints.map((p) => <li class={pill}>{p}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-lg border-2 border-dashed border-slate-400 p-2 dark:border-slate-600">
+        <p class:list={[tag, 'flex items-center gap-1.5 px-1 pb-2 text-slate-500']}><DiagramIcon name="lock" size={14} />{c.privateNet}</p>
+        <div class="grid grid-cols-2 gap-2">
+          {[
+            { icon: 'cpu', title: c.worker, text: c.workerSub, wide: true },
+            { icon: 'database', title: c.postgres, text: c.postgresSub, wide: true },
+            { icon: 'bucket', title: c.garage, text: c.garageSub, wide: true },
+          ].map((b) => (
+            <div class:list={['card flex items-start gap-2.5 p-3', b.wide && 'col-span-2']}>
+              <span class={chipSm}><DiagramIcon name={b.icon as 'cpu'} size={16} /></span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">{b.title}</p>
+                <p class="mt-0.5 text-xs text-slate-600 dark:text-slate-400">{b.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Arrow: cloud -> users -->
+    <div class="flex flex-row items-center justify-center gap-2 py-1 text-slate-500 lg:flex-col" aria-hidden="true">
+      <DiagramIcon name="shield" size={18} class="text-accent dark:text-accent-dark" />
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" class="rotate-90 lg:rotate-0"><path d="M4 12h15M14 6l6 6-6 6" /></svg>
+    </div>
+
+    <!-- Users -->
+    <section class:list={[zone, 'border-slate-400 dark:border-slate-600']} aria-label={c.users}>
+      <div class="flex items-center gap-2 px-1 text-slate-500">
+        <DiagramIcon name="users" size={22} />
+        <div>
+          <p class={tag}>{c.users}</p>
+          <p class="text-xs">{c.usersSub}</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+        <div class="card flex items-start gap-3 p-4">
+          <span class={chip}><DiagramIcon name="monitor" /></span>
+          <div>
+            <p class="font-semibold">{c.web}</p>
+            <p class={sub}>{c.webSub}</p>
+          </div>
+        </div>
+        <div class="card flex items-start gap-3 p-4">
+          <span class={chip}><DiagramIcon name="phone" /></span>
+          <div>
+            <p class="font-semibold">{c.mobile}</p>
+            <p class={sub}>{c.mobileSub}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <figcaption class="mx-auto mt-5 max-w-3xl text-center text-sm text-slate-600 dark:text-slate-400">{c.caption}</figcaption>
+</figure>

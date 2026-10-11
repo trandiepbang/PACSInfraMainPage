@@ -1,6 +1,8 @@
 ---
-import { pricing } from '../config';
-const { foundingOffer } = pricing;
+import { getPricing } from '../config';
+import { getLocale } from '../i18n';
+
+const { foundingOffer } = getPricing(getLocale(Astro.url));
 ---
 
 {foundingOffer.enabled && (

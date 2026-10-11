@@ -1,0 +1,12 @@
+---
+import UseCaseView from '../../../views/UseCase.astro';
+import { useCases, type UseCase } from '../../../data/use-cases';
+
+export function getStaticPaths() {
+  return useCases['zh-tw'].map((useCase) => ({ params: { slug: useCase.slug }, props: { useCase } }));
+}
+
+const { useCase } = Astro.props as { useCase: UseCase };
+---
+
+<UseCaseView useCase={useCase} />

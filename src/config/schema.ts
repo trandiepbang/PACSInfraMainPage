@@ -1,11 +1,6 @@
 import { parse } from 'yaml';
 import { z } from 'zod';
 
-const cta = z.strictObject({
-  label: z.string().min(1),
-  url: z.string().min(1),
-});
-
 const tier = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/, 'use lowercase letters, numbers and hyphens'),
   name: z.string().min(1),
@@ -13,11 +8,11 @@ const tier = z.strictObject({
   billing: z.enum(['one-time', 'yearly', 'monthly']),
   highlight: z.boolean().default(false),
   badge: z.string().min(1).optional(),
+  /** A standout line shown in an accent box on the card, e.g. a warranty. */
+  callout: z.string().min(1).optional(),
   description: z.string().min(1),
   features: z.array(z.string().min(1)).min(1),
   note: z.string().min(1).optional(),
-  primaryCta: cta,
-  secondaryCta: cta.optional(),
 });
 
 export const pricingSchema = z

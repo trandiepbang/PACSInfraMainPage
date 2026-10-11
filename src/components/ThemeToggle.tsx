@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react';
 const STORAGE_KEY = 'starlight-theme';
 type Theme = 'light' | 'dark';
 
-export default function ThemeToggle() {
+interface Props {
+  labels?: { toLight: string; toDark: string };
+}
+
+export default function ThemeToggle({ labels = { toLight: 'Switch to light mode', toDark: 'Switch to dark mode' } }: Props) {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
@@ -22,7 +26,7 @@ export default function ThemeToggle() {
     setTheme(next);
   }
 
-  const label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  const label = theme === 'dark' ? labels.toLight : labels.toDark;
 
   return (
     <button

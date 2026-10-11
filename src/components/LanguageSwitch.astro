@@ -1,0 +1,22 @@
+---
+// Links to the same page in the other language. Pages that exist only in English (docs, blog,
+// legal) link to the Chinese home page instead.
+import { alternatePath, getLocale, htmlLang } from '../i18n';
+import { ui } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const target = locale === 'en' ? 'zh-tw' : 'en';
+const t = ui[locale].nav;
+---
+
+<a
+  href={alternatePath(Astro.url.pathname, target)}
+  hreflang={htmlLang[target]}
+  lang={htmlLang[target]}
+  aria-label={t.switchToLabel}
+  title={t.switchToLabel}
+  class="inline-flex h-9 items-center gap-1.5 rounded-md border border-line px-2.5 text-sm font-medium text-ink hover:border-accent hover:text-accent dark:border-line-dark dark:text-slate-200 dark:hover:border-accent-dark dark:hover:text-accent-dark"
+>
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+  <span>{t.switchTo}</span>
+</a>

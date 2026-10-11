@@ -17,14 +17,14 @@ At build time, `npm run build` lists every config value that still contains `TOD
 
 ## Editing pricing: `src/config/pricing.yaml`
 
-Every price, tier, CTA, banner and pricing FAQ on the site comes from this file: the homepage teaser, `/pricing`, `/licence` and the meta descriptions.
+Every price, tier, banner and pricing FAQ on the site comes from this file: the homepage teaser, `/pricing`, `/licence` and the meta descriptions.
 
 - **Prices** are numbers (`price: 2500`). They are formatted from `currency` + `price`, e.g. `$2,500`. Don't write prices into components.
 - **Tiers** render in the order listed. Add, remove or reorder them and the layout adapts to 1, 2 or 3 tiers. More than 3 fails the build.
 - **`billing`** must be `one-time`, `yearly` or `monthly`.
 - **`highlight: true`** gives a tier the accent border; `badge` adds a label such as "Most popular".
 - **Founding offer:** set `foundingOffer.enabled: false` to hide the banner everywhere.
-- **CTAs** are plain links (`url`) and can point to any payment page, booking page or `mailto:`. There is no payment SDK. Write `{supportEmail}` to use the address from `site.yaml`, e.g. `mailto:{supportEmail}?subject=Quote`.
+- **No buttons on the cards.** `/pricing` shows a single "Contact us" button under the plans; its text is in `src/i18n/ui.ts`.
 
 The file is validated with Zod (`src/config/schema.ts`). Unknown keys, missing fields and wrong types fail the build with the exact path, for example:
 
@@ -112,3 +112,13 @@ The site is fully static. `wrangler.jsonc` tells Cloudflare to serve `dist/` as 
 ### Pages (alternative)
 
 **Workers & Pages → Create → Pages → Connect to Git**. Framework preset **Astro**, build command `npm run build`, output directory `dist`, `NODE_VERSION` = `22`.
+
+## Languages: English and Traditional Chinese
+
+Marketing pages exist in English (`/`) and Traditional Chinese (`/zh-tw/`). The header's language button links to the same page in the other language. Docs, blog and legal pages are English only; their links stay unprefixed in both languages.
+
+- **Page markup** lives once in `src/views/`. `src/pages/*.astro` and `src/pages/zh-tw/*.astro` are one-line wrappers; components read the language from the URL (`getLocale` in `src/i18n/index.ts`).
+- **Interface strings and page copy:** `src/i18n/ui.ts`. The Chinese object is typed against the English one, so a missing key fails the type check.
+- **Content data** (`src/data/*.ts`) holds both languages side by side.
+- **Pricing:** numbers, links and flags stay in `pricing.yaml`; the Chinese wording is in `src/i18n/pricing.ts`, matched by tier id.
+- **Adding a translated page:** create the view, add both wrappers, and add its English path to `translated` in `src/i18n/index.ts` (this drives the switcher and the `hreflang` tags).

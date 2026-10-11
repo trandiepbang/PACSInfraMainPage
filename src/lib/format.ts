@@ -1,4 +1,6 @@
-import { pricing, type Tier } from '../config';
+import { getPricing, pricing, type Tier } from '../config';
+import type { Locale } from '../i18n';
+import { ui } from '../i18n/ui';
 
 export function formatPrice(amount: number, currency = pricing.currency): string {
   return new Intl.NumberFormat('en-GB', {
@@ -9,16 +11,12 @@ export function formatPrice(amount: number, currency = pricing.currency): string
   }).format(amount);
 }
 
-const billingSuffix: Record<Tier['billing'], string> = {
-  'one-time': 'one-time',
-  yearly: 'per year',
-  monthly: 'per month',
-};
-
-export const billingLabel = (billing: Tier['billing']) => billingSuffix[billing];
+export const billingLabel = (billing: Tier['billing'], locale: Locale = 'en') => ui[locale].billing[billing];
 
 /** e.g. "Self-Hosted $2,500 one-time, Deployed $6,000 one-time" */
-export const pricingSummary = () =>
-  pricing.tiers.map((t) => `${t.name} ${formatPrice(t.price)} ${billingLabel(t.billing)}`).join(', ');
+export const pricingSummary = (locale: Locale = 'en') =>
+  getPricing(locale)
+    .tiers.map((t) => `${t.name} ${formatPrice(t.price)} ${billingLabel(t.billing, locale)}`)
+    .join(locale === 'zh-tw' ? '、' : ', ');
 
 export const lowestPrice = () => formatPrice(Math.min(...pricing.tiers.map((t) => t.price)));
