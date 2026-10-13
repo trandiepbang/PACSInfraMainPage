@@ -291,7 +291,7 @@ const zhTw: UI = {
   },
   theme: { toLight: '切換為淺色模式', toDark: '切換為深色模式' },
   cta: {
-    demo: '試用展示版',
+    demo: 'Demo',
     pricing: '查看價格',
     call: '預約通話',
     bandTitle: '用您自己的資料親自體驗。',
@@ -509,7 +509,7 @@ const zhTw: UI = {
     call: '預約通話',
     callNote: '簡短通話，聊聊您的環境與需求。',
     callLink: '選擇時間',
-    demo: '試用展示版',
+    demo: 'Demo',
     demoNote: '在與任何人聯繫前，先親自看看 PACSinfra。展示版為有限預覽，部分功能（例如工作清單）已關閉。',
     demoLink: '開啟展示版',
   },
