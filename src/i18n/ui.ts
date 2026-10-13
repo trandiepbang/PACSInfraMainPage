@@ -37,7 +37,7 @@ const en = {
     privacy: 'Privacy',
     refunds: 'Refunds',
     licence: 'Licence',
-    englishOnly: 'Legal pages are in English.',
+    englishOnly: '',
   },
   common: {
     limitation: 'Limitation:',
@@ -48,6 +48,7 @@ const en = {
   },
   billing: { 'one-time': 'one-time', yearly: 'per year', monthly: 'per month' },
   renewalNote: 'After year 1: optional support and updates renewal {price}/year',
+  legal: { updated: 'Last updated:', note: '' },
   home: {
     metaTitle: 'PACSinfra: Self-Hosted Cloud PACS and DICOM Viewer for Clinics',
     metaDescription:
@@ -305,7 +306,7 @@ const zhTw: UI = {
     privacy: '隱私權政策',
     refunds: '退款政策',
     licence: '授權條款',
-    englishOnly: '法律條款頁面目前僅提供英文版。',
+    englishOnly: '',
   },
   common: {
     limitation: '限制：',
@@ -315,6 +316,7 @@ const zhTw: UI = {
   },
   billing: { 'one-time': '一次付清', yearly: '每年', monthly: '每月' },
   renewalNote: '第二年起：可選購支援與更新續約，每年 {price}',
+  legal: { updated: '最後更新：', note: '本頁為英文版本的中文翻譯，僅供參考。如中英文版本內容有任何不一致，以英文版本為準。' },
   home: {
     metaTitle: 'PACSinfra｜雲端 PACS 醫療影像儲傳系統與 DICOM 檢視器',
     metaDescription:
@@ -493,7 +495,7 @@ const zhTw: UI = {
     addOnText: '需要將 PACSinfra 與您的其他系統整合嗎？整合服務每日 {rate} 起。',
     contactButton: '聯絡我們',
     licenceTitle: '授權摘要',
-    licenceLink: '閱讀完整授權條款（英文）',
+    licenceLink: '閱讀完整授權條款',
     faqTitle: '價格常見問題',
   },
   contact: {

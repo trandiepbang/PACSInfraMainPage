@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import { site } from '../config';
 import { mainNav, useCaseLinks } from '../data/nav';
-import { getLocale, localizePath, withSlash } from '../i18n';
+import { getLocale, localizePath } from '../i18n';
 import { ui } from '../i18n/ui';
 
 const locale = getLocale(Astro.url);
@@ -14,10 +14,10 @@ const columns = [
     title: t.footer.company,
     links: [
       { href: localizePath('/contact', locale), label: t.footer.contact },
-      { href: withSlash('/terms'), label: t.footer.terms },
-      { href: withSlash('/privacy'), label: t.footer.privacy },
-      { href: withSlash('/refund'), label: t.footer.refunds },
-      { href: withSlash('/licence'), label: t.footer.licence },
+      { href: localizePath('/terms', locale), label: t.footer.terms },
+      { href: localizePath('/privacy', locale), label: t.footer.privacy },
+      { href: localizePath('/refund', locale), label: t.footer.refunds },
+      { href: localizePath('/licence', locale), label: t.footer.licence },
     ],
   },
 ];
@@ -44,7 +44,7 @@ const year = new Date().getFullYear();
     ))}
   </div>
   <div class="container-page flex flex-col gap-3 border-t border-line py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between dark:border-line-dark dark:text-slate-400">
-    <p>&copy; {year} {site.name}{locale !== 'en' && <span class="ml-2">· {t.footer.englishOnly}</span>}</p>
+    <p>&copy; {year} {site.name}{t.footer.englishOnly && <span class="ml-2">· {t.footer.englishOnly}</span>}</p>
     <ul class="flex gap-4">
       {site.social.map((s) => (
         <li><a href={s.href} class="hover:text-accent dark:hover:text-accent-dark" rel="me noopener">{s.label}</a></li>

@@ -20,6 +20,10 @@ const translated = new Set([
   '/use-cases/clinics',
   '/use-cases/research',
   '/use-cases/developers',
+  '/privacy',
+  '/terms',
+  '/refund',
+  '/licence',
 ]);
 
 const trim = (path: string) => path.replace(/\/+$/, '') || '/';

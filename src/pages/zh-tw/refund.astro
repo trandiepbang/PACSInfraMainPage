@@ -1,0 +1,54 @@
+---
+// 退款政策（繁體中文）。內容須與英文版 src/pages/refund.astro 一致；修改任一版時請同步另一版。
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getPricing, site } from '../../config';
+import { billingLabel, formatPrice } from '../../lib/format';
+
+const email = site.supportEmail;
+const pricing = getPricing('zh-tw');
+const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
+const selfHosted = tier('self-hosted');
+const deployed = tier('deployed');
+// 「代為部署」方案包含授權；部署部分為高於「自行架設」價格的差額。
+const deploymentPart = deployed.price - selfHosted.price;
+---
+
+<LegalLayout
+  title="退款政策"
+  description="PACSinfra 授權、部署與續約在什麼情況下可以退款，以及如何申請退款。"
+  updated="2026 年 10 月 13 日"
+  draft={false}
+>
+  <p>PACSinfra 以原始碼形式銷售。一旦您取得程式碼，就無法「退回」，因此本政策簡單而嚴格。購買前請先閱讀。</p>
+
+  <h2>「{selfHosted.name}」授權（{formatPrice(selfHosted.price)}，{billingLabel(selfHosted.billing, 'zh-tw')}）</h2>
+  <p>一旦交付下載連結或程式庫存取權限，即不提供退款。</p>
+  <p>購買前，您可以：</p>
+  <ul>
+    <li>試用 <a href={site.demoUrl}>demo.pacsinfra.com</a> 上的展示版，它執行的是同一套軟體（部分功能在展示版中已關閉）；</li>
+    <li>寄信詢問它是否符合您的使用情境。比起處理退款申請，我更樂意先回答您的問題。</li>
+  </ul>
+  <p>若您已付款但尚未收到下載連結或程式庫存取權限，請寄信給我，我會取消訂單並全額退款。</p>
+
+  <h2>「{deployed.name}」方案（{formatPrice(deployed.price)}，{billingLabel(deployed.billing, 'zh-tw')}）</h2>
+  <p>「{deployed.name}」方案包含一份授權（{formatPrice(selfHosted.price)}）與部署服務（{formatPrice(deploymentPart)}）。</p>
+  <ul>
+    <li><strong>部署工作開始前：</strong>可申請全額退款。</li>
+    <li><strong>部署工作開始後：</strong>不予退款；但若因我方原因（非因您的基礎設施、存取延誤或範圍變更所致）無法完成部署，我會全額退還部署部分（{formatPrice(deploymentPart)}）。授權部分依上方「{selfHosted.name}」授權的規定辦理。</li>
+  </ul>
+
+  <h2>支援與更新續約</h2>
+  <p>若您在續約付款後 14 天內提出申請，且在此期間未提出任何支援請求，可全額退款。超過此期間則不予退款，續約將持續完整的 12 個月。</p>
+
+  <h2>系統整合與客製化開發</h2>
+  <p>依個別報價辦理。一般而言，工作開始後訂金不予退還，已完成的里程碑亦不予退款。</p>
+
+  <h2>錯誤與重複付款</h2>
+  <p>重複付款、選錯方案，或在收到下載連結或程式庫存取權限前回報的誤購：全額退款，不問理由。</p>
+
+  <h2>如何申請退款</h2>
+  <p>請寄信至 <a href={`mailto:${email}`}>{email}</a>，並附上您的發票號碼。我會在 2 個工作天內（台灣時間）回覆。退款將以銀行轉帳退回原付款帳戶，通常在同意退款後 10 個工作天內完成。</p>
+
+  <h2>法律</h2>
+  <p>本政策不限制您依所在國家強制性消費者保護法所享有的退款權利。若該等法律適用且與本政策牴觸，以法律為準。</p>
+</LegalLayout>
