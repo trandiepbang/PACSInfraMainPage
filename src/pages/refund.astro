@@ -1,8 +1,54 @@
 ---
+// Refund policy. Prices come from pricing.yaml; keep this consistent with /terms section 5 and the
+// pricing FAQ, which both point here for the exceptions.
 import LegalLayout from '../layouts/LegalLayout.astro';
+import { pricing, site } from '../config';
+import { billingLabel, formatPrice } from '../lib/format';
+
+const email = site.supportEmail;
+const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
+const selfHosted = tier('self-hosted');
+const deployed = tier('deployed');
+// The Deployed plan includes the licence; the deployment part is what it costs on top of Self-Hosted.
+const deploymentPart = deployed.price - selfHosted.price;
 ---
 
-<LegalLayout title="Refund policy" description="PACSinfra refund policy.">
-  <h2>TODO</h2>
-  <p>Replace with your refund policy. Keep it consistent with the refund answer in <code>src/config/pricing.yaml</code>.</p>
+<LegalLayout
+  title="Refund policy"
+  description="When PACSinfra licences, deployments and renewals can be refunded, and how to ask for a refund."
+  updated="13 October 2026"
+  draft={false}
+>
+  <p>PACSinfra is sold as source code. Once you have the code, it cannot be “returned”, so the policy is simple and strict. Please read it before buying.</p>
+
+  <h2>{selfHosted.name} licence ({formatPrice(selfHosted.price)} {billingLabel(selfHosted.billing)})</h2>
+  <p>No refunds once the download link or repository access has been delivered.</p>
+  <p>Before you buy, you can:</p>
+  <ul>
+    <li>try the live demo at <a href={site.demoUrl}>demo.pacsinfra.com</a>, which runs the same software (some features are turned off there);</li>
+    <li>email me with questions about whether it fits your use case. I would rather answer them than process a refund request.</li>
+  </ul>
+  <p>If you paid but have not yet received the download link or repository access, email me and I will cancel the order and refund in full.</p>
+
+  <h2>{deployed.name} plan ({formatPrice(deployed.price)} {billingLabel(deployed.billing)})</h2>
+  <p>The {deployed.name} plan includes a licence ({formatPrice(selfHosted.price)}) and the deployment service ({formatPrice(deploymentPart)}).</p>
+  <ul>
+    <li><strong>Before deployment work starts:</strong> full refund on request.</li>
+    <li><strong>After deployment work starts:</strong> no refund, except that if I cannot complete the deployment for reasons on my side (not caused by your infrastructure, access delays or scope changes), I will refund the deployment part ({formatPrice(deploymentPart)}) in full. The licence part follows the {selfHosted.name} licence rule above.</li>
+  </ul>
+
+  <h2>Support and update renewals</h2>
+  <p>Full refund if requested within 14 days of the renewal payment and you have not opened a support request in that period. After that, no refund; the renewal runs for its full 12 months.</p>
+
+  <h2>Integration and custom development</h2>
+  <p>Covered by the individual quote. In general, deposits are non-refundable once work begins, and completed milestones are not refundable.</p>
+
+  <h2>Mistakes and duplicates</h2>
+  <p>Duplicate payments, the wrong plan selected, or a purchase made in error that you report before receiving the download link or repository access: refunded in full, no questions asked.</p>
+
+  <h2>How to request a refund</h2>
+  <p>Email <a href={`mailto:${email}`}>{email}</a> with your invoice number. I reply within 2 business days (Taiwan time). Refunds are paid by bank transfer to the account the payment came from, normally within 10 business days of the refund being agreed.</p>
+
+  <h2>Legal</h2>
+  <p>Nothing here limits refund rights you have under mandatory consumer law in your country. Where that law applies and conflicts with this policy, the law wins.</p>
 </LegalLayout>

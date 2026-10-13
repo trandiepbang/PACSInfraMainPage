@@ -13,6 +13,8 @@ const tier = z.strictObject({
   description: z.string().min(1),
   features: z.array(z.string().min(1)).min(1),
   note: z.string().min(1).optional(),
+  /** Yearly price to renew support and updates after the first 12 months. */
+  renewal: z.number().positive().optional(),
 });
 
 export const pricingSchema = z

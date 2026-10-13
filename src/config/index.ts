@@ -29,7 +29,7 @@ export function getPricing(locale: Locale): typeof pricing {
         callout: t.callout && (z.callout ?? t.callout),
       };
     }),
-    faq: pricing.faq.map((f, i) => ({ ...f, q: zh.faqQuestions[i] ?? f.q })),
+    faq: pricing.faq.map((f, i) => ({ q: zh.faqQuestions[i] ?? f.q, a: zh.faqAnswers[i] ?? f.a })),
   };
 }
 

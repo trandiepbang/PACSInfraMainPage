@@ -47,6 +47,7 @@ const en = {
     tagline: '',
   },
   billing: { 'one-time': 'one-time', yearly: 'per year', monthly: 'per month' },
+  renewalNote: 'After year 1: optional support and updates renewal {price}/year',
   home: {
     metaTitle: 'PACSinfra: Self-Hosted Cloud PACS and DICOM Viewer for Clinics',
     metaDescription:
@@ -313,6 +314,7 @@ const zhTw: UI = {
     tagline: '以 Orthanc 與 OHIF 為基礎、可自行架設的醫療影像平台。',
   },
   billing: { 'one-time': '一次付清', yearly: '每年', monthly: '每月' },
+  renewalNote: '第二年起：可選購支援與更新續約，每年 {price}',
   home: {
     metaTitle: 'PACSinfra｜雲端 PACS 醫療影像儲傳系統與 DICOM 檢視器',
     metaDescription:

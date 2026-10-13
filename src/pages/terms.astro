@@ -1,8 +1,82 @@
 ---
+// Terms of service. Must stay consistent with pricing.yaml (plan names, what support and updates
+// include, renewal prices) and with the privacy policy (demo deletion after 72 hours).
 import LegalLayout from '../layouts/LegalLayout.astro';
+import { pricing, site } from '../config';
+import { formatPrice } from '../lib/format';
+
+const email = site.supportEmail;
+const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
+const selfHosted = tier('self-hosted');
+const deployed = tier('deployed');
 ---
 
-<LegalLayout title="Terms of service" description="PACSinfra terms of service.">
-  <h2>TODO</h2>
-  <p>Replace with your terms of service: parties, scope, payment, support, warranties, liability, governing law.</p>
+<LegalLayout
+  title="Terms of service"
+  description="The terms for buying and using PACSinfra: licence, support and updates, deployment, payment and refunds, the demo, medical use and liability."
+  updated="13 October 2026"
+  draft={false}
+>
+  <p>PACSinfra is developed and sold by Bang Tran, a sole operator based in Taipei, Taiwan (“I”, “me”). By purchasing, downloading or using PACSinfra, or by using the demo at demo.pacsinfra.com, you agree to these terms.</p>
+
+  <h2>1. What PACSinfra is</h2>
+  <p>PACSinfra is self-hosted medical imaging software built on Orthanc and OHIF. You install and run it on your own infrastructure. I do not host, store or process any imaging data or patient data on your behalf. If you buy the {deployed.name} plan, I set PACSinfra up for you, but the data still stays on servers you own or control.</p>
+
+  <h2>2. Licence</h2>
+  <p>When you buy the {selfHosted.name} or {deployed.name} plan, you receive a copy of the PACSinfra source code and a perpetual, non-exclusive, non-transferable licence to:</p>
+  <ul>
+    <li>install and run PACSinfra on servers owned or controlled by your organisation, without limit on users, studies or instances;</li>
+    <li>modify the source code for your own use.</li>
+  </ul>
+  <p>You may not:</p>
+  <ul>
+    <li>resell, sublicense or redistribute PACSinfra or any modified version, as a product or as a service to third parties;</li>
+    <li>remove copyright notices;</li>
+    <li>use PACSinfra to build a competing product for sale.</li>
+  </ul>
+  <p>One licence covers one organisation (one legal entity). Contractors working for that organisation may use it on its behalf.</p>
+  <p>Orthanc, OHIF and other third-party components keep their own open-source licences. Those licences apply to those components regardless of these terms.</p>
+
+  <h2>3. Support and updates</h2>
+  <p>Both plans include 12 months of support and updates from the purchase date: bug fixes, new releases, and email support with a best-effort response within 2 business days (Taiwan time). After 12 months you keep the software and every version you have already received. Continued support and updates require a renewal, currently {formatPrice(selfHosted.renewal!)} per year for {selfHosted.name} and {formatPrice(deployed.renewal!)} per year for {deployed.name}, or the price shown on the website at the time.</p>
+  <p>Support means helping you use PACSinfra as delivered. Custom development, integration with your systems and on-site work are separate paid services, quoted individually.</p>
+
+  <h2>4. Deployment services</h2>
+  <p>If you buy the {deployed.name} plan, I will install and configure PACSinfra on infrastructure you provide, and hand it over to your team. You are responsible for that infrastructure, its security, its backups and its availability. The scope of a deployment is what is written in the order confirmation; anything beyond that is quoted separately.</p>
+
+  <h2>5. Payment and refunds</h2>
+  <p>Payment is by invoice and bank transfer, on the terms stated in the invoice. Prices are in {pricing.currency}.</p>
+  <p>Because you receive the full source code, refunds are not available once you have received it (by download link or repository access), except as set out in the <a href="/refund/">refund policy</a> or where required by law. If you are unsure whether PACSinfra fits your needs, use the live demo first or email me before buying.</p>
+
+  <h2>6. The demo</h2>
+  <p>The demo at demo.pacsinfra.com is for evaluation only. Each demo company, with everything uploaded to it, is deleted automatically 3 days after it is created, data may be deleted earlier, and the demo may be unavailable without notice. Some features are turned off in the demo. Do not upload real patient data or any data containing personal information; only upload anonymised or synthetic DICOM files.</p>
+
+  <h2>7. Medical use and regulatory responsibility</h2>
+  <p>PACSinfra is software infrastructure. It is not a certified medical device and has not been cleared by the TFDA, FDA, CE/MDR or any other regulator. You are solely responsible for:</p>
+  <ul>
+    <li>determining whether your intended use requires regulatory clearance in your jurisdiction, and obtaining it;</li>
+    <li>clinical decisions made using images viewed in PACSinfra;</li>
+    <li>compliance with the patient-data laws that apply to you (for example HIPAA, GDPR or Taiwan’s Personal Data Protection Act).</li>
+  </ul>
+
+  <h2>8. Your responsibilities</h2>
+  <p>You are responsible for securing your installation: access control configuration, network exposure, TLS, backups, operating system updates and monitoring. I provide software; I do not operate it for you.</p>
+
+  <h2>9. Warranty disclaimer</h2>
+  <p>PACSinfra is provided “as is”. I do not guarantee that it is error-free, uninterrupted or suitable for any particular purpose. I will fix reported bugs within the support period on a best-effort basis, but I cannot guarantee a fix for every issue.</p>
+
+  <h2>10. Limitation of liability</h2>
+  <p>To the maximum extent permitted by law, my total liability to you for any claim arising out of PACSinfra, support or deployment services is limited to the amount you paid me in the 12 months before the claim. I am not liable for indirect or consequential losses, including lost data, lost revenue, regulatory penalties or clinical outcomes.</p>
+
+  <h2>11. Termination</h2>
+  <p>If you breach the licence terms in section 2 and do not fix the breach within 30 days of written notice, the licence ends and you must stop using PACSinfra. Sections 7, 9 and 10 survive termination.</p>
+
+  <h2>12. Changes</h2>
+  <p>I may update these terms. The version in force is the one published at pacsinfra.com/terms on the date of your purchase; later changes apply to later purchases and renewals. I will update the “Last updated” date at the top of this page.</p>
+
+  <h2>13. Governing law</h2>
+  <p>These terms are governed by the laws of Taiwan (R.O.C.). Disputes will be handled by the courts of Taipei, Taiwan, unless mandatory consumer law in your country requires otherwise.</p>
+
+  <h2>14. Contact</h2>
+  <p>Bang Tran<br /><a href={`mailto:${email}`}>{email}</a><br />Taipei, Taiwan</p>
 </LegalLayout>

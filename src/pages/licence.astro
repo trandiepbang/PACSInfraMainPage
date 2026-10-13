@@ -1,11 +1,86 @@
 ---
+// PACSinfra Source Licence. Keep consistent with /terms (sections 2 and 3) and pricing.yaml.
+// Third-party licences as of 2026-10-13: Orthanc core GPLv3+, OHIF MIT, Garage AGPLv3. The product
+// repo has no NOTICE file yet (task T12.3); add a reference here once it exists.
 import LegalLayout from '../layouts/LegalLayout.astro';
-import { pricing } from '../config';
+import { pricing, site } from '../config';
+
+const email = site.supportEmail;
+const plans = pricing.tiers.map((t) => t.name).join(' or ');
 ---
 
-<LegalLayout title="Licence" description={`PACSinfra licence. ${pricing.licenceSummary.trim()}`}>
+<LegalLayout
+  title="Licence"
+  description="The PACSinfra Source Licence: one organisation per licence, modify the code freely, no resale or redistribution, and third-party components under their own licences."
+  updated="13 October 2026"
+  draft={false}
+>
   <h2>Summary</h2>
-  <p>{pricing.licenceSummary}</p>
+  <p>One organisation per licence. You may modify the code. You may not resell or redistribute it. You keep the software forever; support and updates are for 12 months unless renewed. Third-party components (Orthanc, OHIF and others) keep their own open-source licences.</p>
+
   <h2>Full licence</h2>
-  <p>TODO: replace with the full licence text.</p>
+  <p><strong>PACSinfra Source Licence, version 1.0</strong></p>
+  <p>This licence is an agreement between Bang Tran, Taipei, Taiwan (“Licensor”, “I”) and the organisation named in the order confirmation (“Licensee”, “you”). It takes effect when payment for a {plans} plan is received.</p>
+
+  <h3>1. Definitions</h3>
+  <ul>
+    <li><strong>Software:</strong> the PACSinfra source code, documentation and build files delivered to you, and any updates delivered during your support period.</li>
+    <li><strong>Modifications:</strong> any changes, extensions or derivative works you make to the Software.</li>
+    <li><strong>Organisation:</strong> the single legal entity named in the order confirmation. A parent, subsidiary or affiliate is a separate organisation and needs its own licence.</li>
+    <li><strong>Third-Party Components:</strong> software included in or required by the Software that is licensed by someone other than me, including Orthanc (GPLv3 or later), OHIF Viewer (MIT), Garage (AGPLv3) and their own dependencies.</li>
+  </ul>
+
+  <h3>2. Grant</h3>
+  <p>Subject to this licence, I grant you a perpetual, worldwide, non-exclusive, non-transferable, non-sublicensable licence to:</p>
+  <ol type="a">
+    <li>copy, install and run the Software on any number of servers, environments and instances owned or controlled by your Organisation, including cloud infrastructure you rent;</li>
+    <li>use the Software for any number of users, studies and patients;</li>
+    <li>make Modifications and use them under the same terms as the Software;</li>
+    <li>allow contractors and service providers to install, operate and modify the Software solely on your Organisation’s behalf, provided they are bound by confidentiality terms at least as protective as this licence.</li>
+  </ol>
+
+  <h3>3. Restrictions</h3>
+  <p>You may not:</p>
+  <ol type="a">
+    <li>sell, rent, lease, lend, sublicense, publish or otherwise distribute the Software or Modifications, in source or compiled form, to anyone outside your Organisation, except contractors under section 2(d);</li>
+    <li>offer the Software or Modifications to third parties as a hosted or managed service (SaaS), whether or not you charge for it;</li>
+    <li>use the Software or Modifications to create a product that competes with PACSinfra and is sold or distributed to others;</li>
+    <li>remove or alter copyright, licence or attribution notices in the Software;</li>
+    <li>transfer this licence to another organisation, including in a merger or asset sale, without my written consent, which I will not withhold unreasonably.</li>
+  </ol>
+
+  <h3>4. Ownership</h3>
+  <p>The Software is licensed, not sold. I retain all intellectual property rights in the Software. You own your Modifications, but your ownership does not extend to the underlying Software, and your use of Modifications remains subject to this licence.</p>
+  <p>If you send me bug fixes or improvements, you grant me a perpetual, royalty-free licence to use them in PACSinfra. You are never required to send me anything.</p>
+
+  <h3>5. Third-Party Components</h3>
+  <p>Third-Party Components are not licensed under this agreement. Each keeps its own licence, which you must comply with. In particular, Orthanc is licensed under GPLv3 or later: the PACSinfra application communicates with Orthanc over its REST API and does not modify or link against Orthanc’s code, so this licence covers only the PACSinfra application code. If you modify Orthanc itself, its GPL licence applies to those changes. Garage, which PACSinfra uses for upload staging, is licensed under AGPLv3 and is likewise run as a separate program and reached over its S3 API.</p>
+
+  <h3>6. Support and updates</h3>
+  <p>Your licence includes 12 months of support and updates from the purchase date, as described in the <a href="/terms/">Terms of Service</a>. When that period ends:</p>
+  <ul>
+    <li>this licence continues without limit of time for all versions you received;</li>
+    <li>you no longer receive updates or support unless you renew;</li>
+    <li>renewals restart a 12-month period at the price published on pacsinfra.com.</li>
+  </ul>
+
+  <h3>7. Term and termination</h3>
+  <p>This licence lasts for as long as copyright in the Software exists, unless terminated.</p>
+  <p>I may terminate it only if you materially breach section 3 or 4 and do not cure the breach within 30 days of my written notice. On termination you must stop using the Software and Modifications and delete all copies, except that you may keep one archival copy for legal or regulatory record-keeping. Sections 4, 5, 8, 9 and 10 survive termination.</p>
+
+  <h3>8. Warranty disclaimer</h3>
+  <p>The Software is provided “as is” without warranty of any kind, express or implied, including merchantability, fitness for a particular purpose and non-infringement. I do not warrant that the Software is error-free or that it meets any regulatory standard. The Software is not a certified medical device; see the <a href="/terms/">Terms of Service</a> for regulatory responsibility.</p>
+
+  <h3>9. Limitation of liability</h3>
+  <p>To the maximum extent permitted by law, my total liability under this licence is limited to the amount you paid me in the 12 months before the claim arose. I am not liable for indirect, incidental, special or consequential damages, including loss of data, loss of revenue, regulatory penalties or harm arising from clinical use.</p>
+
+  <h3>10. General</h3>
+  <ul>
+    <li><strong>Audit:</strong> I may, no more than once a year and with 30 days’ notice, ask you to confirm in writing that your use complies with this licence. No on-site access is required.</li>
+    <li><strong>Governing law:</strong> Taiwan (R.O.C.). The courts of Taipei have jurisdiction.</li>
+    <li><strong>Entire agreement:</strong> this licence, the Terms of Service and the order confirmation are the whole agreement. If they conflict, this licence wins on licence scope; the Terms win on everything else.</li>
+    <li><strong>Severability:</strong> if any clause is unenforceable, the rest still applies.</li>
+    <li><strong>No waiver:</strong> not enforcing a clause once does not mean I give it up.</li>
+  </ul>
+  <p>Questions about licensing, use across several organisations, or transfers: <a href={`mailto:${email}`}>{email}</a></p>
 </LegalLayout>
