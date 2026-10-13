@@ -26,6 +26,7 @@ const initials = f.name
     </ul>
     <div class="mt-6 flex w-full flex-col gap-2">
       <a href={site.bookingUrl} class="btn-primary w-full">{f.call}</a>
+      <a href={`mailto:${site.supportEmail}`} class="btn-secondary w-full">{f.email}</a>
       {linkedin && <a href={linkedin} class="btn-secondary w-full" rel="me noopener">{f.linkedin}</a>}
     </div>
   </div>

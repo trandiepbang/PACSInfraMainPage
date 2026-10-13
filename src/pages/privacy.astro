@@ -1,8 +1,104 @@
 ---
+// Privacy policy. Facts it relies on, checked 2026-10-13 — keep them true if anything changes:
+// - pacsinfra.com loads no analytics, no third-party scripts or fonts, and sets no cookies; it stores
+//   the theme and language choice in localStorage only.
+// - PACSinfra sends nothing to the vendor; its only outbound call is optional Google sign-in.
+// - Demo: DEMO_TTL_HOURS=72 deletes a demo company and its uploads; demo mode never retains patient
+//   identity. Demo audit retention must be AUDIT_RETENTION_MONTHS=3 on the demo server (90 days),
+//   and its nginx/Docker logs must rotate within 30 days.
+// - Payment is by invoice / bank transfer only. Email is Google Workspace. Bookings go via Cal.com.
 import LegalLayout from '../layouts/LegalLayout.astro';
+import { site } from '../config';
+
+const email = site.supportEmail;
 ---
 
-<LegalLayout title="Privacy policy" description="How PACSinfra handles personal data collected through this website.">
-  <h2>TODO</h2>
-  <p>Replace with your privacy policy for this website and for sales and support contacts. PACSinfra itself runs on the customer's server; describe what, if anything, you receive from customer installations.</p>
+<LegalLayout
+  title="Privacy policy"
+  description="What personal data PACSinfra collects through pacsinfra.com, the demo, sales and support, and what happens to it. Patient data never leaves your own servers."
+  updated="13 October 2026"
+  draft={false}
+>
+  <p>This policy explains what personal data I, Bang Tran, collect when you use pacsinfra.com, try the demo at demo.pacsinfra.com, or buy PACSinfra, and what I do with it. I am a sole operator based in Taipei, Taiwan, and I handle personal data in line with Taiwan’s Personal Data Protection Act (個人資料保護法).</p>
+
+  <p><strong>The short version:</strong> I collect as little as I can, I don’t sell it, and your patient data never comes to me because PACSinfra runs on your own servers.</p>
+
+  <h2>1. The software itself</h2>
+  <p>PACSinfra is self-hosted. When you run it, all images, patient data, users and audit logs are stored on infrastructure you control. The software does not send any data to me: no telemetry, no usage analytics and no licence-check callbacks. The only outside service it can contact is Google, and only if you choose to turn on “Sign in with Google” in your own installation.</p>
+  <p>You are the data controller for everything inside your installation, and this policy does not cover that data.</p>
+
+  <h2>2. Data I collect</h2>
+
+  <h3>When you browse pacsinfra.com</h3>
+  <ul>
+    <li><strong>Hosting logs:</strong> the website is served by Cloudflare, which processes your IP address, browser type, the pages you request and the time, to deliver the site and protect it from attacks. I do not keep my own logs for the website.</li>
+    <li><strong>Analytics:</strong> none. The website runs no analytics or tracking scripts and loads nothing from third parties.</li>
+    <li><strong>Cookies:</strong> none. The website remembers your light or dark theme and your language choice in your browser’s local storage. That information stays on your device and is never sent to me.</li>
+  </ul>
+
+  <h3>When you use the demo</h3>
+  <ul>
+    <li><strong>Your account:</strong> the company name and email address you sign up with, or your name, email address and Google account ID if you sign in with Google. The demo uses a session cookie to keep you signed in; it is strictly necessary and is not used for tracking.</li>
+    <li><strong>What you upload:</strong> the demo removes patient identifiers from DICOM metadata before storing anything. It cannot remove text that is part of the image itself, so do not upload real patient data. If you do, you are responsible for it.</li>
+    <li><strong>How long it is kept:</strong> each demo company, with everything uploaded to it, is deleted automatically 3 days (72 hours) after it is created. Your account is deleted with it unless it belongs to another organisation.</li>
+    <li><strong>Audit records:</strong> like every PACSinfra installation, the demo keeps an audit trail of actions (who did what, when, from which IP address and browser). Demo audit records are kept for 90 days and then deleted.</li>
+    <li><strong>Server logs:</strong> the demo server keeps technical logs (IP address, request, time) for up to 30 days for security and debugging.</li>
+  </ul>
+
+  <h3>When you buy a licence</h3>
+  <ul>
+    <li>Your name, email address, organisation, billing address and country, the invoice I issue, and how you receive the source code (for example, a repository invitation or a download link).</li>
+    <li>Payment is by invoice and bank transfer. I receive the payment details your bank sends with the transfer, such as the payer’s name and reference. I never receive or store card details.</li>
+    <li>I keep these records while your licence and support are active, and afterwards for as long as Taiwanese tax and accounting law requires (currently up to 10 years).</li>
+  </ul>
+
+  <h3>When you book a call</h3>
+  <p>Calls are booked through Cal.com. When you book, Cal.com collects your name, email address, the time you choose and anything you write in the booking form, and shares them with me. Cal.com’s privacy policy applies to the booking itself.</p>
+
+  <h3>When you email me</h3>
+  <p>Your email address and the content of the conversation, including anything you attach. I keep it for the duration of your support period plus 2 years, so I can refer back to previous issues. Please do not send patient data in support requests. If you need to share a DICOM file for debugging, anonymise it first.</p>
+
+  <h2>3. Why I use this data</h2>
+  <ul>
+    <li>To deliver the software, licence and support you bought (performance of a contract).</li>
+    <li>To run the demo you asked for, keep the website and demo secure, and detect abuse (legitimate interest).</li>
+    <li>To comply with tax and accounting law in Taiwan (legal obligation).</li>
+    <li>To email you about updates and renewals for a licence you bought. I do not send marketing email unless you explicitly opt in, and you can opt out of update emails at any time.</li>
+  </ul>
+
+  <h2>4. Who I share data with</h2>
+  <p>Only the services needed to run the business:</p>
+  <ul>
+    <li><strong>Cloudflare</strong>: website hosting and protection against attacks.</li>
+    <li><strong>Oracle Cloud</strong>: hosting for the demo server.</li>
+    <li><strong>Google Workspace</strong>: email, including the emails the demo sends, and storage of customer and invoice records.</li>
+    <li><strong>Google</strong>: “Sign in with Google” on the demo, only if you choose to use it.</li>
+    <li><strong>Cal.com</strong>: booking calls.</li>
+    <li><strong>My bank</strong>: receiving payments.</li>
+  </ul>
+  <p>I do not sell personal data and do not share it with advertisers.</p>
+  <p>Some of these providers are outside Taiwan, for example in the United States. I rely on their standard data protection terms, which include standard contractual clauses where EU or UK personal data is involved.</p>
+
+  <h2>5. Security</h2>
+  <p>The website and demo are served over HTTPS. Customer records are stored in my Google Workspace account, with access limited to me. The demo is isolated from customer records and deletes its data automatically, as described above. If I become aware of a breach affecting your personal data, I will notify you by email without undue delay.</p>
+
+  <h2>6. Your rights</h2>
+  <p>You can ask me at any time to:</p>
+  <ul>
+    <li>see what personal data I hold about you, or get a copy of it;</li>
+    <li>correct it;</li>
+    <li>delete it (except records I must keep for tax law);</li>
+    <li>export it;</li>
+    <li>stop using it, or stop receiving emails from me.</li>
+  </ul>
+  <p>Email <a href={`mailto:${email}`}>{email}</a> and I will respond within 30 days. If you are in the EU or UK, you also have the right to complain to your local data protection authority.</p>
+
+  <h2>7. Children</h2>
+  <p>The website and software are intended for organisations and professionals. I do not knowingly collect data from anyone under 18.</p>
+
+  <h2>8. Changes</h2>
+  <p>If this policy changes materially, I will update the date at the top of this page and, for existing customers, send an email.</p>
+
+  <h2>9. Contact</h2>
+  <p>Bang Tran<br /><a href={`mailto:${email}`}>{email}</a><br />Taipei, Taiwan</p>
 </LegalLayout>

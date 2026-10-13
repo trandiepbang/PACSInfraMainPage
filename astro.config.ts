@@ -68,7 +68,7 @@ export default defineConfig({
       // Each page lists its other-language twin, so search engines pair /x/ with /zh-tw/x/.
       i18n: { defaultLocale: 'en', locales: { en: 'en-GB', 'zh-tw': 'zh-Hant-TW' } },
       // Leave out pages that are unlinked (docs, blog) or still placeholders (legal).
-      filter: (page) => !/\/(docs|blog|terms|privacy|refund|licence)(\/|$)/.test(new URL(page).pathname),
+      filter: (page) => !/\/(docs|blog|terms|refund|licence)(\/|$)/.test(new URL(page).pathname),
     }),
   ],
   vite: {

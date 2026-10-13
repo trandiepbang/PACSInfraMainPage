@@ -25,6 +25,7 @@ const en = {
   ],
   linkedin: 'Connect on LinkedIn',
   call: 'Book a call with me',
+  email: 'Email me',
 };
 
 const zhTw: typeof en = {
@@ -44,6 +45,7 @@ const zhTw: typeof en = {
   ],
   linkedin: '在 LinkedIn 上聯繫',
   call: '預約與我通話',
+  email: '寄信給我',
 };
 
 export const founder: Record<Locale, typeof en> = { en, 'zh-tw': zhTw };
