@@ -14,6 +14,8 @@ import CtaBand from '../components/CtaBand.astro';
 import StructuredData from '../components/StructuredData.astro';
 import Founder from '../components/Founder.astro';
 import FeatureTable from '../components/FeatureTable.astro';
+import OnboardingFlow from '../components/OnboardingFlow.astro';
+import { onboarding } from '../data/onboarding';
 import { founder } from '../data/founder';
 import { getPricing, site } from '../config';
 import { billingLabel, formatPrice, lowestPrice } from '../lib/format';
@@ -83,11 +85,15 @@ const description = h.metaDescription.replace('{price}', lowestPrice());
     </div>
   </Section>
 
-  <Section id="stack" tone="muted" eyebrow={h.stackEyebrow} title={h.stackTitle}>
+  <Section id="getting-started" tone="muted" eyebrow={onboarding[locale].eyebrow} title={onboarding[locale].title} intro={onboarding[locale].intro}>
+    <OnboardingFlow />
+  </Section>
+
+  <Section id="stack" eyebrow={h.stackEyebrow} title={h.stackTitle}>
     <StackOverview />
   </Section>
 
-  <Section id="pricing" eyebrow={h.pricingEyebrow} title={h.pricingTitle} intro={pricing.licenceSummary}>
+  <Section id="pricing" tone="muted" eyebrow={h.pricingEyebrow} title={h.pricingTitle} intro={pricing.licenceSummary}>
     <div class="space-y-6">
       <FoundingBanner />
       <ul class="grid gap-4 md:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
@@ -119,11 +125,11 @@ const description = h.metaDescription.replace('{price}', lowestPrice());
     </div>
   </Section>
 
-  <Section id="founder" tone="muted" eyebrow={founder[locale].eyebrow} title={founder[locale].title}>
+  <Section id="founder" eyebrow={founder[locale].eyebrow} title={founder[locale].title}>
     <Founder />
   </Section>
 
-  <Section id="faq" eyebrow={h.faqEyebrow} title={h.faqTitle}>
+  <Section id="faq" tone="muted" eyebrow={h.faqEyebrow} title={h.faqTitle}>
     <Faq items={faq} />
     <p class="mt-6 text-sm text-slate-600 dark:text-slate-400">
       {h.faqFooterBefore} <a href={localizePath('/pricing#faq', locale)} class="link">{h.faqFooterLink}</a>{h.faqFooterAfter}

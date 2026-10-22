@@ -1,0 +1,37 @@
+---
+// The "Getting started" steps as numbered cards with icons, then the three project roles.
+import { getLocale } from '../i18n';
+import { onboarding } from '../data/onboarding';
+import DiagramIcon from './DiagramIcon.astro';
+
+const o = onboarding[getLocale(Astro.url)];
+---
+
+<ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {o.steps.map((s, i) => (
+    <li class="card relative flex gap-4 p-5">
+      <span class="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent dark:bg-accent-dark/15 dark:text-accent-dark">
+        <DiagramIcon name={s.icon} size={20} />
+        <span class="absolute -right-2 -top-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-white dark:bg-accent-dark dark:text-night">{i + 1}</span>
+      </span>
+      <div>
+        <h3 class="font-semibold">{s.title}</h3>
+        <p class="mt-1.5 text-sm leading-6 text-slate-600 dark:text-slate-400">{s.body}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<h3 class="mt-12 text-lg font-semibold">{o.rolesTitle}</h3>
+<ul class="mt-4 grid gap-4 md:grid-cols-3">
+  {o.roles.map((r) => (
+    <li class="rounded-xl border border-line bg-white p-5 dark:border-line-dark dark:bg-night">
+      <p class="font-semibold text-accent dark:text-accent-dark">{r.name}</p>
+      <p class="mt-1.5 text-sm leading-6 text-slate-600 dark:text-slate-400">{r.body}</p>
+    </li>
+  ))}
+</ul>
+<p class="mt-6 flex gap-2.5 text-sm text-slate-600 dark:text-slate-400">
+  <DiagramIcon name="lock" size={18} class="mt-0.5 shrink-0 text-accent dark:text-accent-dark" />
+  <span>{o.note}</span>
+</p>
