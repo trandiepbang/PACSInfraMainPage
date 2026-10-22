@@ -1,5 +1,16 @@
 // Product copy shared across pages. Source of truth: the product brief.
 import type { Locale } from '../i18n';
+import type { IconName } from '../components/DiagramIcon.astro';
+
+export interface Feature {
+  icon: IconName;
+  title: string;
+  body: string;
+}
+
+export type TableRow =
+  | { group: string }
+  | { icon: IconName; label: string; plan?: boolean; addOn?: boolean };
 
 const en = {
   summary:
@@ -21,20 +32,65 @@ const en = {
       caveat: true,
     },
   ],
+  /** The "What's included" table on /pricing and the home page: true means included. */
+  table: [
+    { group: 'The software' },
+    { icon: 'eye', label: 'DICOM viewer in the browser', plan: true },
+    { icon: 'upload', label: 'DICOM upload and ingest', plan: true },
+    { icon: 'file', label: 'Radiology reports, exported to PDF', plan: true },
+    { icon: 'mic', label: 'Voice dictation for reports', plan: true },
+    { icon: 'link', label: 'Password-protected share links', plan: true },
+    { icon: 'chat', label: 'Live chat with patients', plan: true },
+    { icon: 'users', label: 'Projects and permissions', plan: true },
+    { icon: 'key', label: 'Two-factor sign-in', plan: true },
+    { icon: 'alert', label: 'Break-the-glass access', plan: true },
+    { icon: 'list', label: 'Audit trail with CSV export', plan: true },
+    { icon: 'code', label: 'REST API with Swagger docs', plan: true },
+    { group: 'The service' },
+    { icon: 'server', label: 'Setup on your own server', plan: true },
+    { icon: 'branch', label: 'Full source code, handed over to your team', plan: true },
+    { icon: 'transfer', label: 'Migration of your existing studies', plan: true },
+    { icon: 'wrench', label: '12 months of maintenance, debugging and fixes', plan: true },
+    { group: 'Connecting your scanners' },
+    { icon: 'node', label: 'DICOM node connector', addOn: true },
+    { icon: 'clipboard', label: 'Modality worklist', addOn: true },
+  ] as TableRow[],
   features: [
-    { title: 'Projects and permissions', body: 'Studies are shared through projects, where each person is an owner, contributor or reader. Readers can be view-only.' },
-    { title: 'Two-factor sign-in', body: 'Every sign-in needs a code from an authenticator app. A computer can be trusted for 30 days.' },
-    { title: 'DICOM upload and ingest', body: 'Upload single files or ZIP archives, with validation and automatic ingest.' },
-    { title: 'DICOM viewer and study browsing', body: 'View every series in the browser with the built-in OHIF viewer. Study lists with search, filters and previews.' },
-    { title: 'Radiology reports with voice dictation', body: 'Draft, finalise, version and export reports to PDF. Dictate them by voice, recognised on the doctor’s own computer.' },
-    { title: 'Share links with live chat', body: 'Send a study to a patient behind a password, and chat with them in real time on the same link.' },
-    { title: 'Break-the-glass access', body: 'Restricted studies can still be opened when needed, but access is always recorded with a reason.' },
-    { title: 'Tamper-evident audit trail', body: 'An append-only record of every action, exportable to CSV.' },
-    { title: 'REST API', body: 'A full REST API with Swagger docs, for developers and integrations.' },
-  ],
+    { icon: 'users', title: 'Projects and permissions', body: 'Studies are shared through projects, where each person is an owner, contributor or reader. Readers can be view-only.' },
+    { icon: 'key', title: 'Two-factor sign-in', body: 'Every sign-in needs a code from an authenticator app. A computer can be trusted for 30 days.' },
+    { icon: 'upload', title: 'DICOM upload and ingest', body: 'Upload single files or ZIP archives, with validation and automatic ingest.' },
+    { icon: 'eye', title: 'DICOM viewer and study browsing', body: 'View every series in the browser with the built-in OHIF viewer. Study lists with search, filters and previews.' },
+    { icon: 'mic', title: 'Radiology reports with voice dictation', body: 'Draft, finalise, version and export reports to PDF. Dictate them by voice, recognised on the doctor’s own computer.' },
+    { icon: 'chat', title: 'Share links with live chat', body: 'Send a study to a patient behind a password, and chat with them in real time on the same link.' },
+    { icon: 'alert', title: 'Break-the-glass access', body: 'Restricted studies can still be opened when needed, but access is always recorded with a reason.' },
+    { icon: 'list', title: 'Tamper-evident audit trail', body: 'An append-only record of every action, exportable to CSV.' },
+    { icon: 'code', title: 'REST API', body: 'A full REST API with Swagger docs, for developers and integrations.' },
+  ] as Feature[],
 };
 
 const zhTw: typeof en = {
+  table: [
+    { group: '軟體' },
+    { icon: 'eye', label: '瀏覽器中的 DICOM 檢視器', plan: true },
+    { icon: 'upload', label: 'DICOM 上傳與匯入', plan: true },
+    { icon: 'file', label: '放射科報告，可匯出 PDF', plan: true },
+    { icon: 'mic', label: '報告語音口述', plan: true },
+    { icon: 'link', label: '密碼保護的分享連結', plan: true },
+    { icon: 'chat', label: '與病患即時對話', plan: true },
+    { icon: 'users', label: '專案與權限', plan: true },
+    { icon: 'key', label: '雙重驗證登入', plan: true },
+    { icon: 'alert', label: '緊急存取（破窗機制）', plan: true },
+    { icon: 'list', label: '稽核軌跡，可匯出 CSV', plan: true },
+    { icon: 'code', label: 'REST API 與 Swagger 文件', plan: true },
+    { group: '服務' },
+    { icon: 'server', label: '在您自己的伺服器上建置', plan: true },
+    { icon: 'branch', label: '完整原始碼，交接給您的團隊', plan: true },
+    { icon: 'transfer', label: '移轉您既有的檢查資料', plan: true },
+    { icon: 'wrench', label: '12 個月維護、除錯與修正', plan: true },
+    { group: '連接您的影像儀器' },
+    { icon: 'node', label: 'DICOM 節點連接器', addOn: true },
+    { icon: 'clipboard', label: '影像儀器工作清單', addOn: true },
+  ],
   summary: '上傳 DICOM 檢查、進行判讀並撰寫報告，全部在您自己的伺服器上完成，病患資料始終在您的掌控之中。',
   pixelCaveat: '去識別化涵蓋 DICOM 中繼資料，但不包含直接燒錄在影像像素中的文字。',
   guarantees: [
@@ -54,15 +110,15 @@ const zhTw: typeof en = {
     },
   ],
   features: [
-    { title: '專案與權限', body: '檢查透過專案分享，每個人在專案中是擁有者、貢獻者或閱讀者。閱讀者可設為僅能檢視。' },
-    { title: '雙重驗證登入', body: '每次登入都需要驗證器 App 的驗證碼。電腦可設為信任 30 天。' },
-    { title: 'DICOM 上傳與匯入', body: '上傳單一檔案或 ZIP 壓縮檔，自動驗證並匯入。' },
-    { title: 'DICOM 檢視器與檢查瀏覽', body: '以內建的 OHIF 檢視器在瀏覽器中檢視每個序列。可搜尋與篩選的檢查清單與預覽圖。' },
-    { title: '放射科報告與語音口述', body: '草稿、定稿、版本紀錄並可匯出 PDF。也能以語音口述，在醫師自己的電腦上辨識。' },
-    { title: '分享連結與即時對話', body: '以密碼保護將檢查分享給病患，並在同一個連結中與病患即時對話。' },
-    { title: '緊急存取（破窗機制）', body: '受限檢查在必要時仍可開啟，但每次存取都會連同理由一併記錄。' },
-    { title: '可偵測竄改的稽核軌跡', body: '每個動作都有只能新增、無法修改的紀錄，並可匯出為 CSV。' },
-    { title: 'REST API', body: '完整的 REST API 與 Swagger 文件，方便開發與系統整合。' },
+    { icon: 'users', title: '專案與權限', body: '檢查透過專案分享，每個人在專案中是擁有者、貢獻者或閱讀者。閱讀者可設為僅能檢視。' },
+    { icon: 'key', title: '雙重驗證登入', body: '每次登入都需要驗證器 App 的驗證碼。電腦可設為信任 30 天。' },
+    { icon: 'upload', title: 'DICOM 上傳與匯入', body: '上傳單一檔案或 ZIP 壓縮檔，自動驗證並匯入。' },
+    { icon: 'eye', title: 'DICOM 檢視器與檢查瀏覽', body: '以內建的 OHIF 檢視器在瀏覽器中檢視每個序列。可搜尋與篩選的檢查清單與預覽圖。' },
+    { icon: 'mic', title: '放射科報告與語音口述', body: '草稿、定稿、版本紀錄並可匯出 PDF。也能以語音口述，在醫師自己的電腦上辨識。' },
+    { icon: 'chat', title: '分享連結與即時對話', body: '以密碼保護將檢查分享給病患，並在同一個連結中與病患即時對話。' },
+    { icon: 'alert', title: '緊急存取（破窗機制）', body: '受限檢查在必要時仍可開啟，但每次存取都會連同理由一併記錄。' },
+    { icon: 'list', title: '可偵測竄改的稽核軌跡', body: '每個動作都有只能新增、無法修改的紀錄，並可匯出為 CSV。' },
+    { icon: 'code', title: 'REST API', body: '完整的 REST API 與 Swagger 文件，方便開發與系統整合。' },
   ],
 };
 

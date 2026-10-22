@@ -13,6 +13,7 @@ import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import StructuredData from '../components/StructuredData.astro';
 import Founder from '../components/Founder.astro';
+import FeatureTable from '../components/FeatureTable.astro';
 import { founder } from '../data/founder';
 import { getPricing, site } from '../config';
 import { billingLabel, formatPrice, lowestPrice } from '../lib/format';
@@ -110,6 +111,7 @@ const description = h.metaDescription.replace('{price}', lowestPrice());
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{pricing.addOn.description}</p>
         </li>
       </ul>
+      <FeatureTable />
       <a href={localizePath('/pricing', locale)} class="link inline-block text-sm">{h.comparePlans} &rarr;</a>
     </div>
   </Section>
