@@ -16,8 +16,10 @@ tiers:
     price: 2000
     billing: one-time        # one-time | yearly | monthly
     highlight: true
+    callout: DICOM viewer, reports, voice dictation, share links and live chat, all for $2,000
     description: We set it up on your server, hand the full source code over to your team, move your existing studies in, and look after it for a year.
     features:
+      - Every feature included - DICOM viewer, radiology reports with voice dictation, share links and live chat with patients
       - Set up on your own server, cloud or Kubernetes cluster
       - Handover of the full source code to your team, with a walkthrough
       - Lifetime licence for one organisation
