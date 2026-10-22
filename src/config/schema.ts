@@ -31,8 +31,12 @@ export const pricingSchema = z
     }),
     tiers: z.array(tier).min(1).max(3, 'the pricing layout supports at most 3 tiers'),
     licenceSummary: z.string().min(1),
-    /** Day rate for integration work, shown as an add-on under the plans. */
-    integrationDayRate: z.number().positive().optional(),
+    /** One add-on sold on top of a plan, shown under the plans. */
+    addOn: z.strictObject({
+      name: z.string().min(1),
+      price: z.number().positive(),
+      description: z.string().min(1),
+    }),
     faq: z.array(z.strictObject({ q: z.string().min(1), a: z.string().min(1) })),
   })
   .superRefine((data, ctx) => {

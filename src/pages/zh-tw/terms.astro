@@ -7,23 +7,23 @@ import { formatPrice } from '../../lib/format';
 const email = site.supportEmail;
 const pricing = getPricing('zh-tw');
 const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
-const selfHosted = tier('self-hosted');
-const deployed = tier('deployed');
+const plan = tier('self-hosted');
+const addOn = pricing.addOn;
 ---
 
 <LegalLayout
   title="服務條款"
   description="購買與使用 PACSinfra 的條款：授權、支援與更新、部署、付款與退款、展示版、醫療用途與責任。"
-  updated="2026 年 10 月 13 日"
+  updated="2026 年 10 月 22 日"
   draft={false}
 >
   <p>PACSinfra 由陳業邦（Bang Tran）開發與銷售，他是一名常駐台灣台北的個人經營者（以下稱「我」）。當您購買、下載或使用 PACSinfra，或使用 demo.pacsinfra.com 上的展示版時，即表示您同意本條款。</p>
 
   <h2>1. PACSinfra 是什麼</h2>
-  <p>PACSinfra 是以 Orthanc 與 OHIF 為基礎、可自行架設的醫療影像軟體。您在自己的基礎設施上安裝並運作它。我不會代您代管、儲存或處理任何影像資料或病患資料。若您購買「{deployed.name}」方案，我會為您完成建置，但資料仍保存在您擁有或掌控的伺服器上。</p>
+  <p>PACSinfra 是以 Orthanc 與 OHIF 為基礎、可自行架設的醫療影像軟體。您在自己的基礎設施上安裝並運作它。我不會代您代管、儲存或處理任何影像資料或病患資料。「{plan.name}」方案包含由我為您完成建置，但資料仍保存在您擁有或掌控的伺服器上。</p>
 
   <h2>2. 授權</h2>
-  <p>當您購買「{selfHosted.name}」或「{deployed.name}」方案時，您會取得一份 PACSinfra 原始碼，以及一項永久、非專屬、不可轉讓的授權，可以：</p>
+  <p>當您購買「{plan.name}」方案時，您會取得一份 PACSinfra 原始碼，以及一項永久、非專屬、不可轉讓的授權，可以：</p>
   <ul>
     <li>在您機構擁有或掌控的伺服器上安裝並運作 PACSinfra，使用者、檢查與執行個體數量不受限制；</li>
     <li>為自身使用而修改原始碼。</li>
@@ -38,11 +38,11 @@ const deployed = tier('deployed');
   <p>Orthanc、OHIF 及其他第三方元件各自保有其開放原始碼授權。無論本條款如何規定，這些授權皆適用於該等元件。</p>
 
   <h2>3. 支援與更新</h2>
-  <p>兩種方案皆包含自購買日起 12 個月的支援與更新：錯誤修正、新版本，以及電子郵件支援，並盡力在 2 個工作天內（台灣時間）回覆。12 個月後，您可以保留軟體及已收到的所有版本。若要繼續獲得支援與更新，須續約；目前「{selfHosted.name}」為每年 {formatPrice(selfHosted.renewal!)}，「{deployed.name}」為每年 {formatPrice(deployed.renewal!)}，或依屆時網站公布的價格。</p>
+  <p>「{plan.name}」方案包含自購買日起 12 個月的維護與更新：針對交付的 PACSinfra 除錯並修正錯誤、新版本，以及電子郵件支援，並盡力在 2 個工作天內（台灣時間）回覆。12 個月後，您可以保留軟體及已收到的所有版本。若要繼續獲得維護與更新，須續約；目前為每年 {formatPrice(plan.renewal!)}，或依屆時網站公布的價格。</p>
   <p>支援是指協助您依交付內容使用 PACSinfra。客製化開發、與您系統的整合以及到場服務，屬於另行報價的付費服務。</p>
 
-  <h2>4. 部署服務</h2>
-  <p>若您購買「{deployed.name}」方案，我會在您提供的基礎設施上安裝並設定 PACSinfra，並交接給您的團隊。您須負責該基礎設施及其安全、備份與可用性。部署範圍以訂單確認書所載為準；超出範圍的工作另行報價。</p>
+  <h2>4. 建置、資料移轉與加購服務</h2>
+  <p>「{plan.name}」方案包含在您提供的基礎設施上安裝並設定 PACSinfra、將原始碼交接給您的團隊，並將您既有的檢查與資料移轉進來。「{addOn.name}」加購服務（{formatPrice(addOn.price)}）包含在您的網路內安裝 DICOM 節點、連接您的影像儀器與既有 PACS，並設定工作清單。您須負責該基礎設施及其安全、備份與可用性，並提供待移轉資料的存取權限。建置、移轉與加購服務的範圍以訂單確認書所載為準；超出範圍的工作另行報價。</p>
 
   <h2>5. 付款與退款</h2>
   <p>付款方式為開立發票並以銀行轉帳支付，依發票所載條件辦理。價格以 {pricing.currency}（美元）計價。</p>

@@ -29,7 +29,7 @@ const en: UseCase[] = [
     points: [
       { title: 'Real identities, kept apart', body: 'Patient identifiers are removed before studies reach the image archive. Clinics can keep real identities in a separate application database.' },
       { title: 'Radiology reports', body: 'Draft, finalise, version and export reports to PDF.' },
-      { title: 'Roles that match your team', body: 'Editable per-organisation roles and fine-grained permissions.' },
+      { title: 'Roles that match your team', body: 'Owners, contributors and readers in each project, with view-only readers and two-factor sign-in.' },
       { title: 'Restricted studies', body: 'Lock down sensitive studies. Break-the-glass access is allowed when needed, but always recorded with a reason.' },
       { title: 'Every action recorded', body: 'A tamper-evident, append-only audit trail of every action, including each image request.' },
       { title: 'Simple uploads', body: 'Upload single files or ZIP archives, with validation and automatic ingest.' },
@@ -85,7 +85,7 @@ const zhTw: UseCase[] = [
     points: [
       { title: '真實身分，分開保存', body: '檢查進入影像封存系統前，病患識別資訊即被移除。診所可將真實身分保存在獨立的應用程式資料庫中。' },
       { title: '放射科報告', body: '草稿、定稿、版本紀錄，並可匯出 PDF。' },
-      { title: '符合團隊分工的角色', body: '各機構可自訂角色，並設定細緻的權限。' },
+      { title: '符合團隊分工的角色', body: '各專案中的擁有者、貢獻者與閱讀者，可設定僅能檢視的閱讀者，並以雙重驗證登入。' },
       { title: '受限檢查', body: '鎖定敏感的檢查。必要時允許緊急存取，但每次都會連同理由一併記錄。' },
       { title: '每個動作都有紀錄', body: '可偵測竄改、只能新增的稽核軌跡，記錄每個動作，包含每一筆影像請求。' },
       { title: '簡單上傳', body: '上傳單一檔案或 ZIP 壓縮檔，自動驗證並匯入。' },

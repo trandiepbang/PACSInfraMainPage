@@ -17,6 +17,7 @@ export function getPricing(locale: Locale): typeof pricing {
     ...pricing,
     licenceSummary: zh.licenceSummary ?? pricing.licenceSummary,
     foundingOffer: { ...pricing.foundingOffer, text: zh.foundingOffer ?? pricing.foundingOffer.text },
+    addOn: { ...pricing.addOn, ...zh.addOn },
     tiers: pricing.tiers.map((t) => {
       const z = zh.tiers[t.id] ?? {};
       return {

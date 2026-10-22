@@ -99,8 +99,16 @@ const description = h.metaDescription.replace('{price}', lowestPrice());
             </p>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{tier.description}</p>
             {tier.callout && <p class="mt-3 text-sm font-semibold text-accent dark:text-accent-dark">✓ {tier.callout}</p>}
+            {tier.renewal && <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">{t.renewalNote.replace('{price}', formatPrice(tier.renewal))}</p>}
           </li>
         ))}
+        <li class="card border-dashed">
+          <h3 class="font-semibold">{t.pricing.addOnTitle.replace('{name}', pricing.addOn.name)}</h3>
+          <p class="mt-3">
+            <span class="text-3xl font-semibold tracking-tight">+{formatPrice(pricing.addOn.price)}</span>
+          </p>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{pricing.addOn.description}</p>
+        </li>
       </ul>
       <a href={localizePath('/pricing', locale)} class="link inline-block text-sm">{h.comparePlans} &rarr;</a>
     </div>

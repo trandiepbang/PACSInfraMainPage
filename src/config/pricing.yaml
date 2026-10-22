@@ -12,35 +12,24 @@ foundingOffer:
 
 tiers:
   - id: self-hosted
-    name: Self-Hosted
-    price: 2500
+    name: Self-Hosted, first year
+    price: 2000
     billing: one-time        # one-time | yearly | monthly
-    highlight: false
-    description: Source code you run yourself.
-    features:
-      - Full source code, lifetime licence for one organisation
-      - 12 months of updates
-      - Installation docs (Docker Compose)
-      - 12 months of email support (reply within 2 business days)
-    renewal: 900               # per year, after the first 12 months; shown on the card and in /terms
-
-  - id: deployed
-    name: Deployed
-    price: 6000
-    billing: one-time
     highlight: true
-    badge: Most popular
-    description: We deploy it, hand it over to your team and support it for a year.
+    description: We set it up on your server, hand the full source code over to your team, move your existing studies in, and look after it for a year.
     features:
-      - Everything in Self-Hosted
-      - Deployed end to end on your server, cloud or Kubernetes cluster
-      - Handover to your team, with a walkthrough
-      - 12 months of support and updates
-    renewal: 1500
+      - Set up on your own server, cloud or Kubernetes cluster
+      - Handover of the full source code to your team, with a walkthrough
+      - Lifetime licence for one organisation
+      - Migration of your existing studies and data
+      - 12 months of maintenance, debugging and fixes for any error
+    renewal: 1000              # per year, after the first 12 months; shown on the card and in /terms
 
-# Integration work (connecting PACSinfra to other systems), sold as an add-on per day.
-# Leave it out to show [PLACEHOLDER] on /pricing until the rate is decided.
-# integrationDayRate: 800
+# Sold on top of a plan, shown under the cards on /pricing and on the home page.
+addOn:
+  name: DICOM node connector and worklist
+  price: 1000
+  description: A DICOM node inside your hospital network that receives studies from your modalities and existing PACS and forwards them over an encrypted connection, plus a modality worklist. Set up and connected for you.
 
 licenceSummary: >
   One organisation per licence. You may modify the code. You may not resell or redistribute it.
@@ -48,11 +37,11 @@ licenceSummary: >
 faq:
   - q: What do updates include?
     a: Bug fixes and new releases for 12 months from your purchase date. Every version you receive is yours to keep and run for as long as you like.
-  - q: What does support cover?
-    a: Help using PACSinfra as delivered, by email, with a best-effort reply within 2 business days (Taiwan time). Custom development, integration with your other systems and on-site work are separate paid services, quoted individually.
+  - q: What does maintenance cover?
+    a: Debugging and fixing any error in PACSinfra as delivered, plus updates and help by email, with a best-effort reply within 2 business days (Taiwan time). Custom development, integration with your other systems and on-site work are separate paid services, quoted individually.
   - q: What is your refund policy?
-    a: Because you receive the full source code, refunds are not available once you have received it, except where required by law. There are a few exceptions, such as orders not yet delivered, payments made in error, deployments before work starts and renewals cancelled within 14 days; see the refund policy for details. Try the live demo first, or email me with any questions before you buy.
+    a: Because you receive the full source code, refunds are not available once you have received it, except where required by law. There are a few exceptions, such as orders not yet delivered, payments made in error, setup before work starts and renewals cancelled within 14 days; see the refund policy for details. Try the live demo first, or email me with any questions before you buy.
   - q: Can we pay by invoice or bank transfer?
     a: Yes. Payment is by invoice and bank transfer, on the terms stated in the invoice.
   - q: What happens after 12 months?
-    a: You keep the software and every version you have received, and you can keep running it. To continue receiving support and updates, renew each year at the price shown on each plan.
+    a: You keep the software and every version you have received, and you can keep running it. To keep maintenance, debugging and updates going, renew each year at the price shown on the plan.

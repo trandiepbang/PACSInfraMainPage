@@ -7,22 +7,23 @@ import { billingLabel, formatPrice } from '../../lib/format';
 const email = site.supportEmail;
 const pricing = getPricing('zh-tw');
 const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
-const selfHosted = tier('self-hosted');
-const deployed = tier('deployed');
-// 「代為部署」方案包含授權；部署部分為高於「自行架設」價格的差額。
-const deploymentPart = deployed.price - selfHosted.price;
+const plan = tier('self-hosted');
+const addOn = pricing.addOn;
 ---
 
 <LegalLayout
   title="退款政策"
-  description="PACSinfra 授權、部署與續約在什麼情況下可以退款，以及如何申請退款。"
-  updated="2026 年 10 月 13 日"
+  description="PACSinfra 方案、加購服務與續約在什麼情況下可以退款，以及如何申請退款。"
+  updated="2026 年 10 月 22 日"
   draft={false}
 >
   <p>PACSinfra 以原始碼形式銷售。一旦您取得程式碼，就無法「退回」，因此本政策簡單而嚴格。購買前請先閱讀。</p>
 
-  <h2>「{selfHosted.name}」授權（{formatPrice(selfHosted.price)}，{billingLabel(selfHosted.billing, 'zh-tw')}）</h2>
-  <p>一旦交付下載連結或程式庫存取權限，即不提供退款。</p>
+  <h2>「{plan.name}」（{formatPrice(plan.price)}，{billingLabel(plan.billing, 'zh-tw')}）</h2>
+  <ul>
+    <li><strong>建置工作開始前且尚未交付原始碼時：</strong>可申請全額退款。</li>
+    <li><strong>之後：</strong>不予退款；但若因我方原因（非因您的基礎設施、存取延誤或範圍變更所致）無法完成建置，我會全額退還方案費用。</li>
+  </ul>
   <p>購買前，您可以：</p>
   <ul>
     <li>試用 <a href={site.demoUrl}>demo.pacsinfra.com</a> 上的展示版，它執行的是同一套軟體（部分功能在展示版中已關閉）；</li>
@@ -30,14 +31,13 @@ const deploymentPart = deployed.price - selfHosted.price;
   </ul>
   <p>若您已付款但尚未收到下載連結或程式庫存取權限，請寄信給我，我會取消訂單並全額退款。</p>
 
-  <h2>「{deployed.name}」方案（{formatPrice(deployed.price)}，{billingLabel(deployed.billing, 'zh-tw')}）</h2>
-  <p>「{deployed.name}」方案包含一份授權（{formatPrice(selfHosted.price)}）與部署服務（{formatPrice(deploymentPart)}）。</p>
+  <h2>「{addOn.name}」（+{formatPrice(addOn.price)}）</h2>
   <ul>
-    <li><strong>部署工作開始前：</strong>可申請全額退款。</li>
-    <li><strong>部署工作開始後：</strong>不予退款；但若因我方原因（非因您的基礎設施、存取延誤或範圍變更所致）無法完成部署，我會全額退還部署部分（{formatPrice(deploymentPart)}）。授權部分依上方「{selfHosted.name}」授權的規定辦理。</li>
+    <li><strong>加購工作開始前：</strong>可申請全額退款。</li>
+    <li><strong>開始後：</strong>不予退款；但若因我方原因無法完成，我會全額退還加購費用。</li>
   </ul>
 
-  <h2>支援與更新續約</h2>
+  <h2>維護續約</h2>
   <p>若您在續約付款後 14 天內提出申請，且在此期間未提出任何支援請求，可全額退款。超過此期間則不予退款，續約將持續完整的 12 個月。</p>
 
   <h2>系統整合與客製化開發</h2>

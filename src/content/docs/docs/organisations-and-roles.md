@@ -1,15 +1,15 @@
 ---
 title: Organisations & Roles
-description: Tenants, users and editable per-organisation roles in PACSinfra.
+description: Tenants, users, and the organisation and project roles in PACSinfra.
 ---
 
 Each organisation is a separate tenant. Users see only the studies, reports and projects of their own organisation. Isolation is verified by an automated isolation test suite.
 
 ## Roles
 
-Each organisation has editable roles, built from fine-grained [permissions](/docs/permissions/).
+Everyone in an organisation is an **admin** or a **member**. Studies are seen through projects, where each person is an **owner**, **contributor** or **reader**; a reader can be view-only, without download. Being an admin opens no study on its own. See [permissions](/docs/permissions/).
 
-TODO: list the default roles and what they can do.
+Every account signs in with a password and an authenticator-app code (two-factor).
 
 ## Managing users
 

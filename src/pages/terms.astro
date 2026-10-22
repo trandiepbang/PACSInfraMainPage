@@ -7,23 +7,23 @@ import { formatPrice } from '../lib/format';
 
 const email = site.supportEmail;
 const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
-const selfHosted = tier('self-hosted');
-const deployed = tier('deployed');
+const plan = tier('self-hosted');
+const addOn = pricing.addOn;
 ---
 
 <LegalLayout
   title="Terms of service"
   description="The terms for buying and using PACSinfra: licence, support and updates, deployment, payment and refunds, the demo, medical use and liability."
-  updated="13 October 2026"
+  updated="22 October 2026"
   draft={false}
 >
   <p>PACSinfra is developed and sold by Bang Tran, a sole operator based in Taipei, Taiwan (“I”, “me”). By purchasing, downloading or using PACSinfra, or by using the demo at demo.pacsinfra.com, you agree to these terms.</p>
 
   <h2>1. What PACSinfra is</h2>
-  <p>PACSinfra is self-hosted medical imaging software built on Orthanc and OHIF. You install and run it on your own infrastructure. I do not host, store or process any imaging data or patient data on your behalf. If you buy the {deployed.name} plan, I set PACSinfra up for you, but the data still stays on servers you own or control.</p>
+  <p>PACSinfra is self-hosted medical imaging software built on Orthanc and OHIF. You install and run it on your own infrastructure. I do not host, store or process any imaging data or patient data on your behalf. The {plan.name} plan includes setting PACSinfra up for you, but the data still stays on servers you own or control.</p>
 
   <h2>2. Licence</h2>
-  <p>When you buy the {selfHosted.name} or {deployed.name} plan, you receive a copy of the PACSinfra source code and a perpetual, non-exclusive, non-transferable licence to:</p>
+  <p>When you buy the {plan.name} plan, you receive a copy of the PACSinfra source code and a perpetual, non-exclusive, non-transferable licence to:</p>
   <ul>
     <li>install and run PACSinfra on servers owned or controlled by your organisation, without limit on users, studies or instances;</li>
     <li>modify the source code for your own use.</li>
@@ -38,11 +38,11 @@ const deployed = tier('deployed');
   <p>Orthanc, OHIF and other third-party components keep their own open-source licences. Those licences apply to those components regardless of these terms.</p>
 
   <h2>3. Support and updates</h2>
-  <p>Both plans include 12 months of support and updates from the purchase date: bug fixes, new releases, and email support with a best-effort response within 2 business days (Taiwan time). After 12 months you keep the software and every version you have already received. Continued support and updates require a renewal, currently {formatPrice(selfHosted.renewal!)} per year for {selfHosted.name} and {formatPrice(deployed.renewal!)} per year for {deployed.name}, or the price shown on the website at the time.</p>
+  <p>The {plan.name} plan includes 12 months of maintenance and updates from the purchase date: debugging and fixing errors in PACSinfra as delivered, new releases, and email support with a best-effort response within 2 business days (Taiwan time). After 12 months you keep the software and every version you have already received. Continued maintenance and updates require a renewal, currently {formatPrice(plan.renewal!)} per year, or the price shown on the website at the time.</p>
   <p>Support means helping you use PACSinfra as delivered. Custom development, integration with your systems and on-site work are separate paid services, quoted individually.</p>
 
-  <h2>4. Deployment services</h2>
-  <p>If you buy the {deployed.name} plan, I will install and configure PACSinfra on infrastructure you provide, and hand it over to your team. You are responsible for that infrastructure, its security, its backups and its availability. The scope of a deployment is what is written in the order confirmation; anything beyond that is quoted separately.</p>
+  <h2>4. Setup, data migration and the add-on</h2>
+  <p>The {plan.name} plan includes installing and configuring PACSinfra on infrastructure you provide, handing the source code over to your team, and migrating your existing studies and data into it. The {addOn.name} add-on ({formatPrice(addOn.price)}) includes installing a DICOM node inside your network, connecting it to your modalities and existing PACS, and setting up the worklist. You are responsible for that infrastructure, its security, its backups and its availability, and for giving access to the data to be migrated. The scope of the setup, the migration and the add-on is what is written in the order confirmation; anything beyond that is quoted separately.</p>
 
   <h2>5. Payment and refunds</h2>
   <p>Payment is by invoice and bank transfer, on the terms stated in the invoice. Prices are in {pricing.currency}.</p>
