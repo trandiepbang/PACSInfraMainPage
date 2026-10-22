@@ -40,7 +40,7 @@ const en: Step[] = [
   {
     icon: 'cpu',
     title: 'Setup',
-    body: 'I install PACSinfra on your server, turn on two-factor sign-in, and create your organisation, users and projects with you.',
+    body: 'I install PACSinfra on your server.',
   },
   {
     icon: 'branch',
@@ -80,7 +80,7 @@ const zhTw: Step[] = [
     title: '準備您的伺服器',
     body: '請準備一台伺服器（放在院內或您自己的雲端皆可），並為我建立跳板主機帳號。我不會以其他方式要求存取。',
   },
-  { icon: 'cpu', title: '建置', body: '我在您的伺服器上安裝 PACSinfra、啟用雙重驗證登入，並與您一起建立機構、使用者與專案。' },
+  { icon: 'cpu', title: '建置', body: '我在您的伺服器上安裝 PACSinfra。' },
   { icon: 'branch', title: '交接與支付尾款 50%', body: '您的團隊會取得完整原始碼，並由我說明系統如何建置與運作。其餘 50% 於交接時開立發票。' },
   {
     icon: 'transfer',
