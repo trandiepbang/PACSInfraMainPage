@@ -24,7 +24,7 @@ export const pricingZhTw: {
   addOn: {
     name: 'DICOM 節點連接器與工作清單',
     description:
-      '安裝在醫院網路內的 DICOM 節點，接收來自影像儀器與既有 PACS 的檢查，並經由加密連線轉送，另附影像儀器工作清單（Modality Worklist）。由我們為您完成安裝與連接。',
+      '安裝在醫院網路內的 DICOM 節點，接收來自影像儀器與既有 PACS 的檢查，並經由加密連線轉送，另附影像儀器工作清單（Modality Worklist）。由我們為您完成安裝與連接，並附完整原始碼。',
   },
   tiers: {
     'self-hosted': {

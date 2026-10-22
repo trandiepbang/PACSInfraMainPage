@@ -54,6 +54,7 @@ const en = {
     { group: 'Connecting your scanners' },
     { icon: 'node', label: 'DICOM node connector', addOn: true },
     { icon: 'clipboard', label: 'Modality worklist', addOn: true },
+    { icon: 'branch', label: 'Source code of the DICOM node and worklist', addOn: true },
   ] as TableRow[],
   features: [
     { icon: 'users', title: 'Projects and permissions', body: 'Studies are shared through projects, where each person is an owner, contributor or reader. Readers can be view-only.' },
@@ -90,6 +91,7 @@ const zhTw: typeof en = {
     { group: '連接您的影像儀器' },
     { icon: 'node', label: 'DICOM 節點連接器', addOn: true },
     { icon: 'clipboard', label: '影像儀器工作清單', addOn: true },
+    { icon: 'branch', label: 'DICOM 節點與工作清單的原始碼', addOn: true },
   ],
   summary: '上傳 DICOM 檢查、進行判讀並撰寫報告，全部在您自己的伺服器上完成，病患資料始終在您的掌控之中。',
   pixelCaveat: '去識別化涵蓋 DICOM 中繼資料，但不包含直接燒錄在影像像素中的文字。',

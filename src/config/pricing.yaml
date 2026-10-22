@@ -30,7 +30,7 @@ tiers:
 addOn:
   name: DICOM node connector and worklist
   price: 1000
-  description: A DICOM node inside your hospital network that receives studies from your modalities and existing PACS and forwards them over an encrypted connection, plus a modality worklist. Set up and connected for you.
+  description: A DICOM node inside your hospital network that receives studies from your modalities and existing PACS and forwards them over an encrypted connection, plus a modality worklist. Set up and connected for you, with its full source code.
 
 licenceSummary: >
   One organisation per licence. You may modify the code. You may not resell or redistribute it.
