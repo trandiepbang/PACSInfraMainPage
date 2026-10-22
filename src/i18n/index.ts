@@ -15,6 +15,7 @@ const translated = new Set([
   '/',
   '/security',
   '/technology',
+  '/how-it-works',
   '/pricing',
   '/contact',
   '/use-cases/clinics',
