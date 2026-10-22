@@ -130,7 +130,7 @@ const en = {
       },
       {
         q: 'What do we need to run it?',
-        a: 'A single server that can run Docker Compose. The first-year plan includes setting it up on your server and handing the full source code over to your team; moving your existing studies in is quoted separately. I have run PACS in production long enough to help you scale it as your volume grows.',
+        a: 'A single server, in your building or your own cloud. The first-year plan includes setting it up on your server and handing the full source code over to your team; moving your existing studies in is quoted separately. I have run PACS in production long enough to help you scale it as your volume grows.',
       },
       {
         q: 'Who can see which studies?',
@@ -429,7 +429,7 @@ const zhTw: UI = {
       },
       {
         q: '運作需要什麼環境？',
-        a: '一台能執行 Docker Compose 的伺服器即可。第一年方案包含在您的伺服器上完成建置，並將完整原始碼交接給您的團隊；移轉既有的檢查資料則另行報價。我在正式環境維運 PACS 多年，能協助您隨著影像量成長擴充系統。',
+        a: '一台伺服器即可，放在院內或您自己的雲端皆可。第一年方案包含在您的伺服器上完成建置，並將完整原始碼交接給您的團隊；移轉既有的檢查資料則另行報價。我在正式環境維運 PACS 多年，能協助您隨著影像量成長擴充系統。',
       },
       {
         q: '誰可以看到哪些檢查？',
