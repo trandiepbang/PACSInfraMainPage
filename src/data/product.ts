@@ -57,7 +57,7 @@ const en = {
   ] as TableRow[],
   features: [
     { icon: 'users', title: 'Projects and permissions', body: 'Studies are shared through projects, where each person is an owner, contributor or reader. Readers can be view-only.' },
-    { icon: 'key', title: 'Two-factor sign-in', body: 'Every sign-in needs a code from an authenticator app. A computer can be trusted for 30 days.' },
+    { icon: 'key', title: 'Two-factor sign-in', body: 'Sign-in supports two-factor authentication (2FA).' },
     { icon: 'upload', title: 'DICOM upload and ingest', body: 'Upload single files or ZIP archives, with validation and automatic ingest.' },
     { icon: 'eye', title: 'DICOM viewer and study browsing', body: 'View every series in the browser with the built-in OHIF viewer. Study lists with search, filters and previews.' },
     { icon: 'mic', title: 'Radiology reports with voice dictation', body: 'Draft, finalise, version and export reports to PDF. Dictate them by voice, recognised on the doctor’s own computer.' },
@@ -111,7 +111,7 @@ const zhTw: typeof en = {
   ],
   features: [
     { icon: 'users', title: '專案與權限', body: '檢查透過專案分享，每個人在專案中是擁有者、貢獻者或閱讀者。閱讀者可設為僅能檢視。' },
-    { icon: 'key', title: '雙重驗證登入', body: '每次登入都需要驗證器 App 的驗證碼。電腦可設為信任 30 天。' },
+    { icon: 'key', title: '雙重驗證登入', body: '登入支援雙重驗證（2FA）。' },
     { icon: 'upload', title: 'DICOM 上傳與匯入', body: '上傳單一檔案或 ZIP 壓縮檔，自動驗證並匯入。' },
     { icon: 'eye', title: 'DICOM 檢視器與檢查瀏覽', body: '以內建的 OHIF 檢視器在瀏覽器中檢視每個序列。可搜尋與篩選的檢查清單與預覽圖。' },
     { icon: 'mic', title: '放射科報告與語音口述', body: '草稿、定稿、版本紀錄並可匯出 PDF。也能以語音口述，在醫師自己的電腦上辨識。' },

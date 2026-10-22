@@ -137,7 +137,7 @@ const en = {
       },
       {
         q: 'How is sign-in protected?',
-        a: 'Every account signs in with a password and a code from an authenticator app (two-factor). A computer can be trusted for 30 days, and admins can reset a lost authenticator.',
+        a: 'PACSinfra supports two-factor authentication (2FA) at sign-in.',
       },
       { q: 'Can we integrate it with our own systems?', a: 'Yes. PACSinfra has a full REST API with Swagger docs.' },
     ],
@@ -416,7 +416,7 @@ const zhTw: UI = {
       },
       {
         q: '登入如何受到保護？',
-        a: '每個帳號登入時都需要密碼加上驗證器 App 的驗證碼（雙重驗證）。電腦可設為信任 30 天，管理員也能為遺失驗證器的成員重設。',
+        a: 'PACSinfra 登入支援雙重驗證（2FA）。',
       },
       { q: '可以與我們既有的系統整合嗎？', a: '可以。PACSinfra 提供完整的 REST API 與 Swagger 文件。' },
     ],

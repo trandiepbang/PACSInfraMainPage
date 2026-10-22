@@ -9,7 +9,7 @@ Each organisation is a separate tenant. Users see only the studies, reports and 
 
 Everyone in an organisation is an **admin** or a **member**. Studies are seen through projects, where each person is an **owner**, **contributor** or **reader**; a reader can be view-only, without download. Being an admin opens no study on its own. See [permissions](/docs/permissions/).
 
-Every account signs in with a password and an authenticator-app code (two-factor).
+Sign-in supports two-factor authentication (2FA).
 
 ## Managing users
 
