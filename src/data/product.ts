@@ -10,7 +10,7 @@ export interface Feature {
 
 export type TableRow =
   | { group: string }
-  | { icon: IconName; label: string; plan?: boolean; addOn?: boolean };
+  | { icon: IconName; label: string; plan?: boolean; addOn?: boolean; quoted?: boolean };
 
 const en = {
   summary:
@@ -49,8 +49,8 @@ const en = {
     { group: 'The service' },
     { icon: 'server', label: 'Setup on your own server', plan: true },
     { icon: 'branch', label: 'Full source code, handed over to your team', plan: true },
-    { icon: 'transfer', label: 'Migration of your existing studies', plan: true },
     { icon: 'wrench', label: '12 months of maintenance, debugging and fixes', plan: true },
+    { icon: 'transfer', label: 'Migration of your existing studies', quoted: true },
     { group: 'Connecting your scanners' },
     { icon: 'node', label: 'DICOM node connector', addOn: true },
     { icon: 'clipboard', label: 'Modality worklist', addOn: true },
@@ -85,8 +85,8 @@ const zhTw: typeof en = {
     { group: '服務' },
     { icon: 'server', label: '在您自己的伺服器上建置', plan: true },
     { icon: 'branch', label: '完整原始碼，交接給您的團隊', plan: true },
-    { icon: 'transfer', label: '移轉您既有的檢查資料', plan: true },
     { icon: 'wrench', label: '12 個月維護、除錯與修正', plan: true },
+    { icon: 'transfer', label: '移轉您既有的檢查資料', quoted: true },
     { group: '連接您的影像儀器' },
     { icon: 'node', label: 'DICOM 節點連接器', addOn: true },
     { icon: 'clipboard', label: '影像儀器工作清單', addOn: true },

@@ -17,13 +17,12 @@ tiers:
     billing: one-time        # one-time | yearly | monthly
     highlight: true
     callout: DICOM viewer, reports, voice dictation, share links and live chat, all for $2,000
-    description: We set it up on your server, hand the full source code over to your team, move your existing studies in, and look after it for a year.
+    description: We set it up on your server, hand the full source code over to your team, and look after it for a year.
     features:
       - Every feature included - DICOM viewer, radiology reports with voice dictation, share links and live chat with patients
       - Set up on your own server, cloud or Kubernetes cluster
       - Handover of the full source code to your team, with a walkthrough
       - Lifetime licence for one organisation
-      - Migration of your existing studies and data
       - 12 months of maintenance, debugging and fixes for any error
     renewal: 1000              # per year, after the first 12 months; shown on the card and in /terms
 
@@ -43,6 +42,8 @@ faq:
     a: Debugging and fixing any error in PACSinfra as delivered, plus updates and help by email, with a best-effort reply within 2 business days (Taiwan time). Custom development, integration with your other systems and on-site work are separate paid services, quoted individually.
   - q: What is your refund policy?
     a: Because you receive the full source code, refunds are not available once you have received it, except where required by law. There are a few exceptions, such as orders not yet delivered, payments made in error, setup before work starts and renewals cancelled within 14 days; see the refund policy for details. Try the live demo first, or email me with any questions before you buy.
+  - q: How much does data migration cost?
+    a: It is quoted per project. The cost depends on how many studies you have, which PACS or archive they are in now and how clean the data is, so I look at your system first and then give you a fixed quote. Like everything else, migration runs inside your own infrastructure.
   - q: Can we pay by invoice or bank transfer?
     a: Yes. Payment is by invoice and bank transfer, on the terms stated in the invoice.
   - q: What happens after 12 months?

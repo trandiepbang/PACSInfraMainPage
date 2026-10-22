@@ -32,6 +32,10 @@ const description =
         <p class="mt-1 text-2xl font-semibold tracking-tight">+{formatPrice(pricing.addOn.price)}</p>
         <p class="mt-2 text-slate-600 dark:text-slate-300">{pricing.addOn.description}</p>
       </div>
+      <div class="mx-auto max-w-4xl rounded-xl border border-dashed border-line px-6 py-5 text-center dark:border-line-dark">
+        <p class="font-semibold">{t.migrationTitle}</p>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">{t.migrationText}</p>
+      </div>
       <div class="mx-auto max-w-4xl">
         <FeatureTable />
       </div>

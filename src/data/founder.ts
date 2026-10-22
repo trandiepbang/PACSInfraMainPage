@@ -17,7 +17,7 @@ const en = {
   story: [
     'I’m Bang Tran, the engineer who builds PACSinfra and writes its code. I have more than eight years of experience in the field, working across React, DuckDB, FastAPI and Kubernetes.',
     'For more than four years I built and ran medical imaging and PACS systems in production for a university healthcare research group in Australia. PACSinfra is built on that experience, and on what running those systems every day taught me.',
-    'Medical imaging is a field I find genuinely interesting. When you choose PACSinfra, I set it up on your server, hand the full source code over to your team, move your existing studies in, and look after it. Having run these systems in production, I can help you scale it as your sites, users and study volume grow.',
+    'Medical imaging is a field I find genuinely interesting. When you choose PACSinfra, I set it up on your server, hand the full source code over to your team, help move your existing studies in, and look after it. Having run these systems in production, I can help you scale it as your sites, users and study volume grow.',
   ],
   highlights: [
     { value: '4+ years', label: 'running PACS medical imaging infrastructure in production for a university healthcare research group in Australia' },
@@ -37,7 +37,7 @@ const zhTw: typeof en = {
   story: [
     '我是陳業邦（Bang Tran），親自打造 PACSinfra 並撰寫其程式碼的工程師。我在這個領域擁有八年以上經驗，專長涵蓋 React、DuckDB、FastAPI 與 Kubernetes。',
     '過去四年多來，我為澳洲一所大學的醫療研究團隊，建置並在正式環境中維運醫療影像與 PACS 系統。PACSinfra 正是建立在這些經驗之上，也融入了日復一日實際維運所累積的心得。',
-    '醫療影像是我真心感興趣的領域。選擇 PACSinfra，我會在您的伺服器上完成建置、將完整原始碼交接給您的團隊、移轉您既有的檢查資料，並持續維護。憑藉在正式環境中維運這些系統的經驗，我能協助您隨著院所、使用者與影像量的成長擴充系統。',
+    '醫療影像是我真心感興趣的領域。選擇 PACSinfra，我會在您的伺服器上完成建置、將完整原始碼交接給您的團隊、協助移轉您既有的檢查資料，並持續維護。憑藉在正式環境中維運這些系統的經驗，我能協助您隨著院所、使用者與影像量的成長擴充系統。',
   ],
   highlights: [
     { value: '4 年以上', label: '為澳洲一所大學的醫療研究團隊，在正式環境中維運 PACS 醫療影像基礎設施' },
