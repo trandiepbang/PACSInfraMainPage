@@ -37,6 +37,10 @@ const en = {
     },
   ],
   note: 'Load and ingest figures measured with k6 on a single 5-CPU, 8 GB machine, with the load generator running on the same machine. No cluster, no CDN.',
+  expertTitle: 'Growing past one server? I have done this before.',
+  expertText:
+    'I have run PACS and medical imaging infrastructure in production for more than four years, for a university healthcare research group in Australia. As you grow, I can scale your installation with you: more DICOM workers, the database and image storage on their own servers, and more sites connected through DICOM nodes.',
+  expertCta: 'Talk to me about scaling',
 };
 
 const zhTw: typeof en = {
@@ -66,6 +70,10 @@ const zhTw: typeof en = {
     },
   ],
   note: '負載與匯入數據皆以 k6 在單一台 5 CPU、8 GB 記憶體的機器上測得，負載產生器也在同一台機器上執行。無叢集、無 CDN。',
+  expertTitle: '規模超過一台伺服器？我做過這件事。',
+  expertText:
+    '我在正式環境中維運 PACS 與醫療影像基礎設施超過四年，服務對象是澳洲一所大學的醫療研究團隊。隨著您的成長，我可以和您一起擴展系統：增加 DICOM 處理程式、將資料庫與影像儲存放到各自的伺服器，並透過 DICOM 節點連接更多院所。',
+  expertCta: '與我聊聊系統擴展',
 };
 
 export const capacity: Record<Locale, typeof en> = { en, 'zh-tw': zhTw };
