@@ -63,7 +63,7 @@ const en = {
     overviewEyebrow: 'Architecture',
     overviewTitle: 'From the scanner to the screen',
     overviewIntro:
-      'Studies travel from the hospital to PACSinfra over an encrypted connection, through a DICOM node inside the hospital network or by web upload. Inside PACSinfra, the API checks permissions and records an audit entry before any image reaches a browser or the mobile app.',
+      'Studies travel from the hospital to PACSinfra over an encrypted connection, through a DICOM node inside the hospital network or by web upload. Inside PACSinfra, the API checks permissions and records an audit entry before any image reaches a browser or the mobile app. We can set up this whole path for you on our own stack: the PACSinfra server, the DICOM node inside your network, and the encrypted link between them.',
     screenshotsEyebrow: 'Product',
     screenshotsTitle: 'A look inside',
     demoLimitedTitle: 'The demo is a limited preview.',
@@ -342,7 +342,7 @@ const zhTw: UI = {
     overviewEyebrow: '系統架構',
     overviewTitle: '從掃描儀到螢幕',
     overviewIntro:
-      '影像可透過醫院網路內的 DICOM 節點，或經由網頁上傳，透過加密連線從醫院傳送至 PACSinfra。在 PACSinfra 內部，API 會先檢查權限並寫入稽核紀錄，影像才會送到瀏覽器或行動 App。',
+      '影像可透過醫院網路內的 DICOM 節點，或經由網頁上傳，透過加密連線從醫院傳送至 PACSinfra。在 PACSinfra 內部，API 會先檢查權限並寫入稽核紀錄，影像才會送到瀏覽器或行動 App。我們能以自家的技術架構為您建置整條路徑：PACSinfra 伺服器、您網路內的 DICOM 節點，以及兩者之間的加密連線。',
     screenshotsEyebrow: '產品畫面',
     screenshotsTitle: '一窺產品樣貌',
     demoLimitedTitle: '展示版僅為有限預覽。',
