@@ -15,6 +15,7 @@ export function mainNav(locale: Locale) {
   return [
     { href: '/security', label: t.security },
     { href: '/technology', label: t.technology },
+    { href: '/how-it-works', label: t.howItWorks },
     { href: '/pricing', label: t.pricing },
   ].map((l) => ({ ...l, href: localizePath(l.href, locale) }));
 }

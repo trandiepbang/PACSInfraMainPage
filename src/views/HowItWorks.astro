@@ -1,0 +1,55 @@
+---
+// "How it works": the buying process from the first call to renewal, as numbered steps.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import CtaBand from '../components/CtaBand.astro';
+import DiagramIcon from '../components/DiagramIcon.astro';
+import { pricing } from '../config';
+import { process } from '../data/process';
+import { formatPrice } from '../lib/format';
+import { getLocale, localizePath } from '../i18n';
+import { ui } from '../i18n/ui';
+
+const locale = getLocale(Astro.url);
+const t = ui[locale].howItWorks;
+const plan = pricing.tiers[0];
+const fill = (text: string) =>
+  text
+    .replace('{plan}', formatPrice(plan.price))
+    .replace('{addOn}', `+${formatPrice(pricing.addOn.price)}`)
+    .replace('{renewal}', plan.renewal ? formatPrice(plan.renewal) : '');
+const steps = process[locale].map((s) => ({ ...s, body: fill(s.body) }));
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription}>
+  <PageHeader eyebrow={t.eyebrow} title={t.title} intro={t.intro} />
+
+  <Section>
+    <ol class="mx-auto max-w-3xl">
+      {steps.map((s, i) => (
+        <li class="relative flex gap-5 pb-10 last:pb-0">
+          {i < steps.length - 1 && (
+            <span class="absolute left-5 top-12 -bottom-0 w-px bg-line dark:bg-line-dark" aria-hidden="true"></span>
+          )}
+          <span class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-4 ring-white dark:bg-accent-dark/15 dark:text-accent-dark dark:ring-night">
+            <DiagramIcon name={s.icon} size={20} />
+          </span>
+          <div class="pt-1.5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              {t.step} {i + 1}
+              {s.optional && <span class="ml-2 rounded-full border border-line px-2 py-0.5 normal-case tracking-normal dark:border-line-dark">{t.optional}</span>}
+            </p>
+            <h2 class="mt-1 text-lg font-semibold">{s.title}</h2>
+            <p class="mt-1.5 leading-7 text-slate-600 dark:text-slate-300">{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p class="mx-auto mt-12 max-w-3xl text-sm text-slate-600 dark:text-slate-400">
+      {t.legalBefore}<a href={localizePath('/terms', locale)} class="link">{t.legalTerms}</a>{t.legalMiddle}<a href={localizePath('/refund', locale)} class="link">{t.legalRefund}</a>{t.legalAfter}
+    </p>
+  </Section>
+
+  <CtaBand />
+</BaseLayout>
