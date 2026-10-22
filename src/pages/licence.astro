@@ -12,11 +12,11 @@ const plans = pricing.tiers.map((t) => t.name).join(' or ');
 <LegalLayout
   title="Licence"
   description="The PACSinfra Source Licence: one organisation per licence, modify the code freely, no resale or redistribution, and third-party components under their own licences."
-  updated="13 October 2026"
+  updated="22 October 2026"
   draft={false}
 >
   <h2>Summary</h2>
-  <p>One organisation per licence. You may modify the code. You may not resell or redistribute it. You keep the software forever; support and updates are for 12 months unless renewed. Third-party components (Orthanc, OHIF and others) keep their own open-source licences.</p>
+  <p>One organisation per licence. You may modify the code. You may not resell or redistribute it. You keep the software forever; maintenance and updates are for 12 months unless renewed. Third-party components (Orthanc, OHIF and others) keep their own open-source licences.</p>
 
   <h2>Full licence</h2>
   <p><strong>PACSinfra Source Licence, version 1.0</strong></p>
@@ -56,11 +56,11 @@ const plans = pricing.tiers.map((t) => t.name).join(' or ');
   <h3>5. Third-Party Components</h3>
   <p>Third-Party Components are not licensed under this agreement. Each keeps its own licence, which you must comply with. In particular, Orthanc is licensed under GPLv3 or later: the PACSinfra application communicates with Orthanc over its REST API and does not modify or link against Orthanc’s code, so this licence covers only the PACSinfra application code. If you modify Orthanc itself, its GPL licence applies to those changes. Garage, which PACSinfra uses for upload staging, is licensed under AGPLv3 and is likewise run as a separate program and reached over its S3 API.</p>
 
-  <h3>6. Support and updates</h3>
-  <p>Your licence includes 12 months of support and updates from the purchase date, as described in the <a href="/terms/">Terms of Service</a>. When that period ends:</p>
+  <h3>6. Maintenance and updates</h3>
+  <p>Your licence includes 12 months of maintenance and updates from the purchase date, as described in the <a href="/terms/">Terms of Service</a>. When that period ends:</p>
   <ul>
     <li>this licence continues without limit of time for all versions you received;</li>
-    <li>you no longer receive updates or support unless you renew;</li>
+    <li>you no longer receive updates or maintenance unless you renew;</li>
     <li>renewals restart a 12-month period at the price published on pacsinfra.com.</li>
   </ul>
 

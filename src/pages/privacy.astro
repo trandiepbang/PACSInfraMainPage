@@ -3,6 +3,9 @@
 // - pacsinfra.com loads no analytics, no third-party scripts or fonts, and sets no cookies; it stores
 //   the theme and language choice in localStorage only.
 // - PACSinfra sends nothing to the vendor; its only outbound call is optional Google sign-in.
+//   Voice dictation is on-device only (no cloud speech fallback).
+// - Setup, migration and maintenance: vendor access only via a client-provided jump host; patient
+//   data is never copied to vendor machines (terms section 4). DPA/BAA signed on request.
 // - Demo: DEMO_TTL_HOURS=72 deletes a demo company and its uploads; demo mode never retains patient
 //   identity. Demo audit retention must be AUDIT_RETENTION_MONTHS=3 on the demo server (90 days),
 //   and its nginx/Docker logs must rotate within 30 days.
@@ -16,15 +19,16 @@ const email = site.supportEmail;
 <LegalLayout
   title="Privacy policy"
   description="What personal data PACSinfra collects through pacsinfra.com, the demo, sales and support, and what happens to it. Patient data never leaves your own servers."
-  updated="13 October 2026"
+  updated="22 October 2026"
   draft={false}
 >
   <p>This policy explains what personal data I, Bang Tran, collect when you use pacsinfra.com, try the demo at demo.pacsinfra.com, or buy PACSinfra, and what I do with it. I am a sole operator based in Taipei, Taiwan, and I handle personal data in line with Taiwan’s Personal Data Protection Act (個人資料保護法).</p>
 
-  <p><strong>The short version:</strong> I collect as little as I can, I don’t sell it, and your patient data never comes to me because PACSinfra runs on your own servers.</p>
+  <p><strong>The short version:</strong> I collect as little as I can, I don’t sell it, and your patient data stays on your own servers. When I set up, migrate or maintain PACSinfra for you, I work inside those servers through a jump host you provide, and never copy patient data out.</p>
 
   <h2>1. The software itself</h2>
   <p>PACSinfra is self-hosted. When you run it, all images, patient data, users and audit logs are stored on infrastructure you control. The software does not send any data to me: no telemetry, no usage analytics and no licence-check callbacks. The only outside service it can contact is Google, and only if you choose to turn on “Sign in with Google” in your own installation.</p>
+  <p>If you buy setup, data migration or maintenance, I access your installation remotely through a jump host you provide, only to do that work and on your instructions. I act as your processor: I do not copy studies or patient data to my own computers, storage or cloud accounts, and I keep no copies when the work ends. Section 4 of the <a href="/terms/">terms</a> sets this out, and I will sign a data processing agreement or HIPAA business associate agreement on request.</p>
   <p>You are the data controller for everything inside your installation, and this policy does not cover that data.</p>
 
   <h2>2. Data I collect</h2>

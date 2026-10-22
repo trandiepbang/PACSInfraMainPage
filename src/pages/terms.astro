@@ -13,14 +13,14 @@ const addOn = pricing.addOn;
 
 <LegalLayout
   title="Terms of service"
-  description="The terms for buying and using PACSinfra: licence, support and updates, deployment, payment and refunds, the demo, medical use and liability."
+  description="The terms for buying and using PACSinfra: licence, maintenance and updates, setup and access to your data, payment and refunds, the demo, medical use and liability."
   updated="22 October 2026"
   draft={false}
 >
   <p>PACSinfra is developed and sold by Bang Tran, a sole operator based in Taipei, Taiwan (“I”, “me”). By purchasing, downloading or using PACSinfra, or by using the demo at demo.pacsinfra.com, you agree to these terms.</p>
 
   <h2>1. What PACSinfra is</h2>
-  <p>PACSinfra is self-hosted medical imaging software built on Orthanc and OHIF. You install and run it on your own infrastructure. I do not host, store or process any imaging data or patient data on your behalf. The {plan.name} plan includes setting PACSinfra up for you, but the data still stays on servers you own or control.</p>
+  <p>PACSinfra is self-hosted medical imaging software built on Orthanc and OHIF. You install and run it on your own infrastructure. I do not host it for you, and imaging and patient data stay on servers you own or control. When I set up, migrate or maintain your installation, I work inside it through access you give me, as described in section 4.</p>
 
   <h2>2. Licence</h2>
   <p>When you buy the {plan.name} plan, you receive a copy of the PACSinfra source code and a perpetual, non-exclusive, non-transferable licence to:</p>
@@ -37,12 +37,21 @@ const addOn = pricing.addOn;
   <p>One licence covers one organisation (one legal entity). Contractors working for that organisation may use it on its behalf.</p>
   <p>Orthanc, OHIF and other third-party components keep their own open-source licences. Those licences apply to those components regardless of these terms.</p>
 
-  <h2>3. Support and updates</h2>
+  <h2>3. Maintenance and updates</h2>
   <p>The {plan.name} plan includes 12 months of maintenance and updates from the purchase date: debugging and fixing errors in PACSinfra as delivered, new releases, and email support with a best-effort response within 2 business days (Taiwan time). After 12 months you keep the software and every version you have already received. Continued maintenance and updates require a renewal, currently {formatPrice(plan.renewal!)} per year, or the price shown on the website at the time.</p>
-  <p>Support means helping you use PACSinfra as delivered. Custom development, integration with your systems and on-site work are separate paid services, quoted individually.</p>
+  <p>Maintenance covers errors in PACSinfra as delivered, and helping you use it. It does not cover errors caused by your own modifications, your infrastructure or third-party systems, although I will help you find the cause. Custom development, integration with your systems and on-site work are separate paid services, quoted individually.</p>
 
-  <h2>4. Setup, data migration and the add-on</h2>
+  <h2>4. Setup, data migration, the add-on and access to your data</h2>
   <p>The {plan.name} plan includes installing and configuring PACSinfra on infrastructure you provide, handing the source code over to your team, and migrating your existing studies and data into it. The {addOn.name} add-on ({formatPrice(addOn.price)}) includes installing a DICOM node inside your network, connecting it to your modalities and existing PACS, and setting up the worklist. You are responsible for that infrastructure, its security, its backups and its availability, and for giving access to the data to be migrated. The scope of the setup, the migration and the add-on is what is written in the order confirmation; anything beyond that is quoted separately.</p>
+  <h3>Access to your systems and patient data</h3>
+  <p>To set up and migrate your installation, and to debug and fix errors during maintenance, I need remote access to it. You provide that access through a jump host (bastion server) in your own environment, with an account for me that you control and can disable at any time. I do not ask for access any other way. While I have access:</p>
+  <ul>
+    <li>I act only on your written instructions and only for the work you bought. You remain the data controller (or covered entity) for all imaging and patient data.</li>
+    <li>Data migration runs between your existing systems and your PACSinfra server, inside your infrastructure. Studies and patient data never pass through, or are copied to, my own computers, storage or cloud accounts.</li>
+    <li>I look at patient data only when a task requires it, keep it confidential, and tell you without undue delay if I become aware of a breach affecting it.</li>
+    <li>When the work ends you can remove my access. I keep no copies of your data.</li>
+  </ul>
+  <p>On request, I will sign a data processing agreement or, where HIPAA applies, a business associate agreement covering this access.</p>
 
   <h2>5. Payment and refunds</h2>
   <p>Payment is by invoice and bank transfer, on the terms stated in the invoice. Prices are in {pricing.currency}.</p>
@@ -58,15 +67,16 @@ const addOn = pricing.addOn;
     <li>clinical decisions made using images viewed in PACSinfra;</li>
     <li>compliance with the patient-data laws that apply to you (for example HIPAA, GDPR or Taiwan’s Personal Data Protection Act).</li>
   </ul>
+  <p>Text produced by voice dictation must be checked by the doctor before a report is finalised. Chat on share links is not monitored and is not for medical emergencies; tell your patients so.</p>
 
   <h2>8. Your responsibilities</h2>
-  <p>You are responsible for securing your installation: access control configuration, network exposure, TLS, backups, operating system updates and monitoring. I provide software; I do not operate it for you.</p>
+  <p>You are responsible for securing your installation: access control configuration, network exposure, TLS, backups, operating system updates and monitoring. I provide the software and the setup, migration and maintenance you bought; I do not run your installation day to day.</p>
 
   <h2>9. Warranty disclaimer</h2>
-  <p>PACSinfra is provided “as is”. I do not guarantee that it is error-free, uninterrupted or suitable for any particular purpose. I will fix reported bugs within the support period on a best-effort basis, but I cannot guarantee a fix for every issue.</p>
+  <p>PACSinfra is provided “as is”. I do not guarantee that it is error-free, uninterrupted or suitable for any particular purpose. I will fix reported bugs within the maintenance period on a best-effort basis, but I cannot guarantee a fix for every issue.</p>
 
   <h2>10. Limitation of liability</h2>
-  <p>To the maximum extent permitted by law, my total liability to you for any claim arising out of PACSinfra, support or deployment services is limited to the amount you paid me in the 12 months before the claim. I am not liable for indirect or consequential losses, including lost data, lost revenue, regulatory penalties or clinical outcomes.</p>
+  <p>To the maximum extent permitted by law, my total liability to you for any claim arising out of PACSinfra or the setup, migration and maintenance services is limited to the amount you paid me in the 12 months before the claim. I am not liable for indirect or consequential losses, including lost data, lost revenue, regulatory penalties or clinical outcomes.</p>
 
   <h2>11. Termination</h2>
   <p>If you breach the licence terms in section 2 and do not fix the breach within 30 days of written notice, the licence ends and you must stop using PACSinfra. Sections 7, 9 and 10 survive termination.</p>
