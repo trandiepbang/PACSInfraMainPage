@@ -1,6 +1,6 @@
 ---
 // Terms of service. Must stay consistent with pricing.yaml (plan names, what support and updates
-// include, renewal prices) and with the privacy policy (demo deletion after 72 hours).
+// include, renewal prices) and with the privacy policy (demo deletion after 24 hours).
 import LegalLayout from '../layouts/LegalLayout.astro';
 import { pricing, site } from '../config';
 import { formatPrice } from '../lib/format';
@@ -14,7 +14,7 @@ const addOn = pricing.addOn;
 <LegalLayout
   title="Terms of service"
   description="The terms for buying and using PACSinfra: licence, maintenance and updates, setup and access to your data, payment and refunds, the demo, medical use and liability."
-  updated="22 October 2026"
+  updated="24 October 2026"
   draft={false}
 >
   <p>PACSinfra is developed and sold by Bang Tran, a sole operator based in Taipei, Taiwan (“I”, “me”). By purchasing, downloading or using PACSinfra, or by using the demo at demo.pacsinfra.com, you agree to these terms.</p>
@@ -58,7 +58,7 @@ const addOn = pricing.addOn;
   <p>Because you receive the full source code, refunds are not available once you have received it (by download link or repository access), except as set out in the <a href="/refund/">refund policy</a> or where required by law. If you are unsure whether PACSinfra fits your needs, use the live demo first or email me before buying.</p>
 
   <h2>6. The demo</h2>
-  <p>The demo at demo.pacsinfra.com is for evaluation only. Each demo company, with everything uploaded to it, is deleted automatically 3 days after it is created, data may be deleted earlier, and the demo may be unavailable without notice. Some features are turned off in the demo. Do not upload real patient data or any data containing personal information; only upload anonymised or synthetic DICOM files.</p>
+  <p>The demo at demo.pacsinfra.com is for evaluation only. Each demo company, with everything uploaded to it, is deleted automatically 24 hours after it is created, data may be deleted earlier, and the demo may be unavailable without notice. Some features are turned off in the demo. Do not upload real patient data or any data containing personal information; only upload anonymised or synthetic DICOM files.</p>
 
   <h2>7. Medical use and regulatory responsibility</h2>
   <p>PACSinfra is software infrastructure. It is not a certified medical device and has not been cleared by the TFDA, FDA, CE/MDR or any other regulator. You are solely responsible for:</p>

@@ -20,7 +20,7 @@ const en: Step[] = [
   {
     icon: 'eye',
     title: 'Try the demo',
-    body: 'Sign up at the demo and try it with anonymised or sample studies: up to 10 studies (500 MB) per demo company. Some features, such as the DICOM node and worklist, are not in the demo.',
+    body: 'Sign up at the demo and try it with anonymised or sample studies. Each demo company is deleted after 24 hours and holds up to 10 studies (500 MB). Some features, such as the DICOM node and worklist, are not in the demo.',
   },
   {
     icon: 'file',
@@ -68,7 +68,7 @@ const en: Step[] = [
 
 const zhTw: Step[] = [
   { icon: 'chat', title: '與我們聊聊', body: '預約免費通話或寄信給我們。告訴我們您的診所、使用人數，以及目前使用的 PACS 或封存系統。' },
-  { icon: 'eye', title: '試用展示版', body: '註冊展示版，並以去識別化或範例檢查試用：每個展示公司最多 10 筆檢查（500 MB）。部分功能（例如 DICOM 節點與工作清單）未包含在展示版中。' },
+  { icon: 'eye', title: '試用展示版', body: '註冊展示版，並以去識別化或範例檢查試用。每個展示公司會在 24 小時後刪除，最多可存放 10 筆檢查（500 MB）。部分功能（例如 DICOM 節點與工作清單）未包含在展示版中。' },
   {
     icon: 'file',
     title: '報價與訂單確認',

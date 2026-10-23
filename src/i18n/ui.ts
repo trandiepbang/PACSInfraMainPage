@@ -68,8 +68,8 @@ const en = {
     screenshotsEyebrow: 'Product',
     screenshotsTitle: 'A look inside',
     demoLimitedTitle: 'The demo is a limited preview.',
-    demoLimitedText: 'To keep it safe for public sign-ups, each demo company holds up to 10 studies (500 MB in total), and some main features, such as the DICOM node and worklist, are not included. Book a call and we will walk you through the full product.',
-    demoLimitedShort: 'The demo is a limited preview: up to 10 studies (500 MB) per demo company, and some features, such as the DICOM node and worklist, are not included.',
+    demoLimitedText: 'To keep it safe for public sign-ups, each demo company is deleted after 24 hours and holds up to 10 studies (500 MB in total), and some main features, such as the DICOM node and worklist, are not included. Book a call and we will walk you through the full product.',
+    demoLimitedShort: 'The demo is a limited preview: each demo company is deleted after 24 hours and holds up to 10 studies (500 MB). Some features, such as the DICOM node and worklist, are not included.',
     shots: [
       {
         title: 'Built-in medical image viewer',
@@ -290,7 +290,7 @@ const en = {
     callNote: 'A short call to talk through your setup.',
     callLink: 'Choose a time',
     demo: 'Try the demo',
-    demoNote: 'See PACSinfra before you talk to anyone. It is a limited preview: up to 10 studies (500 MB) per demo company, and some features, such as the DICOM node and worklist, are not included.',
+    demoNote: 'See PACSinfra before you talk to anyone. It is a limited preview: each demo company is deleted after 24 hours and holds up to 10 studies (500 MB). Some features, such as the DICOM node and worklist, are not included.',
     demoLink: 'Open the demo',
   },
   useCase: {
@@ -367,8 +367,8 @@ const zhTw: UI = {
     screenshotsEyebrow: '產品畫面',
     screenshotsTitle: '一窺產品樣貌',
     demoLimitedTitle: '展示版僅為有限預覽。',
-    demoLimitedText: '為了讓公開註冊保持安全，每個展示公司最多可存放 10 筆檢查（總計 500 MB），且部分主要功能（例如 DICOM 節點與工作清單）未包含在內。歡迎預約通話，我們將為您完整展示產品。',
-    demoLimitedShort: '展示版為有限預覽：每個展示公司最多 10 筆檢查（500 MB），且部分功能（例如 DICOM 節點與工作清單）未包含在內。',
+    demoLimitedText: '為了讓公開註冊保持安全，每個展示公司會在 24 小時後刪除，最多可存放 10 筆檢查（總計 500 MB），且部分主要功能（例如 DICOM 節點與工作清單）未包含在內。歡迎預約通話，我們將為您完整展示產品。',
+    demoLimitedShort: '展示版為有限預覽：每個展示公司會在 24 小時後刪除，最多可存放 10 筆檢查（500 MB）。部分功能（例如 DICOM 節點與工作清單）未包含在內。',
     shots: [
       {
         title: '內建醫療影像檢視器',
@@ -572,7 +572,7 @@ const zhTw: UI = {
     callNote: '簡短通話，聊聊您的環境與需求。',
     callLink: '選擇時間',
     demo: 'Demo',
-    demoNote: '在與任何人聯繫前，先親自看看 PACSinfra。展示版為有限預覽：每個展示公司最多 10 筆檢查（500 MB），且部分功能（例如 DICOM 節點與工作清單）未包含在內。',
+    demoNote: '在與任何人聯繫前，先親自看看 PACSinfra。展示版為有限預覽：每個展示公司會在 24 小時後刪除，最多可存放 10 筆檢查（500 MB）。部分功能（例如 DICOM 節點與工作清單）未包含在內。',
     demoLink: '開啟展示版',
   },
   useCase: {

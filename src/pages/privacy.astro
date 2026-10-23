@@ -6,7 +6,7 @@
 //   Voice dictation is on-device only (no cloud speech fallback).
 // - Setup, migration and maintenance: vendor access only via a client-provided jump host; patient
 //   data is never copied to vendor machines (terms section 4). DPA/BAA signed on request.
-// - Demo: DEMO_TTL_HOURS=72 deletes a demo company and its uploads. The demo runs with
+// - Demo: DEMO_TTL_HOURS=24 deletes a demo company and its uploads. The demo runs with
 //   RETAIN_IDENTITY=true (decided 2026-10-23), so it shows uploaded patient names; audit keeps
 //   patient_id, never patient_name. Demo audit retention must be AUDIT_RETENTION_MONTHS=3 on the demo server (90 days),
 //   and its nginx/Docker logs must rotate within 30 days.
@@ -20,7 +20,7 @@ const email = site.supportEmail;
 <LegalLayout
   title="Privacy policy"
   description="What personal data PACSinfra collects through pacsinfra.com, the demo, sales and support, and what happens to it. Patient data never leaves your own servers."
-  updated="22 October 2026"
+  updated="24 October 2026"
   draft={false}
 >
   <p>This policy explains what personal data I, Bang Tran, collect when you use pacsinfra.com, try the demo at demo.pacsinfra.com, or buy PACSinfra, and what I do with it. I am a sole operator based in Taipei, Taiwan, and I handle personal data in line with Taiwan’s Personal Data Protection Act (個人資料保護法).</p>
@@ -45,7 +45,7 @@ const email = site.supportEmail;
   <ul>
     <li><strong>Your account:</strong> the company name and email address you sign up with, or your name, email address and Google account ID if you sign in with Google. The demo uses a session cookie to keep you signed in; it is strictly necessary and is not used for tracking.</li>
     <li><strong>What you upload:</strong> the demo shows the patient details contained in the files you upload, such as names, so that it looks like a real clinic. Do not upload real patient data: only anonymised or sample studies. If you do upload real patient data, you are responsible for it. It is deleted with your demo company, except that the audit records below keep patient IDs (never names) for their 90 days.</li>
-    <li><strong>How long it is kept:</strong> each demo company, with everything uploaded to it, is deleted automatically 3 days (72 hours) after it is created. Your account is deleted with it unless it belongs to another organisation.</li>
+    <li><strong>How long it is kept:</strong> each demo company, with everything uploaded to it, is deleted automatically 24 hours after it is created. Your account is deleted with it unless it belongs to another organisation.</li>
     <li><strong>Audit records:</strong> like every PACSinfra installation, the demo keeps an audit trail of actions (who did what, when, from which IP address and browser). Demo audit records are kept for 90 days and then deleted.</li>
     <li><strong>Server logs:</strong> the demo server keeps technical logs (IP address, request, time) for up to 30 days for security and debugging.</li>
   </ul>
