@@ -31,7 +31,7 @@ const en = {
     {
       value: '~600',
       label: 'images per second, de-identified and searchable',
-      body: 'The full pipeline, end to end: upload, de-identification, storage and indexing, at about 25 MB/s. A typical 300-image MR series is ready to read in about 5 seconds.',
+      body: 'The full pipeline, end to end: upload, de-identification, storage and indexing. A typical 300-image MR series is ready to read in about 5 seconds.',
     },
     {
       value: '50,000+',
@@ -59,7 +59,7 @@ const zhTw: typeof en = {
     {
       value: '約 600',
       label: '張影像／秒，完成去識別化並可搜尋',
-      body: '完整的端到端流程：上傳、去識別化、儲存與建立索引，約 25 MB/s。一般 300 張影像的 MR 序列約 5 秒即可判讀。',
+      body: '完整的端到端流程：上傳、去識別化、儲存與建立索引。一般 300 張影像的 MR 序列約 5 秒即可判讀。',
     },
     {
       value: '50,000+',
