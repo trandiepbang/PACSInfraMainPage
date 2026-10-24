@@ -45,6 +45,7 @@ const en = {
     { icon: 'key', label: 'Two-factor sign-in', plan: true },
     { icon: 'alert', label: 'Break-the-glass access', plan: true },
     { icon: 'list', label: 'Audit trail with CSV export', plan: true },
+    { icon: 'shield', label: 'DICOMweb gateway: query and retrieve only with permission', plan: true },
     { icon: 'code', label: 'REST API with Swagger docs', plan: true },
     { group: 'The service' },
     { icon: 'branch', label: 'Full source code, handed over to your team', plan: true },
@@ -65,7 +66,7 @@ const en = {
     { icon: 'chat', title: 'Share links with live chat', body: 'Send a study to a patient behind a password, and chat with them in real time on the same link.' },
     { icon: 'alert', title: 'Break-the-glass access', body: 'Restricted studies can still be opened when needed, but access is always recorded with a reason.' },
     { icon: 'list', title: 'Tamper-evident audit trail', body: 'An append-only record of every action, exportable to CSV.' },
-    { icon: 'code', title: 'REST API', body: 'A full REST API with Swagger docs, for developers and integrations.' },
+    { icon: 'shield', title: 'DICOMweb gateway and REST API', body: 'Query and retrieve images over standard DICOMweb, only for studies the user has permission to see. Every request is checked and recorded. Plus a full REST API with Swagger docs.' },
   ] as Feature[],
 };
 
@@ -82,6 +83,7 @@ const zhTw: typeof en = {
     { icon: 'key', label: '雙重驗證登入', plan: true },
     { icon: 'alert', label: '緊急存取（破窗機制）', plan: true },
     { icon: 'list', label: '稽核軌跡，可匯出 CSV', plan: true },
+    { icon: 'shield', label: 'DICOMweb 閘道：有權限才能查詢與擷取', plan: true },
     { icon: 'code', label: 'REST API 與 Swagger 文件', plan: true },
     { group: '服務' },
     { icon: 'branch', label: '完整原始碼，交接給您的團隊', plan: true },
@@ -120,7 +122,7 @@ const zhTw: typeof en = {
     { icon: 'chat', title: '分享連結與即時對話', body: '以密碼保護將檢查分享給病患，並在同一個連結中與病患即時對話。' },
     { icon: 'alert', title: '緊急存取（破窗機制）', body: '受限檢查在必要時仍可開啟，但每次存取都會連同理由一併記錄。' },
     { icon: 'list', title: '可偵測竄改的稽核軌跡', body: '每個動作都有只能新增、無法修改的紀錄，並可匯出為 CSV。' },
-    { icon: 'code', title: 'REST API', body: '完整的 REST API 與 Swagger 文件，方便開發與系統整合。' },
+    { icon: 'shield', title: 'DICOMweb 閘道與 REST API', body: '透過標準 DICOMweb 查詢與擷取影像，只限使用者有權限的檢查。每筆請求都會檢查權限並記錄。另有完整的 REST API 與 Swagger 文件。' },
   ],
 };
 
