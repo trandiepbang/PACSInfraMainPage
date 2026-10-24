@@ -17,6 +17,7 @@ const plan = pricing.tiers[0];
 const fill = (text: string) =>
   text
     .replace('{plan}', formatPrice(plan.price))
+    .replace('{setup}', formatPrice(pricing.setup.price))
     .replace('{addOn}', `+${formatPrice(pricing.addOn.price)}`)
     .replace('{renewal}', plan.renewal ? formatPrice(plan.renewal) : '');
 const steps = process[locale].map((s) => ({ ...s, body: fill(s.body) }));

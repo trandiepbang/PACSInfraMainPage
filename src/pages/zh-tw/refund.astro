@@ -9,20 +9,21 @@ const pricing = getPricing('zh-tw');
 const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
 const plan = tier('self-hosted');
 const addOn = pricing.addOn;
+const setup = pricing.setup;
 ---
 
 <LegalLayout
   title="退款政策"
   description="PACSinfra 方案、加購服務與續約在什麼情況下可以退款，以及如何申請退款。"
-  updated="2026 年 10 月 22 日"
+  updated="2026 年 10 月 24 日"
   draft={false}
 >
   <p>PACSinfra 以原始碼形式銷售。一旦您取得程式碼，就無法「退回」，因此本政策簡單而嚴格。購買前請先閱讀。</p>
 
   <h2>「{plan.name}」（{formatPrice(plan.price)}，{billingLabel(plan.billing, 'zh-tw')}）</h2>
   <ul>
-    <li><strong>建置工作開始前：</strong>可申請全額退還 50% 訂金。</li>
-    <li><strong>之後：</strong>不予退款；但若因我方原因（非因您的基礎設施、存取延誤或範圍變更所致）無法完成建置，我會退還您已支付的全部方案費用。</li>
+    <li><strong>交付原始碼前：</strong>可申請全額退款。</li>
+    <li><strong>之後：</strong>不予退款，法律另有規定者除外。</li>
   </ul>
   <p>購買前，您可以：</p>
   <ul>
@@ -30,6 +31,12 @@ const addOn = pricing.addOn;
     <li>寄信詢問它是否符合您的使用情境。比起處理退款申請，我更樂意先回答您的問題。</li>
   </ul>
   <p>若您已付款但尚未收到下載連結或程式庫存取權限，請寄信給我，我會取消訂單並全額退款。</p>
+
+  <h2>「{setup.name}」（+{formatPrice(setup.price)}）</h2>
+  <ul>
+    <li><strong>建置工作開始前：</strong>可申請全額退款。</li>
+    <li><strong>開始後：</strong>不予退款；但若因我方原因（非因您的基礎設施、存取延誤或範圍變更所致）無法完成建置，我會全額退還建置費用。</li>
+  </ul>
 
   <h2>「{addOn.name}」（+{formatPrice(addOn.price)}）</h2>
   <ul>

@@ -9,20 +9,21 @@ const email = site.supportEmail;
 const tier = (id: string) => pricing.tiers.find((t) => t.id === id)!;
 const plan = tier('self-hosted');
 const addOn = pricing.addOn;
+const setup = pricing.setup;
 ---
 
 <LegalLayout
   title="Refund policy"
   description="When the PACSinfra plan, the add-on and renewals can be refunded, and how to ask for a refund."
-  updated="22 October 2026"
+  updated="24 October 2026"
   draft={false}
 >
   <p>PACSinfra is sold as source code. Once you have the code, it cannot be “returned”, so the policy is simple and strict. Please read it before buying.</p>
 
   <h2>{plan.name} ({formatPrice(plan.price)} {billingLabel(plan.billing)})</h2>
   <ul>
-    <li><strong>Before setup work starts:</strong> the 50% deposit is refunded in full on request.</li>
-    <li><strong>After that:</strong> no refund, except that if I cannot complete the setup for reasons on my side (not caused by your infrastructure, access delays or scope changes), I will refund everything you paid for the plan.</li>
+    <li><strong>Before the source code is delivered:</strong> full refund on request.</li>
+    <li><strong>After that:</strong> no refund, except where required by law.</li>
   </ul>
   <p>Before you buy, you can:</p>
   <ul>
@@ -30,6 +31,12 @@ const addOn = pricing.addOn;
     <li>email me with questions about whether it fits your use case. I would rather answer them than process a refund request.</li>
   </ul>
   <p>If you paid but have not yet received the download link or repository access, email me and I will cancel the order and refund in full.</p>
+
+  <h2>{setup.name} (+{formatPrice(setup.price)})</h2>
+  <ul>
+    <li><strong>Before setup work starts:</strong> full refund on request.</li>
+    <li><strong>After it starts:</strong> no refund, except that if I cannot complete the setup for reasons on my side (not caused by your infrastructure, access delays or scope changes), I will refund the setup in full.</li>
+  </ul>
 
   <h2>{addOn.name} (+{formatPrice(addOn.price)})</h2>
   <ul>

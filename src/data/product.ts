@@ -10,7 +10,7 @@ export interface Feature {
 
 export type TableRow =
   | { group: string }
-  | { icon: IconName; label: string; plan?: boolean; addOn?: boolean; quoted?: boolean };
+  | { icon: IconName; label: string; plan?: boolean; setup?: boolean; addOn?: boolean; quoted?: boolean };
 
 const en = {
   summary:
@@ -47,9 +47,9 @@ const en = {
     { icon: 'list', label: 'Audit trail with CSV export', plan: true },
     { icon: 'code', label: 'REST API with Swagger docs', plan: true },
     { group: 'The service' },
-    { icon: 'server', label: 'Setup on your own server', plan: true },
     { icon: 'branch', label: 'Full source code, handed over to your team', plan: true },
-    { icon: 'wrench', label: '12 months of maintenance, debugging and fixes', plan: true },
+    { icon: 'wrench', label: 'First year of maintenance, debugging and fixes (free)', plan: true },
+    { icon: 'server', label: 'Setup on your own server', setup: true },
     { icon: 'transfer', label: 'Migration of your existing studies', quoted: true },
     { group: 'Connecting your scanners' },
     { icon: 'node', label: 'DICOM node connector', addOn: true },
@@ -84,9 +84,9 @@ const zhTw: typeof en = {
     { icon: 'list', label: '稽核軌跡，可匯出 CSV', plan: true },
     { icon: 'code', label: 'REST API 與 Swagger 文件', plan: true },
     { group: '服務' },
-    { icon: 'server', label: '在您自己的伺服器上建置', plan: true },
     { icon: 'branch', label: '完整原始碼，交接給您的團隊', plan: true },
-    { icon: 'wrench', label: '12 個月維護、除錯與修正', plan: true },
+    { icon: 'wrench', label: '第一年維護、除錯與修正（免費）', plan: true },
+    { icon: 'server', label: '在您自己的伺服器上建置', setup: true },
     { icon: 'transfer', label: '移轉您既有的檢查資料', quoted: true },
     { group: '連接您的影像儀器' },
     { icon: 'node', label: 'DICOM 節點連接器', addOn: true },

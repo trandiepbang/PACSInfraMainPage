@@ -14,6 +14,7 @@ export const pricingZhTw: {
   foundingOffer?: string;
   licenceSummary?: string;
   addOn?: { name?: string; description?: string };
+  setup?: { name?: string; description?: string };
   tiers: Record<string, TierText>;
   /** FAQ questions and answers by position; anything missing falls back to pricing.yaml. */
   faqQuestions: string[];
@@ -26,17 +27,20 @@ export const pricingZhTw: {
     description:
       '安裝在醫院網路內的 DICOM 節點，接收來自影像儀器與既有 PACS 的檢查，並經由加密連線轉送，另附影像儀器工作清單（Modality Worklist）。由我們為您完成安裝與連接，並附完整原始碼。',
   },
+  setup: {
+    name: '在您的伺服器上建置',
+    description: '我們在您自己的伺服器、雲端或 Kubernetes 叢集上安裝並設定 PACSinfra，確認運作正常，讓您的團隊可以立即開始使用。',
+  },
   tiers: {
     'self-hosted': {
-      name: '自行架設，第一年',
+      name: '自行架設',
       callout: 'DICOM 檢視器、報告、語音口述、分享連結與即時對話，只要 $2,000',
-      description: '我們在您的伺服器上完成建置、將完整原始碼交接給您的團隊，並維護一整年。',
+      description: '完整原始碼與永久授權，包含所有功能，第一年維護免費。',
       features: [
         '包含所有功能：DICOM 檢視器、可語音口述的放射科報告、分享連結，以及與病患的即時對話',
-        '在您的伺服器、雲端或 Kubernetes 叢集上完成建置',
-        '將完整原始碼交接給您的團隊，並提供操作說明',
+        '完整原始碼，交接給您的團隊並提供操作說明',
         '單一機構永久授權',
-        '12 個月維護：除錯並修正任何錯誤',
+        '第一年維護免費：除錯並修正任何錯誤',
       ],
     },
   },
@@ -53,7 +57,7 @@ export const pricingZhTw: {
     '針對交付的 PACSinfra 除錯並修正任何錯誤，並提供更新與電子郵件協助，盡力在 2 個工作天內（台灣時間）回覆。客製化開發、與您其他系統的整合以及到場服務，屬於另行報價的付費服務。',
     '由於您會取得完整原始碼，一旦收到原始碼即不提供退款，法律另有規定者除外。少數情況例外，例如尚未交付的訂單、誤購或重複付款、建置工作開始前，以及 14 天內取消的續約，詳見退款政策。購買前歡迎先試用展示版，或寄信詢問任何問題。',
     '依專案個別報價。費用取決於您的檢查數量、資料目前所在的 PACS 或封存系統，以及資料的整潔程度，因此我會先檢視您的系統，再提供固定報價。與其他工作相同，移轉全程在您自己的基礎設施內進行。',
-    '可以。付款方式為開立發票並以國際電匯支付美元。第一年方案於訂購時支付一半，交接時支付另一半。',
+    '可以。付款方式為開立發票並以國際電匯支付美元。確認訂單時開立一半金額的發票，交接時開立另一半。',
     '您可以保留軟體與已收到的所有版本，並持續使用。若要繼續獲得維護、除錯與更新，可依方案標示的價格逐年續約。',
   ],
 };

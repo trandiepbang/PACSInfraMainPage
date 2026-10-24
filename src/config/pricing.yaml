@@ -12,19 +12,25 @@ foundingOffer:
 
 tiers:
   - id: self-hosted
-    name: Self-Hosted, first year
+    name: Self-Hosted
     price: 2000
     billing: one-time        # one-time | yearly | monthly
     highlight: true
     callout: DICOM viewer, reports, voice dictation, share links and live chat, all for $2,000
-    description: We set it up on your server, hand the full source code over to your team, and look after it for a year.
+    description: The full source code and a lifetime licence, with every feature and the first year of maintenance free.
     features:
       - Every feature included - DICOM viewer, radiology reports with voice dictation, share links and live chat with patients
-      - Set up on your own server, cloud or Kubernetes cluster
-      - Handover of the full source code to your team, with a walkthrough
+      - Full source code, handed over to your team with a walkthrough
       - Lifetime licence for one organisation
-      - 12 months of maintenance, debugging and fixes for any error
-    renewal: 1000              # per year, after the first 12 months; shown on the card and in /terms
+      - First year of maintenance free - debugging and fixes for any error
+    renewal: 1000              # maintenance per year, after the free first 12 months; shown on the card and in /terms
+
+# Setup on the client's server, one-time, on top of the plan. Shown beside the plan on the home
+# page and /pricing, and as its own column in the What's included table.
+setup:
+  name: Setup on your server
+  price: 1000
+  description: We install and configure PACSinfra on your own server, cloud or Kubernetes cluster, and make sure it runs, so your team can start straight away.
 
 # Sold on top of a plan, shown under the cards on /pricing and on the home page.
 addOn:
@@ -45,6 +51,6 @@ faq:
   - q: How much does data migration cost?
     a: It is quoted per project. The cost depends on how many studies you have, which PACS or archive they are in now and how clean the data is, so I look at your system first and then give you a fixed quote. Like everything else, migration runs inside your own infrastructure.
   - q: Can we pay by invoice or bank transfer?
-    a: Yes. Payment is by invoice and international bank transfer in US dollars. For the first-year plan, half is invoiced when you order and half at handover.
+    a: Yes. Payment is by invoice and international bank transfer in US dollars. Half of the order is invoiced when you confirm it, and half at handover.
   - q: What happens after 12 months?
     a: You keep the software and every version you have received, and you can keep running it. To keep maintenance, debugging and updates going, renew each year at the price shown on the plan.
