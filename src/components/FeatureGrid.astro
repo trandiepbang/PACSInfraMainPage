@@ -8,7 +8,7 @@ const { features } = product[getLocale(Astro.url)];
 
 <ul class="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3 dark:border-line-dark dark:bg-line-dark">
   {features.map((f) => (
-    <li class="bg-white p-6 dark:bg-night">
+    <li class="bg-white p-6 dark:bg-night lg:[&:nth-child(3n+1):last-child]:col-span-3 lg:[&:nth-child(3n+2):last-child]:col-span-2">
       <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent dark:bg-accent-dark/15 dark:text-accent-dark">
         <DiagramIcon name={f.icon} size={22} />
       </span>
