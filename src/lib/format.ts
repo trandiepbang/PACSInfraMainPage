@@ -13,7 +13,7 @@ export function formatPrice(amount: number, currency = pricing.currency): string
 
 export const billingLabel = (billing: Tier['billing'], locale: Locale = 'en') => ui[locale].billing[billing];
 
-/** e.g. "Self-Hosted, first year $2,000 one-time" */
+/** e.g. "Self-Hosted $2,000 one-time" */
 export const pricingSummary = (locale: Locale = 'en') =>
   getPricing(locale)
     .tiers.map((t) => `${t.name} ${formatPrice(t.price)} ${billingLabel(t.billing, locale)}`)
